@@ -19,8 +19,13 @@
    <children>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="127.0">
          <children>
-            <ProgressBar prefHeight="19.0" prefWidth="100.0" progress="0.0" />
-            <Button mnemonicParsing="false" text="Button">
+            <ProgressBar fx:id="status" prefHeight="19.0" prefWidth="100.0" />
+            <TextField fx:id="year" prefHeight="23.0" prefWidth="91.0">
+               <VBox.margin>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </VBox.margin>
+            </TextField>
+            <Button fx:id="startbtn" mnemonicParsing="false" onAction="#getStart" text="Button">
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin>
