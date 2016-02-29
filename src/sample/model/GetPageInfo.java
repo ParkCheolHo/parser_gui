@@ -13,7 +13,6 @@ public class GetPageInfo extends Task {
     String year;
     String totaled;
     ArrayList<Thread> threadlist =new ArrayList<>();
-    int moviecount = 0;
     static Logger logger = LoggerFactory.getLogger(GetPageInfo.class);
     public GetPageInfo(String year) {
         this.year = year;
@@ -24,23 +23,26 @@ public class GetPageInfo extends Task {
     protected String call() throws Exception {
         GetPageNum test = new GetPageNum(year, this);
         totaled = test.CalCulate();
+        int result = test.GetTotalmoiveNum(Integer.parseInt(totaled));
+
+        logger.info(year+"년도 전체 영화 갯수 : "+result);
+
         int testnum = 4;
         int[] value = split(totaled, testnum);
-        for(int i=0;i<value.length;i++){
-            System.out.println(value[i]);
-        }
+
         for(int i=0;i<testnum;i++){
             Runnable test2 = new CalCulateModel(year,value[i],value[i+1]);
             Thread test1 = new Thread(test2);
             threadlist.add(test1);
             test1.start();
-            System.out.println("Thread size" + threadlist.size());
         }
+
+        logger.info("Thread 총 갯수 : " + threadlist.size());
+
         for(int i=0;i<threadlist.size();i++){
             threadlist.get(i).join();
         }
-
-        System.out.println(moviecount);
+        threadlist.clear();
         return null;
     }
     protected void update(String value){
@@ -67,9 +69,5 @@ public class GetPageInfo extends Task {
         }
         return result;
     }
-    protected void addMovies(){
-        synchronized(this) {
-            moviecount++;
-        }
-    }
+
 }

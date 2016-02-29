@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="parser_gui.jnlp">
+  <information>
+    <title>none</title>
+    <vendor>none</vendor>
+    <description>parser_gui</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="jsoup-1.8.2.jar" size="314991" download="eager" />
+    <jar href="parser_gui.jar" size="14474" download="eager" />
+    <jar href="slf4j-api-1.7.17.jar" size="40522" download="eager" />
+    <jar href="slf4j-jdk14-1.7.17.jar" size="8453" download="eager" />
+  </resources>
+  <jfx:javafx-desc  width="600" height="400" main-class="sample.Main"  name="parser_gui" />
+  <update check="background"/>
+</jnlp>

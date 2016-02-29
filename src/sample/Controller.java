@@ -20,14 +20,15 @@ public class Controller {
     @FXML
     private Label statusLabel;
     Task task;
-
+    Thread thread;
     public void getStart() {
         task = new GetPageInfo(year.getText());
 
         statusLabel.textProperty().bind(task.messageProperty());
         status.progressProperty().bind(task.progressProperty());
         long start = System.currentTimeMillis(); // 시작시간
-        new Thread(task).start();
+        thread = new Thread(task);
+        thread.start();
         task.stateProperty().addListener(new ChangeListener<Worker.State>() {
             @Override
             public void changed(ObservableValue<? extends Worker.State> observableValue, Worker.State oldState, Worker.State newState) {
