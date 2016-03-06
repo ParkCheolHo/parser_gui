@@ -30,11 +30,12 @@
                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                </VBox.margin>
             </TextField>
-            <Button fx:id="startbtn" mnemonicParsing="false" onAction="#getStart" text="Button">
+            <Button fx:id="startbtn" mnemonicParsing="false" onAction="#getStart" text="Start">
                <VBox.margin>
-                  <Insets top="5.0" />
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                </VBox.margin>
             </Button>
+            <Button fx:id="Stop" mnemonicParsing="false" onAction ="#getStop" text="Stop" />
          </children>
       </VBox>
    </children>

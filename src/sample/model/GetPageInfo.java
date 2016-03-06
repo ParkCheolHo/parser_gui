@@ -1,7 +1,11 @@
 package sample.model;
 
 import javafx.concurrent.Task;
+
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 /**
@@ -12,41 +16,51 @@ public class GetPageInfo extends Task {
     StringBuilder sb = new StringBuilder("http://movie.naver.com/movie/sdb/browsing/bmovie.nhn?year=");
     String year;
     String totaled;
-    ArrayList<Thread> threadlist =new ArrayList<>();
+    List<Thread> threadlist;
+    private double max = 0;
+    private double count = 0;
+    SystemInfo systemInfo;
     static Logger logger = LoggerFactory.getLogger(GetPageInfo.class);
     public GetPageInfo(String year) {
         this.year = year;
         sb.append(year);
+        this.systemInfo = SystemInfo.getInstance();
     }
 
     @Override
-    protected String call() throws Exception {
+    protected String call() throws IOException {
         GetPageNum test = new GetPageNum(year, this);
         totaled = test.CalCulate();
         int result = test.GetTotalmoiveNum(Integer.parseInt(totaled));
-
         logger.info(year+"년도 전체 영화 갯수 : "+result);
-
         int testnum = 4;
         int[] value = split(totaled, testnum);
-
         for(int i=0;i<testnum;i++){
-            Runnable test2 = new CalCulateModel(year,value[i],value[i+1]);
-            Thread test1 = new Thread(test2);
-            threadlist.add(test1);
-            test1.start();
+            Thread test1 = new Thread( new CalCulateModel(year,value[i],value[i+1], this));
+            systemInfo.addTheadlist(test1);
         }
-
+        systemInfo.startThreadlist();
+        threadlist = systemInfo.getTheadlist();
         logger.info("Thread 총 갯수 : " + threadlist.size());
-
-        for(int i=0;i<threadlist.size();i++){
-            threadlist.get(i).join();
-        }
+        for(Thread i : threadlist)
+            try {
+                i.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        System.out.println("쓰레드 죽는다");
         threadlist.clear();
         return null;
     }
     protected void update(String value){
         updateMessage(value);
+    }
+    protected synchronized void updateProgress(){
+        count++;
+        updateProgress(count,max);
+    }
+    protected void setMax(double value){
+        max += value;
     }
 
     int[] split(String totaled, int multithrednum){

@@ -8,7 +8,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
-import sample.model.GetPageInfo;
+import sample.model.*;
+
+
+import java.util.List;
 
 
 public class Controller {
@@ -21,9 +24,11 @@ public class Controller {
     private Label statusLabel;
     Task task;
     Thread thread;
+    SystemInfo systemInfo;
+    List<Thread> threadList;
     public void getStart() {
         task = new GetPageInfo(year.getText());
-
+        systemInfo = SystemInfo.getInstance();
         statusLabel.textProperty().bind(task.messageProperty());
         status.progressProperty().bind(task.progressProperty());
         long start = System.currentTimeMillis(); // 시작시간
@@ -42,5 +47,10 @@ public class Controller {
             }
         });
     }
+    public void getStop(){
+        threadList = systemInfo.getTheadlist();
+        threadList.forEach(Thread::interrupt);
 
+    }
 }
+
