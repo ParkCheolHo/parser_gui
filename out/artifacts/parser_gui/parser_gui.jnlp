@@ -9,7 +9,7 @@
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
     <jar href="jsoup-1.8.2.jar" size="314991" download="eager" />
-    <jar href="parser_gui.jar" size="16852" download="eager" />
+    <jar href="parser_gui.jar" size="19121" download="eager" />
     <jar href="slf4j-api-1.7.17.jar" size="40522" download="eager" />
     <jar href="slf4j-jdk14-1.7.17.jar" size="8453" download="eager" />
   </resources>

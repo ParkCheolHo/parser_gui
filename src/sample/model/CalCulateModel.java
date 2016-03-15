@@ -24,18 +24,19 @@ public class CalCulateModel implements Runnable {
     String year;
     int startpage = 0;
     int endpage = 0;
-    InformationReader reader = new InformationReader();
     private ArrayList<String> moviesurl = new ArrayList<>();
     private ArrayList<String> errors = new ArrayList<>();
     String staticurl = "http://m.movie.naver.com/movie/bi/mi/basic.nhn?code=";
     GetPageInfo getpageinfo;
+    MakeXml makemxl;
 
-    public CalCulateModel(String year, int startpage, int endpage, GetPageInfo getpageinfo) {
+    public CalCulateModel(String year, int startpage, int endpage, GetPageInfo getpageinfo, MakeXml makemxl) {
         this.year = year;
         sb.append(this.year);
         this.startpage = startpage;
         this.endpage = endpage;
         this.getpageinfo = getpageinfo;
+        this.makemxl = makemxl;
 
     }
 
@@ -77,7 +78,6 @@ public class CalCulateModel implements Runnable {
                     it.remove();
                     actors.clear();
                     if (Thread.interrupted()) {
-                        xmlwriter.End();
                         throw new InterruptedException();
                     }
                 } catch (IOException e) {
@@ -118,26 +118,17 @@ public class CalCulateModel implements Runnable {
 
     @Override
     public void run() {
-
-        MakeXml xmlwirter = new MakeXml(Thread.currentThread().getName());
         double result;
         try {
             result = execute(startpage, endpage, moviesurl);
             getpageinfo.setMax(result);
-            try {
-                xmlwirter.Start();
-                errors.clear();
-                getSpecificMovieData(xmlwirter, moviesurl, errors, true);
-
-                while (errors.isEmpty() == false) {
-                    getSpecificMovieData(xmlwirter, errors, errors, false);
-                }
-                xmlwirter.End();
-            } catch (XMLStreamException e) {
-                e.printStackTrace();
+            errors.clear();
+            getSpecificMovieData(makemxl, moviesurl, errors, true);
+            while (errors.isEmpty() == false) {
+                getSpecificMovieData(makemxl, errors, errors, false);
             }
         } catch (InterruptedException e) {
-            GetPageInfo.logger.info(Thread.currentThread().getName()+" 인터럽트");
+            GetPageInfo.logger.info(Thread.currentThread().getName() + " 인터럽트");
         }
         GetPageInfo.logger.info(Thread.currentThread().getName() + " is done!");
     }

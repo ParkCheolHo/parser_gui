@@ -29,7 +29,6 @@ public class GetPageNum {
             Document doc = Jsoup.connect(url).get();
             Elements newsHeadlines = doc.select("div.pagenavigation");
             text = newsHeadlines.text().split(" ");
-            getpagenum.update(text[text.length - 1]);
         } catch (IOException e) {
 
         }

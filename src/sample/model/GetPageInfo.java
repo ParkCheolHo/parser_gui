@@ -8,6 +8,9 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.xml.stream.XMLStreamException;
+
 /**
  * Created by ParkCheolHo on 2016-02-19.
  * 모든 쓰레드를 컨트롤 하는 쓰레드
@@ -20,7 +23,7 @@ public class GetPageInfo extends Task {
     private double max = 0;
     private double count = 0;
     SystemInfo systemInfo;
-    static Logger logger = LoggerFactory.getLogger(GetPageInfo.class);
+    public static Logger logger = LoggerFactory.getLogger(GetPageInfo.class);
     public GetPageInfo(String year) {
         this.year = year;
         sb.append(year);
@@ -28,15 +31,22 @@ public class GetPageInfo extends Task {
     }
 
     @Override
-    protected String call() throws IOException {
+    protected String call() throws XMLStreamException {
         GetPageNum test = new GetPageNum(year, this);
+        MakeXml makexml = new MakeXml(systemInfo.getFilePath());
         totaled = test.CalCulate();
-        int result = test.GetTotalmoiveNum(Integer.parseInt(totaled));
+        int result = 0;
+        try {
+            result = test.GetTotalmoiveNum(Integer.parseInt(totaled));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         logger.info(year+"년도 전체 영화 갯수 : "+result);
+        makexml.Start();
         int testnum = 4;
         int[] value = split(totaled, testnum);
         for(int i=0;i<testnum;i++){
-            Thread test1 = new Thread( new CalCulateModel(year,value[i],value[i+1], this));
+            Thread test1 = new Thread( new CalCulateModel(year,value[i],value[i+1], this, makexml));
             systemInfo.addTheadlist(test1);
         }
         systemInfo.startThreadlist();
@@ -48,13 +58,12 @@ public class GetPageInfo extends Task {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+        makexml.End();
         System.out.println("쓰레드 죽는다");
         threadlist.clear();
         return null;
     }
-    protected void update(String value){
-        updateMessage(value);
-    }
+
     protected synchronized void updateProgress(){
         count++;
         updateProgress(count,max);
@@ -62,6 +71,8 @@ public class GetPageInfo extends Task {
     protected void setMax(double value){
         max += value;
     }
+
+
 
     int[] split(String totaled, int multithrednum){
         int[] result = new int[multithrednum+1];

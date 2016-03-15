@@ -2,6 +2,7 @@ package sample.model;
 
 
 
+import com.sun.corba.se.impl.orbutil.concurrent.Sync;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -23,21 +24,25 @@ public class MakeXml {
 
     OutputStream outputStream;
     XMLStreamWriter out;
-    public MakeXml(String value){
+    public MakeXml(File filepath){
         try {
-            outputStream = new FileOutputStream(new File("doc"+value+".xml"));
+            outputStream = new FileOutputStream(filepath);
             out = XMLOutputFactory.newInstance().createXMLStreamWriter(new OutputStreamWriter(outputStream, "utf-8"));
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void Start() throws XMLStreamException {
-        out.writeStartDocument();
-        out.writeStartElement("Movies");
+    public void Start() {
+        try {
+            out.writeStartDocument();
+            out.writeStartElement("Movies");
+        } catch (XMLStreamException e) {
+            e.printStackTrace();
+        }
     }
-    public void add(String index, String name, String genre, ArrayList<String> actors,
-                   String con_tx, String director){
+    public synchronized void add(String index, String name, String genre, ArrayList<String> actors,
+                    String con_tx, String director){
         try {
             out.writeStartElement("Movie");
             out.writeAttribute("index", index);
