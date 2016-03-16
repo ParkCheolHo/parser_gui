@@ -5,15 +5,20 @@ import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Task;
 import javafx.concurrent.Worker;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import sample.model.*;
 
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 
@@ -28,6 +33,7 @@ public class Controller {
     private TextField pathlabel;
     @FXML
     private ScrollPane terminal;
+
     Task task;
     Thread thread;
     SystemInfo systemInfo;
@@ -36,19 +42,18 @@ public class Controller {
     public Controller() {
         systemInfo = SystemInfo.getInstance();
     }
-
     public void Start() {
         try {
             //year.getText() 판별 메소드를 만들것
-            if(checkYear(year.getText())!=true){
+            if(checkYear(systemInfo.getYear())!=true){
                 showAlert("ERROR!","시스템 에러!", "해당년도를 정확히 입력하세요. ex)2012");
-                createExceuption("년도설정 오류");
+                createException("년도설정 오류");
             }
             task = new GetPageInfo(year.getText());
             status.progressProperty().bind(task.progressProperty());
             if (systemInfo.filpathempty()) {
                 showAlert("ERROR!","시스템 에러!", "저장 경로를 확인하세요");
-                createExceuption("저장경로 미설정");
+                createException("저장경로 미설정");
             }
             long start = System.currentTimeMillis(); // 시작시간
             thread = new Thread(task);
@@ -87,8 +92,17 @@ public class Controller {
             systemInfo.setFilePath(file);
         }
     }
+    public void showSetting() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("setting.fxml"));
+        Scene scene = new Scene(root);
+        Stage m = new Stage();
+        m.initModality(Modality.WINDOW_MODAL);
+        m.setTitle("Setting");
+        m.setScene(scene);
+        m.showAndWait();
+    }
 
-    protected void createExceuption(String value) throws MyException {
+    protected void createException(String value) throws MyException {
         GetPageInfo.logger.error(value);
         throw new MyException();
     }
@@ -104,6 +118,7 @@ public class Controller {
         }
     return true;
     }
+
     protected void showAlert(String title, String HeaderText, String ContentText){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.initOwner(rootPane.getScene().getWindow());
@@ -113,5 +128,6 @@ public class Controller {
         alert.showAndWait();
 
     }
+
 }
 

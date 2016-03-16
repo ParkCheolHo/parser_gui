@@ -15,11 +15,11 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
-
+import java.util.List;
 /**
  * Created by ParkCheolHo on 2016-02-20.
  */
-public class CalCulateModel implements Runnable {
+public class CalCulateModel implements Runnable{
     StringBuilder sb = new StringBuilder("http://movie.naver.com/movie/sdb/browsing/bmovie.nhn?year=");
     String year;
     int startpage = 0;
@@ -38,9 +38,48 @@ public class CalCulateModel implements Runnable {
         this.getpageinfo = getpageinfo;
         this.makemxl = makemxl;
 
-    }
 
-    private void getSpecificMovieData(MakeXml xmlwriter, ArrayList<String> moviesurl, ArrayList<String> errors, boolean flag) throws InterruptedException {
+    }
+    public void test(MakeXml xmlwriter, ArrayList<String> moviesurl, ArrayList<String> errors, boolean flag) throws IOException {
+        Iterator<String> it;
+        Document doc = null;
+        InformationReader reader = new InformationReader();
+        List actors = new ArrayList<String>();
+        if (flag) {
+            it = moviesurl.iterator();
+        } else {
+            it = errors.iterator();
+        }
+        while (it.hasNext()) {
+            String value = it.next();
+            doc = Jsoup.connect(staticurl + value).get();
+            Elements movieInfoElement = doc.select("div.mv_info");
+            String naem = movieInfoElement.select("h3 > a:nth-child(1)").text();
+            Elements movieinfo = movieInfoElement.select("dl > dd:nth-child(2) > p > span > a");
+            for (Element li : movieinfo) {
+                String grenecode = getIndex(li.attr("href"));
+                reader.reader(grenecode);
+            }
+            String countrycode = reader.countrycode();
+            List list = reader.getgreneList();
+            String h_tx_story = doc.select("h5.h_tx_story").text();
+            String con_tx = doc.select("div.story_area > p").text();
+            Elements peoples = doc.select("div.people > ul > li");
+            String director = null;
+            for (Element peopleli : peoples) {
+                String identifier = peopleli.select("dt.staff_dir").text();
+                if ("감독".equals(identifier)) {
+                    director = peopleli.select("a.tx_people").attr("title");
+                } else {
+                    actors.add(peopleli.select("a.tx_people").attr("title"));
+                }
+            }
+        }
+        doc=null;
+        actors.clear();
+        reader.eraseList();
+    }
+    public void getSpecificMovieData(MakeXml xmlwriter, ArrayList<String> moviesurl, ArrayList<String> errors, boolean flag) throws InterruptedException {
 
         ArrayList<String> actors = new ArrayList<>();
         Iterator<String> it;
@@ -132,5 +171,6 @@ public class CalCulateModel implements Runnable {
         }
         GetPageInfo.logger.info(Thread.currentThread().getName() + " is done!");
     }
+
 
 }

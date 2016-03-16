@@ -13,7 +13,7 @@ public class SystemInfo {
     public static SystemInfo getInstance() {
         return ourInstance;
     }
-
+    private String year = null;
     private SystemInfo() {
     }
     private List<Thread> theadlist = new ArrayList<>();
@@ -37,5 +37,13 @@ public class SystemInfo {
     }
     public void startThreadlist(){
         theadlist.forEach(Thread::start);
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public String getYear() {
+        return year;
     }
 }

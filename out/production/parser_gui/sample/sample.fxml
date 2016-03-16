@@ -18,11 +18,11 @@
               <MenuItem mnemonicParsing="false" text="Close" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="설정">
+            <Menu fx:id="test" mnemonicParsing="false" text="설정">
                <items>
-                  <MenuItem mnemonicParsing="false" text="설정" />
+                  <MenuItem fx:id="setting" mnemonicParsing="false" onAction="#showSetting" text="설정" />
                </items>
-          </Menu>
+            </Menu>
           <Menu mnemonicParsing="false" text="정보">
             <items>
               <MenuItem mnemonicParsing="false" text="About" />
@@ -44,11 +44,6 @@
             </ScrollPane>
             <HBox alignment="CENTER" prefHeight="63.0" prefWidth="430.0">
                <children>
-                  <TextField fx:id="year" prefHeight="23.0" prefWidth="76.0">
-                     <HBox.margin>
-                        <Insets right="5.0" />
-                     </HBox.margin>
-                  </TextField>
                   <TextField fx:id="pathlabel" prefHeight="23.0" prefWidth="242.0">
                      <HBox.margin>
                         <Insets left="5.0" />
