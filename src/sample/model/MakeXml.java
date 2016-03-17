@@ -20,8 +20,6 @@ import java.util.ArrayList;
  */
 public class MakeXml {
 
-
-
     OutputStream outputStream;
     XMLStreamWriter out;
     public MakeXml(File filepath){

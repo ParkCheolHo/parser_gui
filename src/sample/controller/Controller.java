@@ -1,4 +1,4 @@
-package sample;
+package sample.controller;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -16,7 +16,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sample.model.*;
 
-
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -26,13 +25,9 @@ public class Controller {
     @FXML
     private BorderPane rootPane;
     @FXML
-    private TextField year;
-    @FXML
     private ProgressBar status;
     @FXML
     private TextField pathlabel;
-    @FXML
-    private ScrollPane terminal;
 
     Task task;
     Thread thread;
@@ -49,7 +44,7 @@ public class Controller {
                 showAlert("ERROR!","시스템 에러!", "해당년도를 정확히 입력하세요. ex)2012");
                 createException("년도설정 오류");
             }
-            task = new GetPageInfo(year.getText());
+            task = new GetPageInfo(systemInfo.getYear());
             status.progressProperty().bind(task.progressProperty());
             if (systemInfo.filpathempty()) {
                 showAlert("ERROR!","시스템 에러!", "저장 경로를 확인하세요");
@@ -80,26 +75,18 @@ public class Controller {
         threadList.forEach(Thread::interrupt);
     }
 
-    public void File() {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Save XML");
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("XML", "*.xml")
-        );
-        File file = fileChooser.showSaveDialog(rootPane.getScene().getWindow());
-        if (file != null) {
-            pathlabel.setText(file.getPath());
-            systemInfo.setFilePath(file);
-        }
-    }
+
     public void showSetting() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("setting.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/sample/view/setting.fxml"));
         Scene scene = new Scene(root);
-        Stage m = new Stage();
-        m.initModality(Modality.WINDOW_MODAL);
-        m.setTitle("Setting");
-        m.setScene(scene);
-        m.showAndWait();
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner(rootPane.getScene().getWindow());
+        stage.setTitle("Setting");
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.showAndWait();
+
     }
 
     protected void createException(String value) throws MyException {

@@ -18,12 +18,14 @@ public class SystemInfo {
     }
     private List<Thread> theadlist = new ArrayList<>();
     private File filepath = null;
+
     public void addTheadlist(Thread value) {
         this.theadlist.add(value);
     }
     public void clearTheadlist(Thread value) {
         this.theadlist.clear();
     }
+
     public File getFilePath(){ return filepath;}
     public boolean filpathempty(){
         if(filepath==null)
@@ -32,6 +34,7 @@ public class SystemInfo {
             return false;
     }
     public void setFilePath(File filepath){this.filepath = filepath; }
+
     public List getTheadlist() {
         return theadlist;
     }
