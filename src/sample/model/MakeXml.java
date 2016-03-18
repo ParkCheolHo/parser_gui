@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 /**
  * Created by ParkCheolHo on 2016-02-27.
+ * Xml파일 관련 클래스
  */
 public class MakeXml {
 

@@ -16,6 +16,7 @@ import java.util.ResourceBundle;
 
 /**
  * Created by ParkCheolHo on 2016-03-15.
+ * 세팅 윈도우 컨트롤러
  */
 public class SettingController  implements Initializable {
 
@@ -38,11 +39,6 @@ public class SettingController  implements Initializable {
 
     }
 
-
-    public void exit(){
-        stage = (Stage) rootTabPane.getScene().getWindow();
-        System.out.println("test");
-    }
     public void yeast(){
         Year.textProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -54,9 +50,9 @@ public class SettingController  implements Initializable {
             }
         });
         Year.setOnKeyReleased(k -> {
-            System.out.println(k.getCode().toString());
+//            System.out.println(k.getCode().toString());
             systeminfo.setYear(Year.getText());
-            System.out.println(systeminfo.getYear());
+//            System.out.println(systeminfo.getYear());
             //handle
         });
     }

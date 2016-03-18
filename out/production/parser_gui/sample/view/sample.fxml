@@ -34,9 +34,12 @@
    <center>
       <VBox prefHeight="171.0" prefWidth="380.0" BorderPane.alignment="CENTER">
          <children>
-            <ScrollPane prefHeight="121.0" prefWidth="340.0">
+            <ScrollPane fx:id="console" prefHeight="121.0" prefWidth="340.0">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="117.0" prefWidth="197.0">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding></AnchorPane>
               </content>
                <VBox.margin>
                   <Insets left="15.0" right="15.0" top="15.0" />
@@ -53,7 +56,7 @@
                      </HBox.margin>
                   </ProgressBar>
                   <Label prefHeight="33.0" prefWidth="29.0" />
-                  <Button fx:id="startbtn" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#Start" prefHeight="30.0" prefWidth="67.0" text="Start">
+                  <Button fx:id="startbtn" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#Start" prefHeight="30.0" prefWidth="67.0" text="Print">
                      <HBox.margin>
                         <Insets left="10.0" right="10.0" />
                      </HBox.margin>

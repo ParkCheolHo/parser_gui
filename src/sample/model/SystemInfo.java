@@ -1,11 +1,17 @@
 package sample.model;
 
+
+import javafx.application.Platform;
+import javafx.fxml.FXML;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.text.Text;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by ParkCheolHo on 2016-03-05.
+ * 프로그램 전체에 사용되는 정보를 저장하는 싱글톤 클래스
  */
 public class SystemInfo {
     private static SystemInfo ourInstance = new SystemInfo();
@@ -14,10 +20,43 @@ public class SystemInfo {
         return ourInstance;
     }
     private String year = null;
-    private SystemInfo() {
-    }
     private List<Thread> theadlist = new ArrayList<>();
     private File filepath = null;
+    @FXML
+    private ScrollPane pane;
+    private String log;
+
+
+    private SystemInfo() {
+    }
+    public void removetLog() {
+        this.log = null;
+    }
+
+    public void addLog(String value) {
+        if(this.log==null)
+            this.log = value;
+        else {
+            this.log += "\n";
+            this.log += value;
+        }
+        if(pane!=null){
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    pane.setContent(new Text(log));
+                }
+            });
+        }
+    }
+
+    public ScrollPane getPane() {
+        return this.pane;
+    }
+
+    public void setPane(ScrollPane pane) {
+        this.pane = pane;
+    }
 
     public void addTheadlist(Thread value) {
         this.theadlist.add(value);
