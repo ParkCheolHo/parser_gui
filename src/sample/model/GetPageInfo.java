@@ -26,6 +26,7 @@ public class GetPageInfo extends Task {
     private double count = 0;
     SystemInfo systeminfo;
     public static Logger logger = LoggerFactory.getLogger(GetPageInfo.class);
+
     public GetPageInfo(String year) {
         this.year = year;
         sb.append(year);
@@ -44,18 +45,18 @@ public class GetPageInfo extends Task {
             e.printStackTrace();
         }
 
-        logger.info(year+"년도 전체 영화 갯수 : "+result); //console용
-        systeminfo.addLog(year + "년도 검색된 전체 영화 갯수 : "+result+"개"); //scrollPane용
+        logger.info(year + "년도 전체 영화 갯수 : " + result); //console용
+        systeminfo.addLog(year + "년도 검색된 전체 영화 갯수 : " + result + "개"); //scrollPane용
 
         makexml.Start(); //xml파일 만들기 스타트
         int testnum = 4;
         int[] value = split(totaled, testnum);
-        for(int i=0;i<testnum;i++){
-            Task task = new CalCulateModel(year,value[i],value[i+1], this, makexml);
+        for (int i = 0; i < testnum; i++) {
+            Task task = new CalCulateModel(year, value[i], value[i + 1], this, makexml);
             task.stateProperty().addListener(new ChangeListener<State>() {
                 @Override
                 public void changed(ObservableValue<? extends State> observableValue, Worker.State oldState, Worker.State newState) {
-                    if(newState == State.SUCCEEDED)
+                    if (newState == State.SUCCEEDED)
                         systeminfo.addLog("자식Task 성공적으로 종료됩니다.");
                 }
             });
@@ -68,7 +69,7 @@ public class GetPageInfo extends Task {
         logger.info("Thread 총 갯수 : " + threadlist.size());
         systeminfo.addLog("Thread 총 갯수 : " + threadlist.size());
 
-        for(Thread i : threadlist)
+        for (Thread i : threadlist)
             try {
                 i.join();
             } catch (InterruptedException e) {
@@ -82,32 +83,32 @@ public class GetPageInfo extends Task {
         return null;
     }
 
-    protected synchronized void updateProgress(){
+    protected synchronized void updateProgress() {
         count++;
-        updateProgress(count,max);
+        updateProgress(count, max);
     }
-    protected void setMax(double value){
+
+    protected void setMax(double value) {
         max += value;
     }
 
 
-
-    int[] split(String totaled, int multithrednum){
-        int[] result = new int[multithrednum+1];
+    int[] split(String totaled, int multithrednum) {
+        int[] result = new int[multithrednum + 1];
         int i = Integer.parseInt(totaled);
-        int share = i/multithrednum;
-        int rest = i%multithrednum;
+        int share = i / multithrednum;
+        int rest = i % multithrednum;
         result[0] = 0;
 
 
-        for(int k=0;k<rest;k++){
-            result[k+1]++;
+        for (int k = 0; k < rest; k++) {
+            result[k + 1]++;
         }
 
-        for(int j=0;j <= multithrednum-1; j++){
-            result[j+1] += share;
-            if(j+2<=multithrednum){
-                result[j+2] += result[j+1];
+        for (int j = 0; j <= multithrednum - 1; j++) {
+            result[j + 1] += share;
+            if (j + 2 <= multithrednum) {
+                result[j + 2] += result[j + 1];
             }
         }
         return result;

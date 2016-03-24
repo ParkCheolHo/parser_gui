@@ -4,6 +4,8 @@ package sample.model;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Toggle;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.text.Text;
 import java.io.File;
 import java.util.ArrayList;
@@ -25,9 +27,13 @@ public class SystemInfo {
     @FXML
     private ScrollPane pane;
     private String log;
+    private String toggle;
+
+
 
 
     private SystemInfo() {
+
     }
     public void removetLog() {
         this.log = null;
@@ -50,21 +56,25 @@ public class SystemInfo {
         }
     }
 
+    public String getToggle() {
+        return toggle;
+    }
+
+    public void setToggle(String toggle) {
+        this.toggle = toggle;
+    }
     public ScrollPane getPane() {
         return this.pane;
     }
-
     public void setPane(ScrollPane pane) {
         this.pane = pane;
     }
-
     public void addTheadlist(Thread value) {
         this.theadlist.add(value);
     }
     public void clearTheadlist(Thread value) {
         this.theadlist.clear();
     }
-
     public File getFilePath(){ return filepath;}
     public boolean filpathempty(){
         if(filepath==null)
@@ -73,18 +83,21 @@ public class SystemInfo {
             return false;
     }
     public void setFilePath(File filepath){this.filepath = filepath; }
-
     public List getTheadlist() {
         return theadlist;
     }
     public void startThreadlist(){
         theadlist.forEach(Thread::start);
     }
-
     public void setYear(String year) {
         this.year = year;
     }
-
+    public boolean yearEmpty(){
+        if(year == null)
+            return true;
+        else
+            return false;
+    }
     public String getYear() {
         return year;
     }

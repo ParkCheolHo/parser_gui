@@ -14,12 +14,12 @@ import java.io.IOException;
 public class GetPageNum {
     StringBuilder sb = new StringBuilder("http://movie.naver.com/movie/sdb/browsing/bmovie.nhn?year=");
     String year;
-    GetPageInfo getpagenum;
+    GetPageInfo getPageInfo;
 
-    public GetPageNum(String year, GetPageInfo getpagenum) {
+    public GetPageNum(String year, GetPageInfo getPageInfo) {
         this.year = year;
         sb.append(year);
-        this.getpagenum = getpagenum;
+        this.getPageInfo = getPageInfo;
     }
 
     public String CalCulate() {
