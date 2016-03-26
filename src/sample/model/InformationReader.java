@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Created by ParkCheolHo on 2015-08-16
  * 모바일 페이지가 아닌 일반페이지에서 크롤링 할때 필요한 클래스
  */
-public class InformationReader {
+class InformationReader {
     private ArrayList<String> grene = new ArrayList<String>();
     private String countrycode = new String();
 

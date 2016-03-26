@@ -4,7 +4,6 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -19,21 +18,22 @@ import java.util.ResourceBundle;
  * 세팅 윈도우 컨트롤러
  */
 public class SettingController implements Initializable {
-
     @FXML
-    public RadioButton normal;
+    private ChoiceBox choiceBox;
     @FXML
-    public RadioButton mobile;
+    private RadioButton normal;
+    @FXML
+    private RadioButton mobile;
     @FXML
     private TabPane rootTabPane;
     @FXML
-    private ToggleGroup myToggleGroup;
+    private ToggleGroup toggleGroup;
     @FXML
     private Stage stage;
     @FXML
     private TextField Year;
     @FXML
-    private TextField pathfield;
+    private TextField textField;
     SystemInfo systeminfo;
 
     @Override
@@ -42,7 +42,7 @@ public class SettingController implements Initializable {
         if(systeminfo.getYear()!=null)
             Year.setText(systeminfo.getYear());
         if(systeminfo.filpathempty()!=true){
-            pathfield.setText(systeminfo.getFilePath().getPath());
+            textField.setText(systeminfo.getFilePath().getPath());
         }
         if(systeminfo.getToggle()==null){
             systeminfo.setToggle("1");
@@ -54,6 +54,7 @@ public class SettingController implements Initializable {
         else{
             mobile.setSelected(true);
         }
+
         yeast();
 
     }
@@ -68,10 +69,15 @@ public class SettingController implements Initializable {
                 }
             }
         });
-
-
+        systeminfo.setSpeed(4);
+        choiceBox.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                systeminfo.setSpeed(newValue.intValue()+1);
+            }
+        });
         Year.setOnKeyReleased(k -> systeminfo.setYear(Year.getText()));
-        myToggleGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+        toggleGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
             public void changed(ObservableValue<? extends Toggle> ov,
                                 Toggle old_toggle, Toggle new_toggle) {
                 if(new_toggle==normal){
@@ -92,7 +98,7 @@ public class SettingController implements Initializable {
         );
         File file = fileChooser.showSaveDialog(rootTabPane.getScene().getWindow());
         if (file != null) {
-            pathfield.setText(file.getPath());
+            textField.setText(file.getPath());
             systeminfo.setFilePath(file);
         }
     }

@@ -16,44 +16,44 @@ import java.util.List;
  * Created by ParkCheolHo on 2016-02-20.
  * 각 영화별 url과 영화 데이터를 크롤링 하는 Task
  */
-public class CalCulateModel extends Task {
+class CalculateModel extends Task {
     StringBuilder sb = new StringBuilder("http://movie.naver.com/movie/sdb/browsing/bmovie.nhn?year=");
     String year;
-    int startpage = 0;
-    int endpage = 0;
-    private ArrayList<String> moviesurl = new ArrayList<>(); //영화의 url이 담기는 Arraylist
+    int start = 0;
+    int end = 0;
+    private ArrayList<String> movie = new ArrayList<>(); //영화의 url이 담기는 Arraylist
     private ArrayList<String> errors = new ArrayList<>(); //한번 에러가 났을때 찌꺼기 url을 담는 Arraylist
     private List rest = new ArrayList<>();
     String mobile = "http://m.movie.naver.com/m/endpage/movie/Basic.nhn?movieCode=";
     String normal = "http://movie.naver.com/movie/bi/mi/basic.nhn?code=";
     GetPageInfo getpageinfo;
-    MakeXml makeXml;
+    MakeXml xml;
     SystemInfo systeminfo;
 
     //생성자
-    public CalCulateModel(String year, int startpage, int endpage, GetPageInfo getpageinfo, MakeXml makemxl) {
+    protected CalculateModel(String year, int start, int end, GetPageInfo getpageinfo, MakeXml xml) {
         this.year = year;
         sb.append(this.year);
-        this.startpage = startpage;
-        this.endpage = endpage;
+        this.start = start;
+        this.end = end;
         this.getpageinfo = getpageinfo;
-        this.makeXml = makemxl;
+        this.xml = xml;
         this.systeminfo = SystemInfo.getInstance();
 
     }
 
-    public void getMovieData(MakeXml xmlwriter, ArrayList<String> moviesurl, ArrayList<String> errors, boolean flag) throws InterruptedException {
+    protected void getMovieData(MakeXml xml, ArrayList<String> movie, ArrayList<String> errors, boolean flag) throws InterruptedException {
         InformationReader reader = new InformationReader();
         ArrayList<String> actors = new ArrayList<>();
         ArrayList<String> title = new ArrayList<>();
         Iterator<String> it;
         //iterator 생성
         if (flag) {
-            it = moviesurl.iterator();
+            it = movie.iterator();
         } else {
             it = errors.iterator();
         }
-        if (moviesurl.isEmpty() != true) {
+        if (movie.isEmpty() != true) {
             Document doc = null;
             while (it.hasNext()) {
                 String value = it.next();
@@ -61,33 +61,24 @@ public class CalCulateModel extends Task {
                     doc = Jsoup.connect(normal + value).get();
                     Elements movieInfoElement = doc.select("div.mv_info");
                     String name = movieInfoElement.select("h3 > a:nth-child(1)").text();
-
                     String[] engName = movieInfoElement.select("strong").text().split(",");
-                    Elements movieinfo = movieInfoElement.select("dl > dd:nth-child(2) > p > span > a");
+                    Elements genreInfo = movieInfoElement.select("dl > dd:nth-child(2) > p > span > a");
                     //peoples 틀린듯
                     Elements peoples = doc.select("div.people > ul > li");
-                    String countrycode = null;
+                    String country = null;
                     String h_tx_story = doc.select("h5.h_tx_story").text();
                     String con_tx = doc.select("div.story_area > p").text();
-
-
-                    for (Element li : movieinfo) {
-                        String grenecode = getIndex(li.attr("href"));
-                        reader.reader(grenecode);
+                    for (Element li : genreInfo) {
+                        String genre = getIndex(li.attr("href"));
+                        reader.reader(genre);
                     }
-
-                    countrycode = reader.countrycode();
-
-//
+                    country = reader.countrycode();
                     for (Element people : peoples) {
                         title.add(people.select("dl.staff > dt").text());
                         actors.add(people.select("a.tx_people").attr("title"));
-
                     }
-
-
                     if (doc != null) {
-                        xmlwriter.add(value, name, engName[0], countrycode, h_tx_story, con_tx, actors, title,reader.getgreneList());
+                        xml.add(value, name, engName[0], country, h_tx_story, con_tx, actors, title, reader.getgreneList());
                         getpageinfo.updateProgress();
                     }
                     it.remove();
@@ -98,28 +89,27 @@ public class CalCulateModel extends Task {
                         throw new InterruptedException();
                     }
                 } catch (IOException e) {
-                    GetPageInfo.logger.info(Thread.currentThread().getName() + " " + e.getMessage() + "/" + mobile + value);
+                    systeminfo.logger.info(Thread.currentThread().getName() + " " + e.getMessage() + "/" + mobile + value);
+                    if(flag ==true)
                     errors.add(value);
                 }
-
             }
         }
-
     }
 
 
     //모바일용 페이지의 영화 정보를 크롤링 하는 메소드
-    public void getMobileMovieData(MakeXml xmlwriter, ArrayList<String> moviesurl, ArrayList<String> errors, boolean flag) throws InterruptedException {
+    protected void getMobileMovieData(MakeXml xml, ArrayList<String> movie, ArrayList<String> errors, boolean flag) throws InterruptedException {
 
         ArrayList<String> actors = new ArrayList<>();
         Iterator<String> it;
         //iterator 생성
         if (flag) {
-            it = moviesurl.iterator();
+            it = movie.iterator();
         } else {
             it = errors.iterator();
         }
-        if (moviesurl.isEmpty() != true) {
+        if (movie.isEmpty() != true) {
             Document doc = null;
             while (it.hasNext()) {
                 String value = it.next();
@@ -133,17 +123,17 @@ public class CalCulateModel extends Task {
                     String grenecode = movieInfoElement.select("div.movie_basic_info > p.movie_rate > span.movie_genre").text();
                     String con_tx = doc.select("#navermovie_synopsis > div.movie_card_cont > div").text();
                     String director = null;
-                    for (Element peopleli : peoples) {
-                        String identifier = peopleli.select("div > a.movie_list_info > span.movie_desc_cast > em").text();
+                    for (Element s : peoples) {
+                        String identifier = s.select("div > a.movie_list_info > span.movie_desc_cast > em").text();
 //                    GetPageInfo.logger.info(identifier);
                         if ("감독".equals(identifier)) {
-                            director = peopleli.select("div > a.movie_list_info > h4").text();
+                            director = s.select("div > a.movie_list_info > h4").text();
                         } else {
-                            actors.add(peopleli.select("div > a.movie_list_info > h4").text());
+                            actors.add(s.select("div > a.movie_list_info > h4").text());
                         }
                     }
                     if (doc != null) {
-                        xmlwriter.add(value, name, grenecode, actors, con_tx, director);
+                        xml.add(value, name, grenecode, actors, con_tx, director);
                         getpageinfo.updateProgress();
                     }
                     it.remove();
@@ -152,8 +142,9 @@ public class CalCulateModel extends Task {
                         throw new InterruptedException();
                     }
                 } catch (IOException e) {
-                    GetPageInfo.logger.info(Thread.currentThread().getName() + " " + e.getMessage() + "/" + mobile + value);
-                    errors.add(value);
+                    systeminfo.logger.info(Thread.currentThread().getName() + " " + e.getMessage() + "/" + mobile + value);
+                    if(flag ==true)
+                        errors.add(value);
                 }
                 doc = null;
             }
@@ -161,32 +152,36 @@ public class CalCulateModel extends Task {
     }
 
     //할당받은 페이지 내에서 전체 영화의 url을 크롤링
-    public int execute(int start, int end, ArrayList<String> movies) throws InterruptedException {
+    protected int execute(int start, int end, ArrayList<String> movies, List rest) throws InterruptedException {
         //start 부터 end 까지 페이지별로 영화 url 크롤링
+
         int k = 0;
         for (int i = start + 1; i <= end; i++) {
             Document doc = null;
             try {
                 doc = Jsoup.connect(sb.toString() + "&page=" + String.valueOf(i)).timeout(3000).get();
-            } catch (IOException e) {
-                //여기에 수정 해야 함
-                System.out.println("오류 발생");
-                rest.add(i);
-            }
-            Elements newsHeadlines = doc.select("ul.directory_list > li");
-            for (Element li : newsHeadlines) {
-                Elements iterElem = li.getElementsByTag("a");
-                movies.add(getIndex(iterElem.attr("href")));
-                k++;
-                if (Thread.interrupted()) {
-                    throw new InterruptedException();
+                Elements newsHeadlines = doc.select("ul.directory_list > li");
+                for (Element li : newsHeadlines) {
+                    Elements a = li.getElementsByTag("a");
+                    movies.add(getIndex(a.attr("href")));
+                    k++;
+                    if (Thread.interrupted()) {
+                        throw new InterruptedException();
+                    }
                 }
+            } catch (IOException e) {
+                systeminfo.logger.info(Thread.currentThread().getName()+" jsoup 오류 " + i);
+                //여기에 수정 해야 함
+                systeminfo.addLog("중대한 오류 발생 다시 시작해주세요.");
+                List<Thread> threadList = systeminfo.getThreads();
+                threadList.forEach(Thread::interrupt);
             }
+
         }
         return k;
     }
 
-    public String getIndex(String text) {
+    protected String getIndex(String text) {
         String[] results = text.split("=");
         return results[1];
     }
@@ -195,29 +190,30 @@ public class CalCulateModel extends Task {
     protected Object call() throws Exception {
         double result;
         try {
-            result = execute(startpage, endpage, moviesurl);
+            result = execute(start, end, movie, rest);
             systeminfo.addLog(Thread.currentThread().getName() + " : 영화별 웹페이지 주소 얻기 완료");
             getpageinfo.setMax(result);
             systeminfo.addLog(Thread.currentThread().getName() + " : 웹페이지에서 정보 크롤링 중");
 
             if (systeminfo.getToggle() == "1") {
-                System.out.println("test1");
-                getMovieData(makeXml, moviesurl, errors, true);
+                getMovieData(xml, movie, errors, true);
                 while (errors.isEmpty() == false) {
-                    getMovieData(makeXml, errors, errors, false);
+                    getMovieData(xml, errors, errors, false);
                 }
             } else {
-                getMobileMovieData(makeXml, moviesurl, errors, true);
+                getMobileMovieData(xml, movie, errors, true);
                 while (errors.isEmpty() == false) {
-                    getMobileMovieData(makeXml, errors, errors, false);
+                    getMobileMovieData(xml, errors, errors, false);
                 }
             }
+            movie.clear();
+            rest.clear();
             errors.clear();
         } catch (InterruptedException e) {
-            GetPageInfo.logger.info(Thread.currentThread().getName() + " 인터럽트");
+            systeminfo.logger.info(Thread.currentThread().getName() + " 인터럽트");
         }
 
-        GetPageInfo.logger.info(Thread.currentThread().getName() + " is done!");
+        systeminfo.logger.info(Thread.currentThread().getName() + " is done!");
         return null;
     }
 }

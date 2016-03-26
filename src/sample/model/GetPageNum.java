@@ -11,7 +11,7 @@ import java.io.IOException;
  * Created by ParkCheolHo on 2016-02-20.
  * 해당년도의 전체 페이지를 구하는 클래스
  */
-public class GetPageNum {
+class GetPageNum {
     StringBuilder sb = new StringBuilder("http://movie.naver.com/movie/sdb/browsing/bmovie.nhn?year=");
     String year;
     GetPageInfo getPageInfo;
@@ -22,7 +22,7 @@ public class GetPageNum {
         this.getPageInfo = getPageInfo;
     }
 
-    public String CalCulate() {
+    public String Calculate() {
         String url = sb.toString() + "&page=10000";
         String[] text = null;
         try {
@@ -35,9 +35,8 @@ public class GetPageNum {
         return text[text.length - 1];
     }
 
-    public int GetTotalmoiveNum(int page) throws IOException {
+    public int GetTotalMotiveNumb(int page) throws IOException {
         int k = 0;
-
 
         Document doc = Jsoup.connect(sb.toString() + "&page=" + page).timeout(0).get();
         Elements newsHeadlines = doc.select("ul.directory_list > li");

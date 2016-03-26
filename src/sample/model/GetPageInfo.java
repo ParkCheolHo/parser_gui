@@ -25,7 +25,7 @@ public class GetPageInfo extends Task {
     private double max = 0;
     private double count = 0;
     SystemInfo systeminfo;
-    public static Logger logger = LoggerFactory.getLogger(GetPageInfo.class);
+
 
     public GetPageInfo(String year) {
         this.year = year;
@@ -37,22 +37,22 @@ public class GetPageInfo extends Task {
     protected String call() throws XMLStreamException {
         GetPageNum test = new GetPageNum(year, this);
         MakeXml makexml = new MakeXml(systeminfo.getFilePath());
-        totaled = test.CalCulate();
+        totaled = test.Calculate();
         int result = 0;
         try {
-            result = test.GetTotalmoiveNum(Integer.parseInt(totaled));
+            result = test.GetTotalMotiveNumb(Integer.parseInt(totaled));
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        logger.info(year + "년도 전체 영화 갯수 : " + result); //console용
+        systeminfo.logger.info(year + "년도 전체 영화 갯수 : " + result); //console용
         systeminfo.addLog(year + "년도 검색된 전체 영화 갯수 : " + result + "개"); //scrollPane용
 
         makexml.Start(); //xml파일 만들기 스타트
         int testnum = 4;
         int[] value = split(totaled, testnum);
         for (int i = 0; i < testnum; i++) {
-            Task task = new CalCulateModel(year, value[i], value[i + 1], this, makexml);
+            Task task = new CalculateModel(year, value[i], value[i + 1], this, makexml);
             task.stateProperty().addListener(new ChangeListener<State>() {
                 @Override
                 public void changed(ObservableValue<? extends State> observableValue, Worker.State oldState, Worker.State newState) {
@@ -64,9 +64,9 @@ public class GetPageInfo extends Task {
             systeminfo.addTheadlist(test1);
         }
         systeminfo.startThreadlist();
-        threadlist = systeminfo.getTheadlist();
+        threadlist = systeminfo.getThreads();
 
-        logger.info("Thread 총 갯수 : " + threadlist.size());
+        systeminfo.logger.info("Thread 총 갯수 : " + threadlist.size());
         systeminfo.addLog("Thread 총 갯수 : " + threadlist.size());
 
         for (Thread i : threadlist)
@@ -78,14 +78,20 @@ public class GetPageInfo extends Task {
 
         makexml.End();
         systeminfo.addLog("종료되었습니다.");
-        System.out.println("메인 쓰레드 죽는다");
+        systeminfo.logger.info(Thread.currentThread().getName() + "is done");
         threadlist.clear();
         return null;
     }
 
-    protected synchronized void updateProgress() {
-        count++;
-        updateProgress(count, max);
+    protected void updateProgress() {
+
+        synchronized (this) {
+            count++;
+            updateProgress(count, max);
+        }
+        double s = (count / max) * 100;
+        systeminfo.showLabel(s);
+
     }
 
     protected void setMax(double value) {

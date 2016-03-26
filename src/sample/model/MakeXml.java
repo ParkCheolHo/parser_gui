@@ -18,7 +18,7 @@ import java.util.ArrayList;
  * Created by ParkCheolHo on 2016-02-27.
  * Xml파일 관련 클래스
  */
-public class MakeXml {
+class MakeXml {
 
     OutputStream outputStream;
     XMLStreamWriter out;
@@ -26,7 +26,7 @@ public class MakeXml {
     public MakeXml(File filepath) {
         try {
             outputStream = new FileOutputStream(filepath);
-            out = XMLOutputFactory.newInstance().createXMLStreamWriter(new OutputStreamWriter(outputStream, "utf-8"));
+            out = XMLOutputFactory.newInstance().createXMLStreamWriter(new OutputStreamWriter(outputStream, "UTF-8"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -34,7 +34,7 @@ public class MakeXml {
 
     public void Start() {
         try {
-            out.writeStartDocument();
+            out.writeStartDocument("UTF-8","1.0");
             out.writeStartElement("Movies");
         } catch (XMLStreamException e) {
             e.printStackTrace();

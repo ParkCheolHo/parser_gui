@@ -6,24 +6,26 @@ import javafx.concurrent.Task;
 import javafx.concurrent.Worker;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 
-import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sample.model.*;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.List;
+import java.util.ResourceBundle;
 
 /**
  * Created by ParkCheolHo on 2016-03-15.
  * 메인 윈도우 컨트롤러
  */
-public class Controller {
+public class Controller implements Initializable {
     @FXML
     private BorderPane rootPane;
     @FXML
@@ -32,17 +34,27 @@ public class Controller {
     private ScrollPane console;
     @FXML
     private Button startbtn;
+    @FXML
+    private Button stopbtn;
+    @FXML
+    private Label perLabel;
+
     Task task;
     Thread thread;
     SystemInfo systeminfo;
     List<Thread> threadList;
 
-    public Controller() {
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
         systeminfo = SystemInfo.getInstance();
+        systeminfo.setPane(console);
+        systeminfo.setLabel(perLabel);
+        stopbtn.setDisable(true);
+
     }
 
     public void Start() {
-        systeminfo.setPane(console);
         try {
             //scrollpane을 싱글톤에 set
 
@@ -57,6 +69,7 @@ public class Controller {
                 showAlert("ERROR!", "시스템 에러!", "저장 경로를 확인하세요");
                 createException("저장경로 미설정");
             }
+            stopbtn.setDisable(false);
             task = new GetPageInfo(systeminfo.getYear()); //해당년도 전체 페이지 숫자 구하기 한페이지당 20개의 영화가 존재
             status.progressProperty().bind(task.progressProperty()); // progressbar 셋업 //자식 task 에서 updateProgress로 업데이트 가능
             startbtn.disableProperty().bind(task.runningProperty());
@@ -72,11 +85,12 @@ public class Controller {
                         long end = System.currentTimeMillis();  //종료시간
                         System.out.println((end - start) / 1000 + "초");
                         status.progressProperty().unbind();
+                        stopbtn.setDisable(true);
                     }
                 }
             });
         } catch (MyException e) {
-            GetPageInfo.logger.error("년도나 저장경로 에러 발생");
+            systeminfo.logger.error("년도나 저장경로 에러 발생");
         }
 
         //task 생성
@@ -85,8 +99,9 @@ public class Controller {
 
     //크롤링을 정지할때 싱글톤에 저장된 하위 task들을 가져와서 인터럽트를 생성시키는 메소드
     public void Stop() {
-        threadList = systeminfo.getTheadlist();
+        threadList = systeminfo.getThreads();
         threadList.forEach(Thread::interrupt);
+        stopbtn.setDisable(true);
     }
 
     //설정 버튼을 눌렀을때 설정창을 보여주는 메소드
@@ -134,6 +149,7 @@ public class Controller {
         alert.showAndWait();
 
     }
+
 
 
 }
