@@ -1,5 +1,6 @@
 package sample.controller;
 
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Task;
@@ -7,6 +8,7 @@ import javafx.concurrent.Worker;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -51,24 +53,22 @@ public class Controller implements Initializable {
         systeminfo.setPane(console);
         systeminfo.setLabel(perLabel);
         stopbtn.setDisable(true);
-
     }
 
     public void Start() {
         try {
             //scrollpane을 싱글톤에 set
-
             //년도 필드의 값 확인 및 값이 존재하지 않을때 오류
             if (checkYear(systeminfo.getYear()) != true) {
                 showAlert("ERROR!", "시스템 에러!", "해당년도를 정확히 입력하세요. ex)2012");
                 createException("년도설정 오류");
             }
-
             //파일경로가 없을때 오류
             if (systeminfo.filpathempty()) {
                 showAlert("ERROR!", "시스템 에러!", "저장 경로를 확인하세요");
                 createException("저장경로 미설정");
             }
+            startbtn.getScene().setCursor(Cursor.WAIT);
             stopbtn.setDisable(false);
             task = new GetPageInfo(systeminfo.getYear()); //해당년도 전체 페이지 숫자 구하기 한페이지당 20개의 영화가 존재
             status.progressProperty().bind(task.progressProperty()); // progressbar 셋업 //자식 task 에서 updateProgress로 업데이트 가능
@@ -77,24 +77,19 @@ public class Controller implements Initializable {
             long start = System.currentTimeMillis(); // 시작시간
             thread = new Thread(task);
             thread.start();
-            task.stateProperty().addListener(new ChangeListener<Worker.State>() {
-                @Override
-                public void changed(ObservableValue<? extends Worker.State> observableValue, Worker.State oldState, Worker.State newState) {
-                    if (newState == Worker.State.SUCCEEDED) {
-                        System.out.println("GetPageInfo Task exit");
-                        long end = System.currentTimeMillis();  //종료시간
-                        System.out.println((end - start) / 1000 + "초");
-                        status.progressProperty().unbind();
-                        stopbtn.setDisable(true);
-                    }
+            task.stateProperty().addListener((ov, old_Status, new_State) -> {
+                if (new_State == Worker.State.SUCCEEDED) {
+                    System.out.println("GetPageInfo Task exit");
+                    long end = System.currentTimeMillis();  //종료시간
+                    System.out.println((end - start) / 1000 + "초");
+                    status.progressProperty().unbind();
+                    startbtn.getScene().setCursor(Cursor.DEFAULT);
+                    stopbtn.setDisable(true);
                 }
             });
         } catch (MyException e) {
             systeminfo.logger.error("년도나 저장경로 에러 발생");
         }
-
-        //task 생성
-
     }
 
     //크롤링을 정지할때 싱글톤에 저장된 하위 task들을 가져와서 인터럽트를 생성시키는 메소드
@@ -106,7 +101,8 @@ public class Controller implements Initializable {
 
     //설정 버튼을 눌렀을때 설정창을 보여주는 메소드
     public void showSetting() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/sample/view/setting.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        Parent root = fxmlLoader.load(getClass().getResource("/sample/view/setting.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setX(rootPane.getScene().getWindow().getX() + 15);
@@ -149,8 +145,11 @@ public class Controller implements Initializable {
         alert.showAndWait();
 
     }
-
-
+    @FXML
+    protected void Close() {
+        Platform.exit();
+        System.exit(0);
+    }
 
 }
 

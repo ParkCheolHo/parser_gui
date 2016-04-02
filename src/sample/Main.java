@@ -10,9 +10,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 /*
-설정창이 이상한곳에서 생성되는것
-
-exception 다 만들기
+메뉴 새로 코딩
 */
 public class Main extends Application {
 

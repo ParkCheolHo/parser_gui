@@ -30,9 +30,9 @@ public class SystemInfo {
     private String log;
     private String toggle;
     private Label label;
-
-
     private int speed;
+    private boolean useDB = false;
+    private MySql mysql;
     public static Logger logger = LoggerFactory.getLogger(SystemInfo.class);
     private SystemInfo() {
 
@@ -143,4 +143,21 @@ public class SystemInfo {
         this.label = label;
     }
 
+    public boolean isUseDB() {
+        return useDB;
+    }
+
+    public void setUseDB(boolean useDB) {
+        this.useDB = useDB;
+    }
+
+    public MySql getMysql() {
+        if(mysql == null)
+            mysql = new MySql();
+        return mysql;
+    }
+
+    public void setMysql(MySql mysql) {
+        this.mysql = mysql;
+    }
 }
