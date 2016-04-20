@@ -73,6 +73,5 @@
                </children>
             </AnchorPane>
          </content></Tab>
-      <Tab text="Untitled Tab" />
   </tabs>
 </TabPane>
