@@ -12,11 +12,18 @@ import java.util.ArrayList;
 public class MySql {
 
     Connection conn;
-    String id, password, hostname, dbname;
     boolean testflag = false;
     ArrayList<String> sqlresult;
-    public MySql(){
+    String hostname ;
+    String dbname ;
+    String id;
+    String password;
+    public MySql(String hostname, String dbname, String id, String password){
         sqlresult  = new ArrayList<String>();
+        this.hostname = hostname;
+        this.dbname = dbname;
+        this.id = id;
+        this.password = password;
     }
 
     public int Connection(){
@@ -24,6 +31,7 @@ public class MySql {
             sqlresult.clear();
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection(hostname+dbname, id, password);
+            System.out.println("연결 성공");
             if(testflag) {
                 Statement st = conn.createStatement();
                 ResultSet rs = st.executeQuery("SHOW DATABASES");
@@ -52,6 +60,67 @@ public class MySql {
         }
         return 0;
     }
+
+    public  void insertMovie(String index, String name, String engname, int contry_id,
+                                         String storyname, String story, int[] genre, ArrayList<Actor> actors, ArrayList<String> title) throws SQLException {
+
+        String  sql = "INSERT INTO movies VALUES (?, ?, ?, ?, ?, ?)";
+
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setInt(1, Integer.parseInt(index));
+            preparedStatement.setString(2,name);
+            preparedStatement.setString(3,engname);
+            preparedStatement.setInt(4, contry_id);
+            preparedStatement.setString(5,storyname);
+            preparedStatement.setString(6,story);
+            preparedStatement.execute();
+
+        for(int value : genre){
+            String  relSql = "INSERT INTO relrationship VALUES (?, ?)";
+            PreparedStatement serstmt = conn.prepareStatement(relSql);
+            serstmt.setInt(1, Integer.parseInt(index));
+            serstmt.setInt(2, value);
+            serstmt.execute();
+        }
+
+        for(int i=0; i<actors.size(); i++){
+            String  aSql = "INSERT INTO actors VALUES (?, ?,?,?)";
+            String  bSql = "INSERT INTO relrationship_actor VALUES (?,?,?)";
+            PreparedStatement astmt = conn.prepareStatement(aSql);
+            PreparedStatement bstmt = conn.prepareStatement(bSql);
+            astmt.setInt(1, actors.get(i).index);
+            astmt.setString(2, actors.get(i).name);
+            astmt.setString(3, actors.get(i).birthday);
+            astmt.setString(4, actors.get(i).nation);
+
+            bstmt.setInt(1,Integer.parseInt(index));
+            bstmt.setInt(2, actors.get(i).index);
+
+            switch(title.get(i)){
+                case "감독" :
+                    bstmt.setInt(3, 1);
+                    break;
+                case "주연" :
+                    bstmt.setInt(3, 2);
+                    break;
+                case "조연" :
+                    bstmt.setInt(3, 3);
+                    break;
+                default:
+                    bstmt.setInt(3, 0);
+                    break;
+            }
+
+            astmt.execute();
+            bstmt.execute();
+
+        }
+
+
+
+    }
+
+
     public void SetTable(){
         String sql ="create table movie";
     }
@@ -63,30 +132,6 @@ public class MySql {
         this.sqlresult = sqlresult;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getDbname() {
-        return dbname;
-    }
-
-    public void setDbname(String dbname) {
-        this.dbname = dbname;
-    }
-
     public boolean isTestflag() {
         return testflag;
     }
@@ -95,11 +140,4 @@ public class MySql {
         this.testflag = testflag;
     }
 
-    public String getHostname() {
-        return hostname;
-    }
-
-    public void setHostname(String hostname) {
-        this.hostname = hostname;
-    }
 }

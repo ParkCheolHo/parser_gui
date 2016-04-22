@@ -41,7 +41,7 @@ class MakeXml {
         }
     }
 
-    public synchronized void add(String index, String name, String engName, String countrycode,
+    public synchronized void add(String index, String name, String engName, int countrycode,
                                  String h_tx_story, String con_tx, ArrayList<String> actors, ArrayList<String> title, ArrayList<String> genre) {
         try {
             out.writeStartElement("Movie");
@@ -74,7 +74,7 @@ class MakeXml {
                     }
                 out.writeEndElement();
                 out.writeStartElement("country");
-                out.writeCharacters(countrycode);
+                out.writeCharacters(String.valueOf(countrycode));
                 out.writeEndElement();
             out.writeEndElement();
 

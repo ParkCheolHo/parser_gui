@@ -3,7 +3,6 @@ package sample.controller;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -34,8 +33,10 @@ public class SettingController implements Initializable {
     @FXML
     private TabPane rootTabPane;
     @FXML
-    private ToggleGroup toggleGroup;
+    private Button pathbtn;
     @FXML
+    private ToggleGroup toggleGroup;
+
     private Stage stage;
     @FXML
     private TextField Year;
@@ -63,6 +64,7 @@ public class SettingController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         setOption(true);
         systeminfo = SystemInfo.getInstance();
         if (systeminfo.getYear() != null)
@@ -78,17 +80,17 @@ public class SettingController implements Initializable {
         } else {
             mobile.setSelected(true);
         }
-        yeast();
-        host.setText("jdbc:mysql://localhost/");
+        host.setText(systeminfo.getHost());
+        host.setText(systeminfo.getHost());
+        idField.setText(systeminfo.getId());
+        password.setText(systeminfo.getPassword());
+        addLicensor();
         if(systeminfo.isUseDB()){
             DataBaseEnable.setSelected(true);
-            host.setText(systeminfo.getMysql().getHostname());
-            idField.setText(systeminfo.getMysql().getId());
-            password.setText(systeminfo.getMysql().getPassword());
         }
     }
 
-    public void yeast() {
+    public void addLicensor() {
         systeminfo.setSpeed(4);
         // 년도 필드 4자 이상 쓰지 못하게 하는 리스너
         Year.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -116,14 +118,16 @@ public class SettingController implements Initializable {
             if (newValue) {
                 setOption(false);
                 systeminfo.setUseDB(true);
+                setDisable(true);
             }
             else {
                 systeminfo.setUseDB(false);
                 setOption(true);
+                setDisable(false);
             }
         });
         showDatabase.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) ->{
-            systeminfo.getMysql().setDbname(newValue);
+            systeminfo.setDb(newValue);
         });
     }
 
@@ -146,15 +150,12 @@ public class SettingController implements Initializable {
         Task task = new Task() {
             @Override
             protected Object call() throws Exception {
-                MySql mysql = systeminfo.getMysql();
-                mysql.setHostname(host.getText());
-                mysql.setId(idField.getText());
-                mysql.setPassword(password.getText());
-                mysql.setDbname("");
+                MySql mysql = new MySql(host.getText(), "", idField.getText(), password.getText());
                 mysql.setTestflag(true);
                 confirm.getScene().setCursor(Cursor.WAIT);
                 int result = mysql.Connection();
                 showDatabase.setItems(FXCollections.observableList(mysql.getSqlresult()));
+                mysql.setTestflag(false);
                 return result;
             }
         };
@@ -168,6 +169,10 @@ public class SettingController implements Initializable {
                             break;
                         case 5 :
                             setLabel(Color.rgb(0, 153, 151),"Connected!");
+                            systeminfo.setHost(host.getText());
+                            systeminfo.setId(idField.getText());
+                            systeminfo.setPassword(password.getText());
+                            systeminfo.setDb("");
                             break;
                         case 1045 :
                             setLabel(Color.rgb(204, 0, 0), "id or password wrong!");
@@ -195,5 +200,9 @@ public class SettingController implements Initializable {
         label.setDisable(flag);
         host.setDisable(flag);
         showDatabase.setDisable(flag);
+    }
+    void setDisable(boolean flag){
+        textField.setDisable(flag);
+        pathbtn.setDisable(flag);
     }
 }

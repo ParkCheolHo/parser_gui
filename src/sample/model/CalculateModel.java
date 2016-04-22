@@ -11,6 +11,7 @@
     import org.jsoup.select.Elements;
 
     import java.io.*;
+    import java.sql.SQLException;
     import java.util.ArrayList;
     import java.util.Iterator;
     import java.util.List;
@@ -42,14 +43,18 @@
             this.getpageinfo = getpageinfo;
             this.xml = xml;
             this.systeminfo = SystemInfo.getInstance();
-
         }
 
         protected void getMovieData(MakeXml xml, ArrayList<String> movie, ArrayList<String> errors, boolean flag) throws InterruptedException {
             InformationReader reader = new InformationReader();
-            ArrayList<String> actors = new ArrayList<>();
+            ArrayList<Actor> actors = new ArrayList<>();
             ArrayList<String> title = new ArrayList<>();
             Iterator<String> it;
+            MySql mysql = null;
+            if(systeminfo.isUseDB()) {
+                mysql = new MySql(systeminfo.getHost(), systeminfo.getDb(), systeminfo.getId(), systeminfo.getPassword());
+                mysql.Connection();
+            }
             //iterator 생성
             if (flag) {
                 it = movie.iterator();
@@ -68,22 +73,35 @@
                         Elements genreInfo = movieInfoElement.select("dl > dd:nth-child(2) > p > span > a");
                         //peoples 틀린듯
                         Elements peoples = doc.select("div.people > ul > li");
-                        String country = null;
+
                         String h_tx_story = doc.select("h5.h_tx_story").text();
                         String con_tx = doc.select("div.story_area > p").text();
                         for (Element li : genreInfo) {
                             String genre = getIndex(li.attr("href"));
                             reader.reader(genre);
                         }
-                        country = reader.countrycode();
+                        int country = reader.countrycode();
+
                         for (Element people : peoples) {
                             title.add(people.select("dl.staff > dt").text());
-                            actors.add(people.select("a.tx_people").attr("title"));
+                           actors.add(jsoupactor(people.select("a.tx_people").attr("href")));
                         }
-                        if (doc != null) {
-                            xml.add(value, name, engName[0], country, h_tx_story, con_tx, actors, title, reader.getgreneList());
+
+                        if(systeminfo.isUseDB()){
+                            try {
+                                mysql.insertMovie(value, name, engName[0], country, h_tx_story, con_tx, reader.getgreneList(), actors, title);
+                            } catch (SQLException e) {
+                                System.out.println("sql 에러");
+                            }
                             getpageinfo.updateProgress();
                         }
+                        else{
+                            if (doc != null) {
+//                                xml.add(value, name, engName[0], country, h_tx_story, con_tx, actors, title, reader.getgreneList());
+                                getpageinfo.updateProgress();
+                            }
+                        }
+
                         it.remove();
                         actors.clear();
                         reader.eraseList();
@@ -100,6 +118,27 @@
             }
         }
 
+        protected Actor jsoupactor(String i){
+            int index = 0;
+            String name = null;
+            String[] info = null;
+            Document doc = null;
+                try {
+                    doc = Jsoup.connect("http://movie.naver.com" + i).get();
+                    Elements movieInfoElement = doc.select("div.mv_info_area");
+                    index = Integer.parseInt(getIndex(i));
+                    name = movieInfoElement.select("h3.h_movie > a").text();
+                    String test = movieInfoElement.select("dt.step5 > em").text();
+                    if(test.equals("출생")){
+                        info = movieInfoElement.select("dl.info_spec > dd:nth-child(2)").text().split("/");
+                        return new Actor(index, name, info);
+                    }
+                    return new Actor(index, name);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+        return null;
+        }
 
         //모바일용 페이지의 영화 정보를 크롤링 하는 메소드
         protected void getMobileMovieData(MakeXml xml, ArrayList<String> movie, ArrayList<String> errors, boolean flag) throws InterruptedException {
@@ -154,6 +193,7 @@
             }
         }
 
+
         //할당받은 페이지 내에서 전체 영화의 url을 크롤링
         protected int execute(int start, int end, ArrayList<String> movies, List rest) throws InterruptedException {
             //start 부터 end 까지 페이지별로 영화 url 크롤링
@@ -197,6 +237,8 @@
                 systeminfo.addLog(Thread.currentThread().getName() + " : 영화별 웹페이지 주소 얻기 완료");
                 getpageinfo.setMax(result);
                 systeminfo.addLog(Thread.currentThread().getName() + " : 웹페이지에서 정보 크롤링 중");
+
+
 
                 if (systeminfo.getToggle() == "1") {
                     getMovieData(xml, movie, errors, true);

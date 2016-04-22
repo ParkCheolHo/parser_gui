@@ -32,8 +32,11 @@ public class SystemInfo {
     private Label label;
     private int speed;
     private boolean useDB = false;
-    private MySql mysql;
     public static Logger logger = LoggerFactory.getLogger(SystemInfo.class);
+    private String host = "jdbc:mysql://localhost/";
+    private String db;
+    private String id = "root";
+    private String password;
     private SystemInfo() {
 
     }
@@ -151,13 +154,35 @@ public class SystemInfo {
         this.useDB = useDB;
     }
 
-    public MySql getMysql() {
-        if(mysql == null)
-            mysql = new MySql();
-        return mysql;
+    public String getHost() {
+        return host;
     }
 
-    public void setMysql(MySql mysql) {
-        this.mysql = mysql;
+    public void setHost(String host) {
+        this.host = host;
+    }
+
+    public String getDb() {
+        return db;
+    }
+
+    public void setDb(String db) {
+        this.db = db;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

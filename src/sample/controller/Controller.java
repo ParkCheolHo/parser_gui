@@ -64,10 +64,13 @@ public class Controller implements Initializable {
                 createException("년도설정 오류");
             }
             //파일경로가 없을때 오류
-            if (systeminfo.filpathempty()) {
-                showAlert("ERROR!", "시스템 에러!", "저장 경로를 확인하세요");
-                createException("저장경로 미설정");
+            if(!systeminfo.isUseDB()) {
+                if (systeminfo.filpathempty()) {
+                    showAlert("ERROR!", "시스템 에러!", "저장 경로를 확인하세요");
+                    createException("저장경로 미설정");
+                }
             }
+
             startbtn.getScene().setCursor(Cursor.WAIT);
             stopbtn.setDisable(false);
             task = new GetPageInfo(systeminfo.getYear()); //해당년도 전체 페이지 숫자 구하기 한페이지당 20개의 영화가 존재
@@ -101,8 +104,9 @@ public class Controller implements Initializable {
 
     //설정 버튼을 눌렀을때 설정창을 보여주는 메소드
     public void showSetting() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        Parent root = fxmlLoader.load(getClass().getResource("/sample/view/setting.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/sample/view/setting.fxml"));
+        Parent root = (Parent)loader.load();
+        SettingController controller = (SettingController)loader.getController();
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setX(rootPane.getScene().getWindow().getX() + 15);
@@ -111,6 +115,7 @@ public class Controller implements Initializable {
         stage.initOwner(rootPane.getScene().getWindow());
         stage.setTitle("Setting");
         stage.setScene(scene);
+        stage.setOnCloseRequest(k -> System.out.println("im out"));
         stage.setResizable(false);
         stage.showAndWait();
 

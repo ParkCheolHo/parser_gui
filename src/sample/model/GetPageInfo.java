@@ -35,8 +35,12 @@ public class GetPageInfo extends Task {
 
     @Override
     protected String call() throws XMLStreamException {
+        boolean usedb = systeminfo.isUseDB();
         GetPageNum test = new GetPageNum(year, this);
-        MakeXml makexml = new MakeXml(systeminfo.getFilePath());
+        MakeXml makexml = null;
+        if(!usedb)
+            makexml = new MakeXml(systeminfo.getFilePath());
+
         totaled = test.Calculate();
         int result = 0;
         try {
@@ -47,9 +51,10 @@ public class GetPageInfo extends Task {
 
         systeminfo.logger.info(year + "년도 전체 영화 갯수 : " + result); //console용
         systeminfo.addLog(year + "년도 검색된 전체 영화 갯수 : " + result + "개"); //scrollPane용
+        if(!usedb)
+            makexml.Start(); //xml파일 만들기 스타트
 
-        makexml.Start(); //xml파일 만들기 스타트
-        int testnum = 4;
+        int testnum = 1;
         int[] value = split(totaled, testnum);
         for (int i = 0; i < testnum; i++) {
             Task task = new CalculateModel(year, value[i], value[i + 1], this, makexml);
@@ -75,8 +80,8 @@ public class GetPageInfo extends Task {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
-        makexml.End();
+        if(!usedb)
+            makexml.End();
         systeminfo.addLog("종료되었습니다.");
         systeminfo.logger.info(Thread.currentThread().getName() + "is done");
         threadlist.clear();
