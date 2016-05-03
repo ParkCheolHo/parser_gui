@@ -42,22 +42,23 @@ class MakeXml {
     }
 
     public synchronized void add(String index, String name, String engName, int countrycode,
-                                 String h_tx_story, String con_tx, ArrayList<String> actors, ArrayList<String> title, ArrayList<String> genre) {
+                                 String h_tx_story, String con_tx, ArrayList<Actor> actors, ArrayList<String> title, ArrayList<Integer> genre) {
         try {
             out.writeStartElement("Movie");
                 out.writeAttribute("index", index);
+//
                 out.writeStartElement("Name");
                 out.writeCharacters(name);
                 out.writeEndElement();
-
+//
                 out.writeStartElement("engName");
                 out.writeCharacters(engName);
                 out.writeEndElement();
-
+//
                 out.writeStartElement("genres");
-                for(String value : genre){
+                for(int value : genre){
                     out.writeStartElement("genre");
-                    out.writeCharacters(value);
+                    out.writeCharacters(String.valueOf(value));
                     out.writeEndElement();
                 }
                 out.writeEndElement();
@@ -69,10 +70,11 @@ class MakeXml {
                 out.writeStartElement("Appear");
                     for(int i =0;i<actors.size();i++){
                         out.writeStartElement(title.get(i));
-                        out.writeCharacters(actors.get(i));
+                        out.writeCharacters(actors.get(i).name);
                         out.writeEndElement();
                     }
                 out.writeEndElement();
+
                 out.writeStartElement("country");
                 out.writeCharacters(String.valueOf(countrycode));
                 out.writeEndElement();
@@ -95,34 +97,6 @@ class MakeXml {
 
     }
 
-    public synchronized void add(String index, String name, String genre, ArrayList<String> actors,
-                                 String con_tx, String director) {
-        try {
-            out.writeStartElement("Movie");
-            out.writeAttribute("index", index);
-            out.writeStartElement("name");
-            out.writeCharacters(name);
-            out.writeEndElement();
-            out.writeStartElement("genre");
-            out.writeCharacters(genre);
-            out.writeEndElement();
-            out.writeStartElement("감독");
-            out.writeCharacters(director);
-            out.writeEndElement();
-            for (String value : actors) {
-                out.writeStartElement("주연");
-                out.writeCharacters(value);
-                out.writeEndElement();
-            }
-            out.writeStartElement("줄거리");
-            out.writeCharacters(con_tx);
-            out.writeEndElement();
-            out.writeEndElement();
-
-        } catch (XMLStreamException e) {
-            e.printStackTrace();
-        }
-    }
 
     public void End() {
         try {

@@ -4,6 +4,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Task;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -18,7 +19,7 @@ import javax.xml.stream.XMLStreamException;
  * 모든 쓰레드를 컨트롤 하는 쓰레드
  */
 public class GetPageInfo extends Task {
-    StringBuilder sb = new StringBuilder("http://movie.naver.com/movie/sdb/browsing/bmovie.nhn?year=");
+    StringBuilder sb = new StringBuilder("http://movie.naver.com/movie/sdb/browsing/bmovie.nhn?open=");
     String year;
     String totaled;
     List<Thread> threadlist;
@@ -53,10 +54,13 @@ public class GetPageInfo extends Task {
         systeminfo.addLog(year + "년도 검색된 전체 영화 갯수 : " + result + "개"); //scrollPane용
         if(!usedb)
             makexml.Start(); //xml파일 만들기 스타트
+        if(systeminfo.isUsePoster()) {
+            new File(systeminfo.getPosterfile().getPath() + "/Poster/").mkdirs();
+            new File(systeminfo.getPosterfile().getPath() + "/Actors/").mkdirs();
+        }
 
-        int testnum = 1;
-        int[] value = split(totaled, testnum);
-        for (int i = 0; i < testnum; i++) {
+        int[] value = split(totaled, systeminfo.getSpeed());
+        for (int i = 0; i < systeminfo.getSpeed(); i++) {
             Task task = new CalculateModel(year, value[i], value[i + 1], this, makexml);
             task.stateProperty().addListener(new ChangeListener<State>() {
                 @Override

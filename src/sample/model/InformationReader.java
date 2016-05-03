@@ -11,10 +11,12 @@ class InformationReader {
     private int countrycode = 0;
     private ArrayList<Integer> grene = new ArrayList<Integer>();
 
-    public void reader(String string) {
-        try {
-            int code = Integer.parseInt(string);
 
+
+    private int gradecode = 0;
+    public void reader(String val) {
+        try {
+            int code = Integer.parseInt(val);
 //            switch(code){
 //                case 1:
 //                    grene.add("드라마");
@@ -188,7 +190,7 @@ class InformationReader {
                     break;
             }
         } catch (Exception e) {
-            switch (string) {
+            switch (val) {
                 case "KR":
 //                    countrycode = ("한국");
                     countrycode = 1;
@@ -237,6 +239,9 @@ class InformationReader {
         return result;
     }
 
+    public ArrayList<Integer> getgrene(){
+        return grene;
+    }
     public int countrycode() {
         return countrycode;
     }
@@ -244,5 +249,52 @@ class InformationReader {
     public void eraseList() {
         countrycode = 0;
         grene.clear();
+        gradecode = 0;
+    }
+    public int getGradecode() {
+        return gradecode;
+    }
+
+    public void setGradecode(String val) {
+
+        switch(val){
+            case "" :
+                this.gradecode = 0;
+                break;
+            case "전체 관람가" :
+                this.gradecode = 1;
+                break;
+            case "12세 관람가" :
+                this.gradecode = 2;
+                break;
+            case "15세 관람가" :
+                this.gradecode = 3;
+                break;
+            case "청소년 관람불가" :
+                this.gradecode = 4;
+                break;
+            case "G" :
+                this.gradecode = 5;
+                break;
+            case "PG" :
+                this.gradecode = 6;
+                break;
+            case "PG-13" :
+                this.gradecode = 7;
+                break;
+            case "R" :
+                this.gradecode = 8;
+                break;
+            case "NC-17" :
+                this.gradecode = 9;
+                break;
+            case "X[NC-17]":
+                this.gradecode = 10;
+                break;
+            case "NR" :
+                this.gradecode = 11;
+                break;
+        }
+
     }
 }

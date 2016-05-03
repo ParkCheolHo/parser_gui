@@ -12,7 +12,7 @@ import java.io.IOException;
  * 해당년도의 전체 페이지를 구하는 클래스
  */
 class GetPageNum {
-    StringBuilder sb = new StringBuilder("http://movie.naver.com/movie/sdb/browsing/bmovie.nhn?year=");
+    StringBuilder sb = new StringBuilder("http://movie.naver.com/movie/sdb/browsing/bmovie.nhn?open=");
     String year;
     GetPageInfo getPageInfo;
 

@@ -25,13 +25,15 @@ public class SystemInfo {
 
     private String year = null;
     private List<Thread> threads = new ArrayList<>();
-    private File filepath = null;
+    private File xmlfile = null;
+    private File posterfile = null;
     private ScrollPane pane;
     private String log;
-    private String toggle;
     private Label label;
-    private int speed;
+    private int speed = 4;
     private boolean useDB = false;
+    private boolean useOption = false;
+    private boolean usePoster = false;
     public static Logger logger = LoggerFactory.getLogger(SystemInfo.class);
     private String host = "jdbc:mysql://localhost/";
     private String db;
@@ -70,13 +72,6 @@ public class SystemInfo {
         this.speed = speed;
     }
 
-    public String getToggle() {
-        return toggle;
-    }
-
-    public void setToggle(String toggle) {
-        this.toggle = toggle;
-    }
 
     public ScrollPane getPane() {
         return this.pane;
@@ -95,18 +90,18 @@ public class SystemInfo {
     }
 
     public File getFilePath() {
-        return filepath;
+        return xmlfile;
     }
 
     public boolean filpathempty() {
-        if (filepath == null)
+        if (xmlfile == null)
             return true;
         else
             return false;
     }
 
     public void setFilePath(File filepath) {
-        this.filepath = filepath;
+        this.xmlfile = filepath;
     }
 
     public List getThreads() {
@@ -184,5 +179,29 @@ public class SystemInfo {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isUseOption() {
+        return useOption;
+    }
+
+    public void setUseOption(boolean useOption) {
+        this.useOption = useOption;
+    }
+
+    public boolean isUsePoster() {
+        return usePoster;
+    }
+
+    public void setUsePoster(boolean usePoster) {
+        this.usePoster = usePoster;
+    }
+
+    public File getPosterfile() {
+        return posterfile;
+    }
+
+    public void setPosterfile(File posterfile) {
+        this.posterfile = posterfile;
     }
 }

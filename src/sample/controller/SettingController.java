@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.paint.Color;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import sample.model.MySql;
@@ -26,10 +27,6 @@ public class SettingController implements Initializable {
     //일반 메뉴
     @FXML
     private ChoiceBox choiceBox;
-    @FXML
-    private RadioButton normal;
-    @FXML
-    private RadioButton mobile;
     @FXML
     private TabPane rootTabPane;
     @FXML
@@ -57,6 +54,15 @@ public class SettingController implements Initializable {
     private CheckBox DataBaseEnable;
     @FXML
     private ListView<String> showDatabase;
+    @FXML
+    private CheckBox nomaloption;
+    @FXML
+    private CheckBox checkposter;
+    @FXML
+    private TextField posterTextField;
+    @FXML
+    private Button posterbtn;
+
     SystemInfo systeminfo;
 
 
@@ -64,54 +70,57 @@ public class SettingController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        setOption(true);
         systeminfo = SystemInfo.getInstance();
+        if(systeminfo.isUseDB()){
+            DataBaseEnable.setSelected(true);
+            setOption(false);
+            setDisable(true);
+            host.setText(systeminfo.getHost());
+            idField.setText(systeminfo.getId());
+            password.setText(systeminfo.getPassword());
+        }else{
+            DataBaseEnable.setSelected(false);
+
+            setOption(true);
+        }
+        if(systeminfo.isUsePoster()){
+            checkposter.setSelected(true);
+            setPosterDisbale(false);
+            posterTextField.setText(systeminfo.getPosterfile().getPath());
+        }else{
+            checkposter.setSelected(false);
+            setPosterDisbale(true);
+        }
+
+
         if (systeminfo.getYear() != null)
             Year.setText(systeminfo.getYear());
         if (systeminfo.filpathempty() != true) {
             textField.setText(systeminfo.getFilePath().getPath());
         }
-        if (systeminfo.getToggle() == null) {
-            systeminfo.setToggle("1");
-            normal.setSelected(true);
-        } else if (systeminfo.getToggle() == "1") {
-            normal.setSelected(true);
-        } else {
-            mobile.setSelected(true);
-        }
-        host.setText(systeminfo.getHost());
-        host.setText(systeminfo.getHost());
-        idField.setText(systeminfo.getId());
-        password.setText(systeminfo.getPassword());
+
+
+        nomaloption.setSelected(systeminfo.isUseOption());
         addLicensor();
-        if(systeminfo.isUseDB()){
-            DataBaseEnable.setSelected(true);
-        }
     }
 
     public void addLicensor() {
-        systeminfo.setSpeed(4);
         // 년도 필드 4자 이상 쓰지 못하게 하는 리스너
         Year.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (Year.getText().length() > 5) {
-                String s = Year.getText().substring(0, 5);
+            if (Year.getText().length() > 4) {
+                String s = Year.getText().substring(0, 4);
                 Year.setText(s);
             }
         });
         // 파싱 속도 조절 리스너
-        choiceBox.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> systeminfo.setSpeed(newValue.intValue() + 1));
+        choiceBox.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
+            systeminfo.setSpeed(newValue.intValue() + 1);
+            System.out.println(systeminfo.getSpeed());
+        });
         // 키 입력시 싱글톤에 년도 입력 리스너
         Year.setOnKeyReleased(k -> systeminfo.setYear(Year.getText()));
-        // 토글그룹 리스너 (일반페이지//모바일페이지)
-        toggleGroup.selectedToggleProperty().addListener((ov, old_toggle, new_toggle) -> {
-            if (new_toggle == normal) {
-                systeminfo.setToggle("1");
-            } else {
-                systeminfo.setToggle("2");
-            }
-        });
         confirm.setOnMouseEntered(event -> confirm.getScene().setCursor(Cursor.HAND));
+
         confirm.setOnMouseExited(event -> confirm.getScene().setCursor(Cursor.DEFAULT));
         // DB 사용 체크박스
         DataBaseEnable.selectedProperty().addListener((observable, oldValue, newValue) -> {
@@ -119,6 +128,9 @@ public class SettingController implements Initializable {
                 setOption(false);
                 systeminfo.setUseDB(true);
                 setDisable(true);
+                host.setText(systeminfo.getHost());
+                idField.setText(systeminfo.getId());
+                password.setText(systeminfo.getPassword());
             }
             else {
                 systeminfo.setUseDB(false);
@@ -129,8 +141,24 @@ public class SettingController implements Initializable {
         showDatabase.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) ->{
             systeminfo.setDb(newValue);
         });
+        nomaloption.selectedProperty().addListener((observable, oldValue, newValue) -> {
+          if(newValue)
+              systeminfo.setUseOption(true);
+          else
+              systeminfo.setUseOption(false);
+        });
+        checkposter.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                systeminfo.setUsePoster(true);
+                setPosterDisbale(!newValue);
+            }
+            else {
+                systeminfo.setUsePoster(false);
+                setPosterDisbale(!newValue);
+            }
+        });
     }
-
+    @FXML
     public void File() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save XML");
@@ -141,6 +169,16 @@ public class SettingController implements Initializable {
         if (file != null) {
             textField.setText(file.getPath());
             systeminfo.setFilePath(file);
+        }
+    }
+    @FXML
+    public void Directory(){
+        DirectoryChooser chooser = new DirectoryChooser();
+        chooser.setTitle("Choose Directory");
+        File file = chooser.showDialog(rootTabPane.getScene().getWindow());
+        if (file != null) {
+            posterTextField.setText(file.getPath());
+            systeminfo.setPosterfile(file);
         }
     }
 
@@ -204,5 +242,9 @@ public class SettingController implements Initializable {
     void setDisable(boolean flag){
         textField.setDisable(flag);
         pathbtn.setDisable(flag);
+    }
+    void setPosterDisbale(boolean flag){
+        posterTextField.setDisable(flag);
+        posterbtn.setDisable(flag);
     }
 }

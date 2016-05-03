@@ -62,9 +62,9 @@ public class MySql {
     }
 
     public  void insertMovie(String index, String name, String engname, int contry_id,
-                                         String storyname, String story, int[] genre, ArrayList<Actor> actors, ArrayList<String> title) throws SQLException {
+                                         String storyname, String story, int grade,int[] genre, ArrayList<Actor> actors, ArrayList<String> title, int year) throws SQLException {
 
-        String  sql = "INSERT INTO movies VALUES (?, ?, ?, ?, ?, ?)";
+        String  sql = "INSERT INTO movies VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setInt(1, Integer.parseInt(index));
@@ -73,10 +73,12 @@ public class MySql {
             preparedStatement.setInt(4, contry_id);
             preparedStatement.setString(5,storyname);
             preparedStatement.setString(6,story);
+            preparedStatement.setInt(7,year);
+            preparedStatement.setInt(8,grade);
             preparedStatement.execute();
 
         for(int value : genre){
-            String  relSql = "INSERT INTO relrationship VALUES (?, ?)";
+            String  relSql = "INSERT INTO relrationship_genre VALUES (?, ?)";
             PreparedStatement serstmt = conn.prepareStatement(relSql);
             serstmt.setInt(1, Integer.parseInt(index));
             serstmt.setInt(2, value);
@@ -84,14 +86,12 @@ public class MySql {
         }
 
         for(int i=0; i<actors.size(); i++){
-            String  aSql = "INSERT INTO actors VALUES (?, ?,?,?)";
+            String  aSql = "INSERT INTO actors VALUES (?, ?)";
             String  bSql = "INSERT INTO relrationship_actor VALUES (?,?,?)";
             PreparedStatement astmt = conn.prepareStatement(aSql);
             PreparedStatement bstmt = conn.prepareStatement(bSql);
             astmt.setInt(1, actors.get(i).index);
             astmt.setString(2, actors.get(i).name);
-            astmt.setString(3, actors.get(i).birthday);
-            astmt.setString(4, actors.get(i).nation);
 
             bstmt.setInt(1,Integer.parseInt(index));
             bstmt.setInt(2, actors.get(i).index);
