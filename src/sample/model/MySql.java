@@ -85,17 +85,21 @@ public class MySql {
             serstmt.execute();
         }
 
+
         for(int i=0; i<actors.size(); i++){
-            String  aSql = "INSERT INTO actors VALUES (?, ?)";
-            String  bSql = "INSERT INTO relrationship_actor VALUES (?,?,?)";
-            PreparedStatement astmt = conn.prepareStatement(aSql);
-            PreparedStatement bstmt = conn.prepareStatement(bSql);
+
+            PreparedStatement astmt = conn.prepareStatement("INSERT INTO actors (code, name) SELECT ?,? FROM DUAL WHERE NOT EXISTS  (SELECT code FROM actors WHERE code = ? )");
             astmt.setInt(1, actors.get(i).index);
             astmt.setString(2, actors.get(i).name);
+            astmt.setInt(3 , actors.get(i).index);
+            astmt.execute();
+        }
 
+        for(int i=0; i<actors.size(); i++){
+            String  bSql = "INSERT INTO relrationship_actor VALUES (?,?,?)";
+            PreparedStatement bstmt = conn.prepareStatement(bSql);
             bstmt.setInt(1,Integer.parseInt(index));
             bstmt.setInt(2, actors.get(i).index);
-
             switch(title.get(i)){
                 case "감독" :
                     bstmt.setInt(3, 1);
@@ -110,13 +114,9 @@ public class MySql {
                     bstmt.setInt(3, 0);
                     break;
             }
-
-            astmt.execute();
             bstmt.execute();
 
         }
-
-
 
     }
 

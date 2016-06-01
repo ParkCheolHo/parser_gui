@@ -164,7 +164,7 @@ class CalculateModel extends Task {
                     try {
                         mysql.insertMovie(value, name, engName[0], country, h_tx_story, con_tx, reader.getGradecode(),reader.getgreneList(), actors, title, Integer.parseInt(systeminfo.getYear()));
                     } catch (SQLException e) {
-                        System.out.println("sql 에러");
+                        systeminfo.logger.info(e.toString());
                     }
                     getpageinfo.updateProgress();
                 } else {

@@ -22,20 +22,14 @@
                       <Label layoutX="14.0" layoutY="19.0" prefHeight="30.0" prefWidth="62.0" text="저장경로 :" />
                       <TextField fx:id="textField" layoutX="76.0" layoutY="23.0" prefHeight="23.0" prefWidth="186.0" />
                       <Button fx:id="pathbtn" layoutX="267.0" layoutY="23.0" mnemonicParsing="false" onAction="#File" prefHeight="23.0" prefWidth="45.0" text="선택" />
-                      <Label layoutX="15.0" layoutY="76.0" prefHeight="30.0" prefWidth="62.0" text="크롤링   :" />
-                      <Label layoutX="76.0" layoutY="109.0" prefHeight="15.0" prefWidth="237.0" text="(상세한 정보 크롤링, 속도가 상대적으로 느림)">
+                      <Label layoutX="17.0" layoutY="138.0" prefHeight="26.0" prefWidth="305.0" text="(포스터가 없거나 줄거리가 없는 영화는 파싱하지 않습니다.)">
                           <font>
-                              <Font size="10.0" />
-                          </font>
-                      </Label>
-                      <Label layoutX="76.0" layoutY="149.0" prefHeight="15.0" prefWidth="237.0" text="(크롤링 내용이 상대적으로 빈약, 속도가 빠르다.)">
-                          <font>
-                              <Font size="10.0" />
+                              <Font size="11.0" />
                           </font>
                       </Label>
 
-                  <Label layoutX="8.0" layoutY="178.0" prefHeight="24.0" prefWidth="75.0" text="속도 조정 :" />
-                  <ChoiceBox fx:id="choiceBox" layoutX="76.0" layoutY="179.0" prefHeight="23.0" prefWidth="55.0" value="Lv 4">
+                  <Label layoutX="8.0" layoutY="85.0" prefHeight="24.0" prefWidth="75.0" text="속도 조정 :" />
+                  <ChoiceBox fx:id="choiceBox" layoutX="76.0" layoutY="86.0" prefHeight="23.0" prefWidth="55.0" value="Lv 4">
                       <items>
                           <FXCollections fx:factory="observableArrayList">
                               <String fx:value="Lv 1" />
@@ -45,7 +39,7 @@
                           </FXCollections>
                       </items>
                   </ChoiceBox>
-                  <CheckBox fx:id="nomaloption" layoutX="74.0" layoutY="218.0" mnemonicParsing="false" text="Check" />
+                  <CheckBox fx:id="nomaloption" layoutX="77.0" layoutY="122.0" mnemonicParsing="false" prefHeight="16.0" prefWidth="148.0" text="고급 크롤링" />
 
                   
                   </children>
@@ -73,7 +67,7 @@
                   <Button fx:id="posterbtn" layoutX="269.0" layoutY="40.0" mnemonicParsing="false" onAction="#Directory" prefHeight="23.0" prefWidth="45.0" text="선택" />
                   <TextField fx:id="posterTextField" layoutX="71.0" layoutY="40.0" prefHeight="23.0" prefWidth="186.0" />
                   <Label layoutX="8.0" layoutY="36.0" prefHeight="30.0" prefWidth="62.0" text="저장경로 :" />
-                  <CheckBox fx:id="checkposter" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="CheckBox" />
+                  <CheckBox fx:id="checkposter" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="포스터 저장" />
                </children>
             </AnchorPane>
         </content>
