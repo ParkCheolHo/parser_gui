@@ -17,4 +17,7 @@
 javafx를 이용하여 유저 인터페이스를 구현하였습니다.
 
 ![board list](https://raw.githubusercontent.com/ParkCheolHo/parser_gui/master/img/screenshot/1.png)
-<p style="text-align:center">그림1. 게시글 목록</p>
+<p style="text-align:center">그림1. 메인화면</p>
+
+![board content](https://raw.githubusercontent.com/ParkCheolHo/parser_gui/master/img/screenshot/2.png)
+<p style="text-align:center">그림2. 메인 세팅 화면</p>
