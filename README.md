@@ -23,7 +23,7 @@ javafx를 이용하여 유저 인터페이스를 구현하였습니다.
 <p style="text-align:center">그림2. 메인 세팅 화면</p>
 
 ![board content](https://raw.githubusercontent.com/ParkCheolHo/parser_gui/master/img/screenshot/3.png)
-<p style="text-align:center">그림2. 데이터베이스 세팅 화면</p>
+<p style="text-align:center">그림3. 데이터베이스 세팅 화면</p>
 
 ![board content](https://raw.githubusercontent.com/ParkCheolHo/parser_gui/master/img/screenshot/4.png)
-<p style="text-align:center">그림2. 포스터 저장 세팅 화면</p>
+<p style="text-align:center">그림4. 포스터 저장 세팅 화면</p>
