@@ -15,3 +15,4 @@
 
 ### 기본화면 
 javafx를 이용하여 유저 인터페이스를 구현하였습니다.
+![board list](https://dl.dropboxusercontent.com/u/31464666/blog/php-portfolio/board_v1_list.jpg)
