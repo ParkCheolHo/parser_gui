@@ -15,4 +15,5 @@
 
 ### 기본화면 
 javafx를 이용하여 유저 인터페이스를 구현하였습니다.
+
 ![board list](https://raw.githubusercontent.com/ParkCheolHo/parser_gui/master/img/screenshot/1.png)
