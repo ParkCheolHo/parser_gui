@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>sample.model.Actor</OriginalElement>
+  <nodes>
+    <node x="0.0" y="368.0">sample.model.MakeXml</node>
+    <node x="1116.0" y="0.0">sample.model.SystemInfo</node>
+    <node x="709.0" y="322.0">sample.model.MySql</node>
+    <node x="212.0" y="403.0">sample.model.Actor</node>
+    <node x="1740.326388888889" y="1252.5">sample.model.MyException</node>
+    <node x="373.33333333333337" y="1459.0">sample.model.GetPageNum</node>
+    <node x="898.25" y="919.0">sample.controller.SettingController</node>
+    <node x="417.0" y="334.0">sample.model.InformationReader</node>
+    <node x="261.2222222222224" y="930.0">sample.model.CalculateModel</node>
+    <node x="1521.3166666666666" y="1402.0">sample.controller.Controller</node>
+    <node x="432.5" y="1206.0">sample.model.GetPageInfo</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="sample.model.GetPageInfo" target="sample.model.MakeXml">
+      <point x="-90.375" y="-73.0" />
+      <point x="462.625" y="1186.0" />
+      <point x="48.0" y="1186.0" />
+      <point x="-48.0" y="61.5" />
+    </edge>
+    <edge source="sample.model.CalculateModel" target="sample.model.MySql">
+      <point x="98.0" y="-107.5" />
+      <point x="604.2222222222224" y="879.0" />
+      <point x="805.75" y="879.0" />
+      <point x="-96.75" y="107.5" />
+    </edge>
+    <edge source="sample.controller.SettingController" target="sample.model.SystemInfo">
+      <point x="101.0" y="-118.5" />
+      <point x="1201.25" y="899.0" />
+      <point x="1425.0" y="899.0" />
+      <point x="-103.0" y="429.5" />
+    </edge>
+    <edge source="sample.model.CalculateModel" target="sample.model.MakeXml">
+      <point x="-196.0" y="-107.5" />
+      <point x="310.2222222222224" y="899.0" />
+      <point x="144.0" y="899.0" />
+      <point x="48.0" y="61.5" />
+    </edge>
+    <edge source="sample.model.GetPageInfo" target="sample.model.CalculateModel">
+      <point x="-30.125" y="-73.0" />
+      <point x="522.875" y="1176.0" />
+      <point x="383.7222222222224" y="1176.0" />
+      <point x="-122.5" y="107.5" />
+    </edge>
+    <edge source="sample.model.GetPageInfo" target="sample.model.SystemInfo">
+      <point x="90.375" y="-73.0" />
+      <point x="643.375" y="1186.0" />
+      <point x="1702.3166666666666" y="1186.0" />
+      <point x="1702.3166666666666" y="899.0" />
+      <point x="1631.0" y="899.0" />
+      <point x="103.0" y="429.5" />
+    </edge>
+    <edge source="sample.model.GetPageNum" target="sample.model.GetPageInfo">
+      <point x="-69.75" y="-50.0" />
+      <point x="443.08333333333337" y="1377.0" />
+      <point x="472.66666666666674" y="1377.0" />
+      <point x="-80.33333333333331" y="73.0" />
+    </edge>
+    <edge source="sample.model.CalculateModel" target="sample.model.SystemInfo">
+      <point x="196.0" y="-107.5" />
+      <point x="702.2222222222224" y="889.0" />
+      <point x="1219.0" y="889.0" />
+      <point x="-309.0" y="429.5" />
+    </edge>
+    <edge source="sample.controller.Controller" target="sample.model.MyException">
+      <point x="128.0" y="-107.0" />
+      <point x="1841.3166666666666" y="1377.0" />
+      <point x="1806.826388888889" y="1377.0" />
+      <point x="0.0" y="26.5" />
+    </edge>
+    <edge source="sample.model.GetPageInfo" target="sample.model.GetPageNum">
+      <point x="0.0" y="73.0" />
+      <point x="553.0" y="1377.0" />
+      <point x="582.5833333333334" y="1377.0" />
+      <point x="69.75" y="-50.0" />
+    </edge>
+    <edge source="sample.model.CalculateModel" target="sample.model.InformationReader">
+      <point x="0.0" y="-107.5" />
+      <point x="506.2222222222224" y="899.0" />
+      <point x="553.0" y="899.0" />
+      <point x="0.0" y="95.5" />
+    </edge>
+    <edge source="sample.controller.Controller" target="sample.model.GetPageInfo">
+      <point x="-128.0" y="-107.0" />
+      <point x="1585.3166666666666" y="1377.0" />
+      <point x="633.3333333333333" y="1377.0" />
+      <point x="80.33333333333326" y="73.0" />
+    </edge>
+    <edge source="sample.model.CalculateModel" target="sample.model.Actor">
+      <point x="-98.0" y="-107.5" />
+      <point x="408.2222222222224" y="889.0" />
+      <point x="304.5" y="889.0" />
+      <point x="0.0" y="26.5" />
+    </edge>
+    <edge source="sample.controller.Controller" target="sample.model.SystemInfo">
+      <point x="0.0" y="-107.0" />
+      <point x="1713.3166666666666" y="1377.0" />
+      <point x="1729.826388888889" y="1377.0" />
+      <point x="1729.826388888889" y="899.0" />
+      <point x="1837.0" y="899.0" />
+      <point x="309.0" y="429.5" />
+    </edge>
+    <edge source="sample.model.CalculateModel" target="sample.model.GetPageInfo">
+      <point x="122.5" y="107.5" />
+      <point x="628.7222222222224" y="1186.0" />
+      <point x="583.125" y="1186.0" />
+      <point x="30.125" y="-73.0" />
+    </edge>
+    <edge source="sample.controller.SettingController" target="sample.model.MySql">
+      <point x="-101.0" y="-118.5" />
+      <point x="96.75" y="107.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.48471882640586794" x="899.7807840471098" y="512.4707808308679" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Methods</Category>
+    <Category>Inner Classes</Category>
+    <Category>Constructors</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

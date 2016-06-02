@@ -7,13 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/parser_gui_jar/parser_gui.jar" afterPath="$PROJECT_DIR$/out/artifacts/parser_gui_jar/parser_gui.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/parser_gui/sample/model/CalCulateModel.class" afterPath="$PROJECT_DIR$/out/production/parser_gui/sample/model/CalCulateModel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/parser_gui/sample/model/MySql.class" afterPath="$PROJECT_DIR$/out/production/parser_gui/sample/model/MySql.class" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/sample/model/imageload.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/model/CalculateModel.java" afterPath="$PROJECT_DIR$/src/sample/model/CalculateModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/model/MySql.java" afterPath="$PROJECT_DIR$/src/sample/model/MySql.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/view/setting.fxml" afterPath="$PROJECT_DIR$/src/sample/view/setting.fxml" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -74,98 +69,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SettingController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/controller/SettingController.java">
+      <file leaf-file-name="Actor.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/model/Actor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1337">
-              <caret line="221" column="14" selection-start-line="221" selection-start-column="14" selection-end-line="221" selection-end-column="14" />
-              <folding>
-                <marker date="1463733547363" expanded="true" signature="35:170" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MyException.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/model/MyException.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="7" />
+            <state relative-caret-position="247">
+              <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SystemInfo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/model/SystemInfo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2394">
-              <caret line="189" column="5" selection-start-line="189" selection-start-column="5" selection-end-line="189" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InformationReader.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/model/InformationReader.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2014">
-              <caret line="106" column="22" selection-start-line="106" selection-start-column="22" selection-end-line="106" selection-end-column="22" />
-              <folding>
-                <marker date="1463733547452" expanded="true" signature="8432:8438" placeholder="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MakeXml.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/model/MakeXml.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="32" column="5" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/controller/Controller.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1862">
-              <caret line="119" column="0" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
-              <folding>
-                <marker date="1463733547356" expanded="true" signature="1365:1693" placeholder="{...}" />
-                <marker date="1463733547356" expanded="true" signature="4118:4191" placeholder="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GetPageInfo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/model/GetPageInfo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="38">
-              <caret line="14" column="43" selection-start-line="14" selection-start-column="43" selection-end-line="15" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="18" column="61" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="61" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CalculateModel.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CalculateModel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/model/CalculateModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-297">
-              <caret line="177" column="31" selection-start-line="177" selection-start-column="31" selection-end-line="177" selection-end-column="31" />
+            <state relative-caret-position="183">
+              <caret line="151" column="40" selection-start-line="151" selection-start-column="35" selection-end-line="151" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -173,10 +91,153 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="JAVA/sample.model.Actor" pinned="false" current-in-tab="true">
+        <entry file="uml://JAVA/sample.model.Actor">
+          <provider selected="true" editor-type-id="UmlEditorProvider">
+            <state>
+              <ID>JAVA</ID>
+              <OriginalElement>sample.model.Actor</OriginalElement>
+              <nodes>
+                <node x="0.0" y="368.0">sample.model.MakeXml</node>
+                <node x="1116.0" y="0.0">sample.model.SystemInfo</node>
+                <node x="709.0" y="322.0">sample.model.MySql</node>
+                <node x="212.0" y="403.0">sample.model.Actor</node>
+                <node x="1740.326388888889" y="1252.5">sample.model.MyException</node>
+                <node x="373.33333333333337" y="1459.0">sample.model.GetPageNum</node>
+                <node x="898.25" y="919.0">sample.controller.SettingController</node>
+                <node x="417.0" y="334.0">sample.model.InformationReader</node>
+                <node x="261.2222222222224" y="930.0">sample.model.CalculateModel</node>
+                <node x="1521.3166666666666" y="1402.0">sample.controller.Controller</node>
+                <node x="432.5" y="1206.0">sample.model.GetPageInfo</node>
+              </nodes>
+              <notes />
+              <edges>
+                <edge source="sample.model.GetPageInfo" target="sample.model.MakeXml">
+                  <point x="-90.375" y="-73.0" />
+                  <point x="462.625" y="1186.0" />
+                  <point x="48.0" y="1186.0" />
+                  <point x="-48.0" y="61.5" />
+                </edge>
+                <edge source="sample.model.CalculateModel" target="sample.model.MySql">
+                  <point x="98.0" y="-107.5" />
+                  <point x="604.2222222222224" y="879.0" />
+                  <point x="805.75" y="879.0" />
+                  <point x="-96.75" y="107.5" />
+                </edge>
+                <edge source="sample.controller.SettingController" target="sample.model.SystemInfo">
+                  <point x="101.0" y="-118.5" />
+                  <point x="1201.25" y="899.0" />
+                  <point x="1425.0" y="899.0" />
+                  <point x="-103.0" y="429.5" />
+                </edge>
+                <edge source="sample.model.CalculateModel" target="sample.model.MakeXml">
+                  <point x="-196.0" y="-107.5" />
+                  <point x="310.2222222222224" y="899.0" />
+                  <point x="144.0" y="899.0" />
+                  <point x="48.0" y="61.5" />
+                </edge>
+                <edge source="sample.model.GetPageInfo" target="sample.model.CalculateModel">
+                  <point x="-30.125" y="-73.0" />
+                  <point x="522.875" y="1176.0" />
+                  <point x="383.7222222222224" y="1176.0" />
+                  <point x="-122.5" y="107.5" />
+                </edge>
+                <edge source="sample.model.GetPageInfo" target="sample.model.SystemInfo">
+                  <point x="90.375" y="-73.0" />
+                  <point x="643.375" y="1186.0" />
+                  <point x="1702.3166666666666" y="1186.0" />
+                  <point x="1702.3166666666666" y="899.0" />
+                  <point x="1631.0" y="899.0" />
+                  <point x="103.0" y="429.5" />
+                </edge>
+                <edge source="sample.model.GetPageNum" target="sample.model.GetPageInfo">
+                  <point x="-69.75" y="-50.0" />
+                  <point x="443.08333333333337" y="1377.0" />
+                  <point x="472.66666666666674" y="1377.0" />
+                  <point x="-80.33333333333331" y="73.0" />
+                </edge>
+                <edge source="sample.model.CalculateModel" target="sample.model.SystemInfo">
+                  <point x="196.0" y="-107.5" />
+                  <point x="702.2222222222224" y="889.0" />
+                  <point x="1219.0" y="889.0" />
+                  <point x="-309.0" y="429.5" />
+                </edge>
+                <edge source="sample.controller.Controller" target="sample.model.MyException">
+                  <point x="128.0" y="-107.0" />
+                  <point x="1841.3166666666666" y="1377.0" />
+                  <point x="1806.826388888889" y="1377.0" />
+                  <point x="0.0" y="26.5" />
+                </edge>
+                <edge source="sample.model.GetPageInfo" target="sample.model.GetPageNum">
+                  <point x="0.0" y="73.0" />
+                  <point x="553.0" y="1377.0" />
+                  <point x="582.5833333333334" y="1377.0" />
+                  <point x="69.75" y="-50.0" />
+                </edge>
+                <edge source="sample.model.CalculateModel" target="sample.model.InformationReader">
+                  <point x="0.0" y="-107.5" />
+                  <point x="506.2222222222224" y="899.0" />
+                  <point x="553.0" y="899.0" />
+                  <point x="0.0" y="95.5" />
+                </edge>
+                <edge source="sample.controller.Controller" target="sample.model.GetPageInfo">
+                  <point x="-128.0" y="-107.0" />
+                  <point x="1585.3166666666666" y="1377.0" />
+                  <point x="633.3333333333333" y="1377.0" />
+                  <point x="80.33333333333326" y="73.0" />
+                </edge>
+                <edge source="sample.model.CalculateModel" target="sample.model.Actor">
+                  <point x="-98.0" y="-107.5" />
+                  <point x="408.2222222222224" y="889.0" />
+                  <point x="304.5" y="889.0" />
+                  <point x="0.0" y="26.5" />
+                </edge>
+                <edge source="sample.controller.Controller" target="sample.model.SystemInfo">
+                  <point x="0.0" y="-107.0" />
+                  <point x="1713.3166666666666" y="1377.0" />
+                  <point x="1729.826388888889" y="1377.0" />
+                  <point x="1729.826388888889" y="899.0" />
+                  <point x="1837.0" y="899.0" />
+                  <point x="309.0" y="429.5" />
+                </edge>
+                <edge source="sample.model.CalculateModel" target="sample.model.GetPageInfo">
+                  <point x="122.5" y="107.5" />
+                  <point x="628.7222222222224" y="1186.0" />
+                  <point x="583.125" y="1186.0" />
+                  <point x="30.125" y="-73.0" />
+                </edge>
+                <edge source="sample.controller.SettingController" target="sample.model.MySql">
+                  <point x="-101.0" y="-118.5" />
+                  <point x="96.75" y="107.5" />
+                </edge>
+              </edges>
+              <settings layout="Hierarchic Group" zoom="0.484718826405868" x="970.0580075662042" y="868.0" />
+              <SelectedNodes />
+              <Categories>
+                <Category>Methods</Category>
+                <Category>Inner Classes</Category>
+                <Category>Constructors</Category>
+              </Categories>
+              <SCOPE>All</SCOPE>
+              <VISIBILITY>private</VISIBILITY>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GetPageInfo.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/model/GetPageInfo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="152">
+              <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="MySql.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/model/MySql.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-152">
+            <state relative-caret-position="1672">
               <caret line="92" column="51" selection-start-line="92" selection-start-column="51" selection-end-line="92" selection-end-column="51" />
               <folding>
                 <marker date="1463742163763" expanded="true" signature="2114:2164" placeholder="INSERT INTO movies... " />
@@ -270,10 +331,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="124" />
-    <option name="y" value="244" />
-    <option name="width" value="1541" />
-    <option name="height" value="773" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -305,7 +366,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -416,8 +477,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1011,12 +1072,13 @@
       <workItem from="1462068883188" duration="1762000" />
       <workItem from="1462162703626" duration="4696000" />
       <workItem from="1462243851533" duration="7560000" />
-      <workItem from="1464690354354" duration="1391000" />
+      <workItem from="1464690354354" duration="4696000" />
+      <workItem from="1464850766156" duration="647000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="551892000" />
+    <option name="totallyTimeSpent" value="555844000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -1028,28 +1090,26 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="124" y="244" width="1541" height="773" extended-state="0" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3164557" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3215637" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.337587" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33719432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39064857" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34177214" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15540984" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1234375" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.102537" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39825898" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1057,12 +1117,14 @@
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32869565" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39825898" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3215637" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33333334" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2665474" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32861805" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299748" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -1126,34 +1188,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/sample/view/setting.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="26" column="41" selection-start-line="26" selection-start-column="41" selection-end-line="26" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_77/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="3096" column="0" selection-start-line="3096" selection-start-column="0" selection-end-line="3096" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/adfa.fxml" />
-    <entry file="file://$PROJECT_DIR$/src/sample/model/CalculateModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_77/src.zip!/java/util/function/Consumer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="269">
@@ -1359,13 +1393,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/view/sample.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="17" column="89" selection-start-line="17" selection-start-column="89" selection-end-line="17" selection-end-column="89" />
         </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_77/javafx-src.zip!/javafx/beans/value/ObservableValue.java">
@@ -1412,14 +1446,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/model/Actor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/model/InformationReader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2014">
@@ -1439,28 +1465,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/view/setting.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
           <caret line="23" column="112" selection-start-line="23" selection-start-column="112" selection-end-line="23" selection-end-column="112" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/model/imageload.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/model/SystemInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2394">
-          <caret line="189" column="5" selection-start-line="189" selection-start-column="5" selection-end-line="189" selection-end-column="5" />
-          <folding />
-        </state>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/controller/Controller.java">
@@ -1470,30 +1481,6 @@
           <folding>
             <marker date="1463733547356" expanded="true" signature="1365:1693" placeholder="{...}" />
             <marker date="1463733547356" expanded="true" signature="4118:4191" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/model/GetPageInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="14" column="43" selection-start-line="14" selection-start-column="43" selection-end-line="15" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/model/MySql.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-152">
-          <caret line="92" column="51" selection-start-line="92" selection-start-column="51" selection-end-line="92" selection-end-column="51" />
-          <folding>
-            <marker date="1463742163763" expanded="true" signature="2114:2164" placeholder="INSERT INTO movies... " />
-            <marker date="1463742163763" expanded="true" signature="2766:2811" placeholder="INSERT INTO relrationship_genre... " />
-            <marker date="1463742163763" expanded="true" signature="3128:3159" placeholder="INSERT INTO actors... " />
-            <marker date="1463742163763" expanded="true" signature="3128:3240" placeholder="INSERT INTO actors... " />
-            <marker date="1463742163763" expanded="true" signature="3160:3240" placeholder="SELECT ?,? F... DUAL" />
-            <marker date="1463742163763" expanded="true" signature="3200:3238" placeholder="SELECT code actors" />
-            <marker date="1463742163763" expanded="true" signature="3509:3555" placeholder="INSERT INTO relrationship_actor... " />
           </folding>
         </state>
       </provider>
@@ -1508,13 +1495,260 @@
         </state>
       </provider>
     </entry>
+    <entry file="uml://JAVA/sample.model.imageload">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>sample.model.imageload</OriginalElement>
+          <nodes>
+            <node x="0.0" y="0.0">sample.model.imageload</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="44.0" y="15.0" />
+          <SelectedNodes>
+            <node>sample.model.imageload</node>
+          </SelectedNodes>
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/model/imageload.java" />
+    <entry file="uml://JAVA/sample.model.SystemInfo">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>sample.model.SystemInfo</OriginalElement>
+          <nodes>
+            <node x="" y="">sample.model.SystemInfo</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="46.0" y="15.0" />
+          <SelectedNodes />
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/model/SystemInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="451">
+          <caret line="189" column="5" selection-start-line="189" selection-start-column="5" selection-end-line="189" selection-end-column="5" />
+          <folding>
+            <element signature="e#3949#3950#0" expanded="true" />
+            <element signature="e#3991#3992#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/model/MySql.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1672">
+          <caret line="92" column="51" selection-start-line="92" selection-start-column="51" selection-end-line="92" selection-end-column="51" />
+          <folding>
+            <marker date="1463742163763" expanded="true" signature="2114:2164" placeholder="INSERT INTO movies... " />
+            <marker date="1463742163763" expanded="true" signature="2766:2811" placeholder="INSERT INTO relrationship_genre... " />
+            <marker date="1463742163763" expanded="true" signature="3128:3159" placeholder="INSERT INTO actors... " />
+            <marker date="1463742163763" expanded="true" signature="3128:3240" placeholder="INSERT INTO actors... " />
+            <marker date="1463742163763" expanded="true" signature="3160:3240" placeholder="SELECT ?,? F... DUAL" />
+            <marker date="1463742163763" expanded="true" signature="3200:3238" placeholder="SELECT code actors" />
+            <marker date="1463742163763" expanded="true" signature="3509:3555" placeholder="INSERT INTO relrationship_actor... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/sample.model.MyException">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>sample.model.MyException</OriginalElement>
+          <nodes>
+            <node x="7.0" y="80.0">java.lang.Throwable</node>
+            <node x="0.0" y="240.0">sample.model.MyException</node>
+            <node x="8.5" y="160.0">java.lang.Exception</node>
+            <node x="4.5" y="0.0">java.io.Serializable</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="java.lang.Exception" target="java.lang.Throwable">
+              <point x="0.0" y="-15.0" />
+              <point x="0.0" y="15.0" />
+            </edge>
+            <edge source="java.lang.Throwable" target="java.io.Serializable">
+              <point x="0.0" y="-15.0" />
+              <point x="0.0" y="15.0" />
+            </edge>
+            <edge source="sample.model.MyException" target="java.lang.Exception">
+              <point x="0.0" y="-15.0" />
+              <point x="0.0" y="15.0" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="1.0" x="51.0" y="135.0" />
+          <SelectedNodes />
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/model/GetPageInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/model/Actor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/model/CalculateModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-297">
-          <caret line="177" column="31" selection-start-line="177" selection-start-column="31" selection-end-line="177" selection-end-column="31" />
+        <state relative-caret-position="183">
+          <caret line="151" column="40" selection-start-line="151" selection-start-column="35" selection-end-line="151" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/sample.model.Actor">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>sample.model.Actor</OriginalElement>
+          <nodes>
+            <node x="0.0" y="368.0">sample.model.MakeXml</node>
+            <node x="1116.0" y="0.0">sample.model.SystemInfo</node>
+            <node x="709.0" y="322.0">sample.model.MySql</node>
+            <node x="212.0" y="403.0">sample.model.Actor</node>
+            <node x="1740.326388888889" y="1252.5">sample.model.MyException</node>
+            <node x="373.33333333333337" y="1459.0">sample.model.GetPageNum</node>
+            <node x="898.25" y="919.0">sample.controller.SettingController</node>
+            <node x="417.0" y="334.0">sample.model.InformationReader</node>
+            <node x="261.2222222222224" y="930.0">sample.model.CalculateModel</node>
+            <node x="1521.3166666666666" y="1402.0">sample.controller.Controller</node>
+            <node x="432.5" y="1206.0">sample.model.GetPageInfo</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="sample.model.GetPageInfo" target="sample.model.MakeXml">
+              <point x="-90.375" y="-73.0" />
+              <point x="462.625" y="1186.0" />
+              <point x="48.0" y="1186.0" />
+              <point x="-48.0" y="61.5" />
+            </edge>
+            <edge source="sample.model.CalculateModel" target="sample.model.MySql">
+              <point x="98.0" y="-107.5" />
+              <point x="604.2222222222224" y="879.0" />
+              <point x="805.75" y="879.0" />
+              <point x="-96.75" y="107.5" />
+            </edge>
+            <edge source="sample.controller.SettingController" target="sample.model.SystemInfo">
+              <point x="101.0" y="-118.5" />
+              <point x="1201.25" y="899.0" />
+              <point x="1425.0" y="899.0" />
+              <point x="-103.0" y="429.5" />
+            </edge>
+            <edge source="sample.model.CalculateModel" target="sample.model.MakeXml">
+              <point x="-196.0" y="-107.5" />
+              <point x="310.2222222222224" y="899.0" />
+              <point x="144.0" y="899.0" />
+              <point x="48.0" y="61.5" />
+            </edge>
+            <edge source="sample.model.GetPageInfo" target="sample.model.CalculateModel">
+              <point x="-30.125" y="-73.0" />
+              <point x="522.875" y="1176.0" />
+              <point x="383.7222222222224" y="1176.0" />
+              <point x="-122.5" y="107.5" />
+            </edge>
+            <edge source="sample.model.GetPageInfo" target="sample.model.SystemInfo">
+              <point x="90.375" y="-73.0" />
+              <point x="643.375" y="1186.0" />
+              <point x="1702.3166666666666" y="1186.0" />
+              <point x="1702.3166666666666" y="899.0" />
+              <point x="1631.0" y="899.0" />
+              <point x="103.0" y="429.5" />
+            </edge>
+            <edge source="sample.model.GetPageNum" target="sample.model.GetPageInfo">
+              <point x="-69.75" y="-50.0" />
+              <point x="443.08333333333337" y="1377.0" />
+              <point x="472.66666666666674" y="1377.0" />
+              <point x="-80.33333333333331" y="73.0" />
+            </edge>
+            <edge source="sample.model.CalculateModel" target="sample.model.SystemInfo">
+              <point x="196.0" y="-107.5" />
+              <point x="702.2222222222224" y="889.0" />
+              <point x="1219.0" y="889.0" />
+              <point x="-309.0" y="429.5" />
+            </edge>
+            <edge source="sample.controller.Controller" target="sample.model.MyException">
+              <point x="128.0" y="-107.0" />
+              <point x="1841.3166666666666" y="1377.0" />
+              <point x="1806.826388888889" y="1377.0" />
+              <point x="0.0" y="26.5" />
+            </edge>
+            <edge source="sample.model.GetPageInfo" target="sample.model.GetPageNum">
+              <point x="0.0" y="73.0" />
+              <point x="553.0" y="1377.0" />
+              <point x="582.5833333333334" y="1377.0" />
+              <point x="69.75" y="-50.0" />
+            </edge>
+            <edge source="sample.model.CalculateModel" target="sample.model.InformationReader">
+              <point x="0.0" y="-107.5" />
+              <point x="506.2222222222224" y="899.0" />
+              <point x="553.0" y="899.0" />
+              <point x="0.0" y="95.5" />
+            </edge>
+            <edge source="sample.controller.Controller" target="sample.model.GetPageInfo">
+              <point x="-128.0" y="-107.0" />
+              <point x="1585.3166666666666" y="1377.0" />
+              <point x="633.3333333333333" y="1377.0" />
+              <point x="80.33333333333326" y="73.0" />
+            </edge>
+            <edge source="sample.model.CalculateModel" target="sample.model.Actor">
+              <point x="-98.0" y="-107.5" />
+              <point x="408.2222222222224" y="889.0" />
+              <point x="304.5" y="889.0" />
+              <point x="0.0" y="26.5" />
+            </edge>
+            <edge source="sample.controller.Controller" target="sample.model.SystemInfo">
+              <point x="0.0" y="-107.0" />
+              <point x="1713.3166666666666" y="1377.0" />
+              <point x="1729.826388888889" y="1377.0" />
+              <point x="1729.826388888889" y="899.0" />
+              <point x="1837.0" y="899.0" />
+              <point x="309.0" y="429.5" />
+            </edge>
+            <edge source="sample.model.CalculateModel" target="sample.model.GetPageInfo">
+              <point x="122.5" y="107.5" />
+              <point x="628.7222222222224" y="1186.0" />
+              <point x="583.125" y="1186.0" />
+              <point x="30.125" y="-73.0" />
+            </edge>
+            <edge source="sample.controller.SettingController" target="sample.model.MySql">
+              <point x="-101.0" y="-118.5" />
+              <point x="96.75" y="107.5" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="0.484718826405868" x="970.0580075662042" y="868.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Methods</Category>
+            <Category>Inner Classes</Category>
+            <Category>Constructors</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
         </state>
       </provider>
     </entry>
