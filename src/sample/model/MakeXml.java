@@ -18,7 +18,7 @@ import java.util.ArrayList;
  * Created by ParkCheolHo on 2016-02-27.
  * Xml파일 관련 클래스
  */
-class MakeXml {
+class MakeXml implements WriteFile {
 
     OutputStream outputStream;
     XMLStreamWriter out;
@@ -31,32 +31,33 @@ class MakeXml {
             e.printStackTrace();
         }
     }
-
-    public void Start() {
+    @Override
+    public int start() {
         try {
             out.writeStartDocument("UTF-8","1.0");
             out.writeStartElement("Movies");
         } catch (XMLStreamException e) {
             e.printStackTrace();
         }
+        return 0;
     }
-
-    public synchronized void add(String index, String name, String engName, int countrycode,
-                                 String h_tx_story, String con_tx, ArrayList<Actor> actors, ArrayList<String> title, ArrayList<Integer> genre) {
+    @Override
+    public synchronized void add(String index, String name, String eng_name, int contry_id,
+                                 String story_name, String story, InformationReader reader, ArrayList<Actor> actors, ArrayList<String> title, int year) {
         try {
             out.writeStartElement("Movie");
                 out.writeAttribute("index", index);
-//
+
                 out.writeStartElement("Name");
-                out.writeCharacters(name);
+                    out.writeCharacters(name);
                 out.writeEndElement();
-//
+
                 out.writeStartElement("engName");
-                out.writeCharacters(engName);
+                    out.writeCharacters(eng_name);
                 out.writeEndElement();
-//
+
                 out.writeStartElement("genres");
-                for(int value : genre){
+                for(int value : reader.getgreneList()){
                     out.writeStartElement("genre");
                     out.writeCharacters(String.valueOf(value));
                     out.writeEndElement();
@@ -64,19 +65,15 @@ class MakeXml {
                 out.writeEndElement();
 
                 out.writeStartElement("story");
-                out.writeCharacters(h_tx_story);
+                out.writeCharacters(story);
                 out.writeEndElement();
-//
+
                 out.writeStartElement("Appear");
                     for(int i =0;i<actors.size();i++){
                         out.writeStartElement(title.get(i));
                         out.writeCharacters(actors.get(i).name);
                         out.writeEndElement();
                     }
-                out.writeEndElement();
-
-                out.writeStartElement("country");
-                out.writeCharacters(String.valueOf(countrycode));
                 out.writeEndElement();
             out.writeEndElement();
 
@@ -96,20 +93,16 @@ class MakeXml {
 //        System.out.println("////////////////////////////////////////////////////////////////////////");
 
     }
-
-
     public void End() {
         try {
             out.writeEndElement();
             out.writeEndDocument();
             out.close();
             outputStream.close();
-
         } catch (XMLStreamException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }
