@@ -191,7 +191,7 @@ public class SettingController implements Initializable {
                 MySql mysql = new MySql(host.getText(), "", idField.getText(), password.getText());
                 mysql.setTestflag(true);
                 confirm.getScene().setCursor(Cursor.WAIT);
-                int result = mysql.start();
+                int result = mysql.Connection();
                 showDatabase.setItems(FXCollections.observableList(mysql.getSqlresult()));
                 mysql.setTestflag(false);
                 return result;

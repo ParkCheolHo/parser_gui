@@ -18,7 +18,7 @@ import java.util.ArrayList;
  * Created by ParkCheolHo on 2016-02-27.
  * Xml파일 관련 클래스
  */
-class MakeXml implements WriteFile {
+class MakeXml {
 
     OutputStream outputStream;
     XMLStreamWriter out;
@@ -31,33 +31,32 @@ class MakeXml implements WriteFile {
             e.printStackTrace();
         }
     }
-    @Override
-    public int start() {
+
+    public void Start() {
         try {
             out.writeStartDocument("UTF-8","1.0");
             out.writeStartElement("Movies");
         } catch (XMLStreamException e) {
             e.printStackTrace();
         }
-        return 0;
     }
-    @Override
-    public synchronized void add(String index, String name, String eng_name, int contry_id,
-                                 String story_name, String story, InformationReader reader, ArrayList<Actor> actors, ArrayList<String> title, int year) {
+
+    public synchronized void add(String index, String name, String engName, int countrycode,
+                                 String h_tx_story, String con_tx, ArrayList<Actor> actors, ArrayList<String> title, ArrayList<Integer> genre) {
         try {
             out.writeStartElement("Movie");
                 out.writeAttribute("index", index);
-
+//
                 out.writeStartElement("Name");
-                    out.writeCharacters(name);
+                out.writeCharacters(name);
                 out.writeEndElement();
-
+//
                 out.writeStartElement("engName");
-                    out.writeCharacters(eng_name);
+                out.writeCharacters(engName);
                 out.writeEndElement();
-
+//
                 out.writeStartElement("genres");
-                for(int value : reader.getgreneList()){
+                for(int value : genre){
                     out.writeStartElement("genre");
                     out.writeCharacters(String.valueOf(value));
                     out.writeEndElement();
@@ -65,15 +64,19 @@ class MakeXml implements WriteFile {
                 out.writeEndElement();
 
                 out.writeStartElement("story");
-                out.writeCharacters(story);
+                out.writeCharacters(h_tx_story);
                 out.writeEndElement();
-
+//
                 out.writeStartElement("Appear");
                     for(int i =0;i<actors.size();i++){
                         out.writeStartElement(title.get(i));
                         out.writeCharacters(actors.get(i).name);
                         out.writeEndElement();
                     }
+                out.writeEndElement();
+
+                out.writeStartElement("country");
+                out.writeCharacters(String.valueOf(countrycode));
                 out.writeEndElement();
             out.writeEndElement();
 
@@ -93,16 +96,20 @@ class MakeXml implements WriteFile {
 //        System.out.println("////////////////////////////////////////////////////////////////////////");
 
     }
+
+
     public void End() {
         try {
             out.writeEndElement();
             out.writeEndDocument();
             out.close();
             outputStream.close();
+
         } catch (XMLStreamException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 }

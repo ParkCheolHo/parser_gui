@@ -36,7 +36,7 @@ public class SystemInfo {
     private boolean usePoster = false;
     public static Logger logger = LoggerFactory.getLogger(SystemInfo.class);
     private String host = "jdbc:mysql://localhost/";
-    private String db = null;
+    private String db;
     private String id = "root";
     private String password;
     private SystemInfo() {

@@ -35,25 +35,25 @@ public class GetPageInfo extends Task {
     }
 
     @Override
-    protected String call() throws XMLStreamException {;
-        GetPageNum getPageNum = new GetPageNum(year, this);
+    protected String call() throws XMLStreamException {
+        boolean usedb = systeminfo.isUseDB();
+        GetPageNum test = new GetPageNum(year, this);
         MakeXml makexml = null;
-        if(!systeminfo.isUseDB())
+        if(!usedb)
             makexml = new MakeXml(systeminfo.getFilePath());
 
-        totaled = getPageNum.Calculate();
+        totaled = test.Calculate();
         int result = 0;
         try {
-            result = getPageNum.GetTotalMotiveNumb(Integer.parseInt(totaled));
+            result = test.GetTotalMotiveNumb(Integer.parseInt(totaled));
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         systeminfo.logger.info(year + "년도 전체 영화 갯수 : " + result); //console용
         systeminfo.addLog(year + "년도 검색된 전체 영화 갯수 : " + result + "개"); //scrollPane용
-        if(!systeminfo.isUseDB())
-            makexml.start(); //xml파일 만들기 스타트
-
+        if(!usedb)
+            makexml.Start(); //xml파일 만들기 스타트
         if(systeminfo.isUsePoster()) {
             new File(systeminfo.getPosterfile().getPath() + "/Poster/").mkdirs();
             new File(systeminfo.getPosterfile().getPath() + "/Actors/").mkdirs();
@@ -84,7 +84,7 @@ public class GetPageInfo extends Task {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        if(!systeminfo.isUseDB())
+        if(!usedb)
             makexml.End();
         systeminfo.addLog("종료되었습니다.");
         systeminfo.logger.info(Thread.currentThread().getName() + "is done");
