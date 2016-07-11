@@ -13,13 +13,10 @@ import org.jsoup.select.Elements;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.*;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 /**
  * Created by ParkCheolHo on 2016-02-20.
@@ -55,10 +52,12 @@ class CalculateModel extends Task {
         ArrayList<Actor> actors = new ArrayList<>();
         ArrayList<String> title = new ArrayList<>();
         Iterator<String> it;
-        MySql mysql = null;
+        WriteFile write = null;
         if (systeminfo.isUseDB()) {
-            mysql = new MySql(systeminfo.getHost(), systeminfo.getDb(), systeminfo.getId(), systeminfo.getPassword());
-            mysql.Connection();
+            write = new MySql(systeminfo.getHost(), systeminfo.getDb(), systeminfo.getId(), systeminfo.getPassword());
+            write.start();
+        } else {
+            write = xml;
         }
         //iterator 생성
         if (flag) {
@@ -81,14 +80,14 @@ class CalculateModel extends Task {
                 Elements movieInfoElement = doc.select("div.mv_info");
                 String name = movieInfoElement.select("h3 > a:nth-child(1)").text();
                 String[] engName = movieInfoElement.select("strong.h_movie2").text().split(",");
-                Elements genreInfo = movieInfoElement.select("dl > dd:nth-child(2) > p > span > a");
                 String poster = doc.select("#content > div.article > div.mv_info_area > div.poster > a > img").attr("src");
                 Elements peoples = doc.select("div.people > ul > li");
                 String h_tx_story = doc.select("h5.h_tx_story").text();
                 String con_tx = doc.select("div.story_area > p").text();
                 String grade = doc.select("#content > div.article > div.mv_info_area > div.mv_info > dl > dd:nth-child(8) > p >  a:nth-child(1)").text();
-
-                boolean adult = checkgenre(genreInfo, grade, reader);
+                Elements outline = movieInfoElement.select("dl.info_spec > dd:nth-child(2) > p > span");
+                reader.setGradecode(grade);
+                boolean adult = check_genre(outline, grade, reader);
 
                 if (adult == false) {
                     title.clear();
@@ -105,7 +104,8 @@ class CalculateModel extends Task {
                 int country = reader.countrycode();
 
                 if (systeminfo.isUseOption()) {
-                    if ("".equals(con_tx) || "".equals(poster) || genreInfo == null || "".equals(grade)) {
+
+                    if ("".equals(con_tx) || "".equals(poster) || outline == null || "".equals(grade)) {
                         it.remove();
                         actors.clear();
                         reader.eraseList();
@@ -116,9 +116,24 @@ class CalculateModel extends Task {
                         }
                         continue;
                     }
-
+                    if (engName[0].length()<5) {
+                        try{
+                            int val = Integer.parseInt(engName[0]);
+                            it.remove();
+                            actors.clear();
+                            reader.eraseList();
+                            title.clear();
+                            getpageinfo.updateProgress();
+                            if (Thread.interrupted()) {
+                                throw new InterruptedException();
+                            }
+                            continue;
+                        } catch (Exception e){
+                            System.out.println("val " + engName[0]);
+                        }
+                    }
                     try {
-                        if (getImgageHeight(poster) < 180) {
+                        if (get_Image_Height(poster) < 180) {
                             title.clear();
                             actors.clear();
                             reader.eraseList();
@@ -133,15 +148,13 @@ class CalculateModel extends Task {
                         e.printStackTrace();
                     }
                 }
-
                 reader.setGradecode(grade);
-
                 for (Element people : peoples) {
                     int index = 0;
                     title.add(people.select("dl.staff > dt").text());
                     try {
                         index = Integer.parseInt(getIndex(people.select("a.tx_people").attr("href")));
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         continue;
                     }
                     String actorname = people.select("a.tx_people").text();
@@ -151,29 +164,31 @@ class CalculateModel extends Task {
 
                     actors.add(new Actor(index, actorname, imgsrc));
                 }
-
                 if (systeminfo.isUsePoster()) {
-                    saveimage(poster, "/Poster/", value);
+                    save_image(poster, "/Poster/", value);
                     for (Actor i : actors) {
                         if (i.imgsrc != null)
-                            saveimage(i.imgsrc, "/Actors/", String.valueOf(i.index));
+                            save_image(i.imgsrc, "/Actors/", String.valueOf(i.index));
                     }
                 }
-
-                if (systeminfo.isUseDB()) {
-                    try {
-                        mysql.insertMovie(value, name, engName[0], country, h_tx_story, con_tx, reader.getGradecode(),reader.getgreneList(), actors, title, Integer.parseInt(systeminfo.getYear()));
-                    } catch (SQLException e) {
-                        systeminfo.logger.info(e.toString());
-                    }
-                    getpageinfo.updateProgress();
-                } else {
-                    if (doc != null) {
-                                xml.add(value, name, engName[0], country, h_tx_story, con_tx, actors, title, reader.getgrene());
-                        getpageinfo.updateProgress();
-                    }
+//                System.out.println("============================================================================");
+//                System.out.println("index " + value);
+//                System.out.println("name : " + name);
+//                System.out.println("engname : " + engName[0]);
+//                System.out.println("country : " + country);
+//                System.out.println("h_tx_story : " + h_tx_story);
+//                System.out.println("con_tx : " + con_tx);
+//                System.out.println("genre : " + reader.getgrene());
+//                System.out.println("grade : " + reader.getGradecode());
+//                System.out.println("opendate : " + reader.getOpen_date());
+//                System.out.println("getRunning_time : " + reader.getRunning_time());
+//                System.out.println("actors" + actors);
+                try {
+                    write.add(value, name, engName[0], country, h_tx_story, con_tx, reader, actors, title, Integer.parseInt(systeminfo.getYear()));
+                } catch (Exception e) {
+                    systeminfo.logger.info(e.toString());
                 }
-
+                getpageinfo.updateProgress();
                 it.remove();
                 actors.clear();
                 reader.eraseList();
@@ -181,57 +196,56 @@ class CalculateModel extends Task {
                 if (Thread.interrupted()) {
                     throw new InterruptedException();
                 }
-
             }
         }
-
     }
 
-    void saveimage(String val, String path, String index) {
-
-
+    void save_image(String val, String path, String index) {
         try {
             URL url = new URL(val);
-
-            Image image = ImageIO.read(url);
-
-            InputStream in = url.openStream();
-            OutputStream out = new BufferedOutputStream(new FileOutputStream(systeminfo.getPosterfile().getPath() + path + index + ".jpg"));
-
-            for (int b; (b = in.read()) != -1; ) {
-                out.write(b);
+            File file = new File(systeminfo.getPosterfile().getPath() + path + index + ".jpg");
+            if (!file.exists()) {
+                InputStream in = url.openStream();
+                OutputStream out = new BufferedOutputStream(new FileOutputStream(systeminfo.getPosterfile().getPath() + path + index + ".jpg"));
+                for (int b; (b = in.read()) != -1; ) {
+                    out.write(b);
+                }
+                in.close();
+                out.close();
             }
-            out.close();
-            in.close();
         } catch (IOException e) {
             systeminfo.logger.info("이미지 저장 에러 : " + index);
         }
     }
 
-    int getImgageHeight(String val) throws IOException {
+    int get_Image_Height(String val) throws IOException {
         URL url = new URL(val);
         Image image = ImageIO.read(url);
         int height = image.getHeight(null);
         return height;
     }
 
-    boolean checkgenre(Elements li, String grade, InformationReader reader) {
+    boolean check_genre(Elements li, String grade, InformationReader reader) {
+
         for (Element i : li) {
-            String genre = getIndex(i.attr("href"));
-            String genrename = i.text();
-            if ("청소년 관람불가".equals(grade)) {
-                if ("멜로/로맨스".equals(genrename) || "드라마".equals(genrename))
-                    return false;
+            Elements aTag = i.select("a");
+            if (aTag.hasText()) {
+                for (Element t : aTag) {
+                    String genre = getIndex(t.attr("href"));
+                    reader.reader(genre);
+                }
+            } else {
+                reader.setRunning_time(i.text());
             }
-            reader.reader(genre);
         }
         return true;
     }
 
+
+
     //할당받은 페이지 내에서 전체 영화의 url을 크롤링
     protected int execute(int start, int end, ArrayList<String> movies, List rest) throws InterruptedException {
         //start 부터 end 까지 페이지별로 영화 url 크롤링
-
         int k = 0;
         for (int i = start + 1; i <= end; i++) {
             Document doc = null;
@@ -273,11 +287,10 @@ class CalculateModel extends Task {
             systeminfo.addLog(Thread.currentThread().getName() + " : 웹페이지에서 정보 크롤링 중");
 
 
-
-                getMovieData(xml, movie, errors, true);
-                while (errors.isEmpty() == false) {
-                    getMovieData(xml, errors, errors, false);
-                }
+            getMovieData(xml, movie, errors, true);
+            while (errors.isEmpty() == false) {
+                getMovieData(xml, errors, errors, false);
+            }
 
             movie.clear();
             rest.clear();
@@ -285,7 +298,6 @@ class CalculateModel extends Task {
         } catch (InterruptedException e) {
             systeminfo.logger.info(Thread.currentThread().getName() + " 인터럽트");
         }
-
         systeminfo.logger.info(Thread.currentThread().getName() + " is done!");
         return null;
     }

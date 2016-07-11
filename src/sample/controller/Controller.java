@@ -64,7 +64,13 @@ public class Controller implements Initializable {
                 createException("년도설정 오류");
             }
             //파일경로가 없을때 오류
-            if(!systeminfo.isUseDB()) {
+            if(systeminfo.isUseDB()) {
+
+                if(systeminfo.getDb().length() < 1){
+                    showAlert("ERROR!", "시스템 에러!", "데이터베이스를 선택하세요");
+                    createException("데이터베이스를 선택하세요");
+                }
+            }else{
                 if (systeminfo.filpathempty()) {
                     showAlert("ERROR!", "시스템 에러!", "저장 경로를 확인하세요");
                     createException("저장경로 미설정");

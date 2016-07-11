@@ -2,14 +2,17 @@ package sample.model;
 
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
+import sun.util.resources.cldr.aa.CalendarData_aa_ER;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 /**
  * Created by WhiteNight on 2016-03-28.
  */
-public class MySql {
+public class MySql implements WriteFile{
 
     Connection conn;
     boolean testflag = false;
@@ -25,8 +28,8 @@ public class MySql {
         this.id = id;
         this.password = password;
     }
-
-    public int Connection(){
+    @Override
+    public int start(){
         try {
             sqlresult.clear();
             Class.forName("com.mysql.jdbc.Driver");
@@ -60,12 +63,16 @@ public class MySql {
         }
         return 0;
     }
+    @Override
+    public void add(String index, String name, String engname, int contry_id,
+                                         String storyname, String story, InformationReader reader, ArrayList<Actor> actors, ArrayList<String> title, int year) throws SQLException {
 
-    public  void insertMovie(String index, String name, String engname, int contry_id,
-                                         String storyname, String story, int grade,int[] genre, ArrayList<Actor> actors, ArrayList<String> title, int year) throws SQLException {
-
-        String  sql = "INSERT INTO movies VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-
+        String  sql = "INSERT INTO movies VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        int open_year = Integer.parseInt(reader.getOpen_date().substring(0,4));
+        int open_month = Integer.parseInt(reader.getOpen_date().substring(4,6));
+        int open_day = Integer.parseInt(reader.getOpen_date().substring(6,8));
+//        System.out.println(reader.getOpen_date() +" : " + open_year +" : " + open_month +" : " + open_day);
+            Calendar cal = new GregorianCalendar(open_year,open_month,open_day);
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setInt(1, Integer.parseInt(index));
             preparedStatement.setString(2,name);
@@ -74,29 +81,32 @@ public class MySql {
             preparedStatement.setString(5,storyname);
             preparedStatement.setString(6,story);
             preparedStatement.setInt(7,year);
-            preparedStatement.setInt(8,grade);
+            preparedStatement.setInt(8,reader.getGradecode());
+            preparedStatement.setString(9 ,reader.getRunning_time());
+            preparedStatement.setDate(10,new Date(cal.getTimeInMillis()));
             preparedStatement.execute();
 
-        for(int value : genre){
-            String  relSql = "INSERT INTO relrationship_genre VALUES (?, ?)";
+        for(int i=0; i<actors.size(); i++){
+
+            PreparedStatement astmt = conn.prepareStatement("INSERT INTO actors (code, name, has_picture) SELECT ?,?,? FROM DUAL WHERE NOT EXISTS  (SELECT code FROM actors WHERE code = ? )");
+            astmt.setInt(1, actors.get(i).index);
+            astmt.setString(2, actors.get(i).name);
+            if(actors.get(i).imgsrc != null)
+                astmt.setInt(3, 1);
+            else
+                astmt.setInt(3, 0);
+            astmt.setInt(4, actors.get(i).index);
+            astmt.execute();
+        }
+        for(int value : reader.getgreneList()){
+            String  relSql = "INSERT INTO relrationship_genre(movie_index, genre_index) VALUES (?, ?)";
             PreparedStatement serstmt = conn.prepareStatement(relSql);
             serstmt.setInt(1, Integer.parseInt(index));
             serstmt.setInt(2, value);
             serstmt.execute();
         }
-
-
         for(int i=0; i<actors.size(); i++){
-
-            PreparedStatement astmt = conn.prepareStatement("INSERT INTO actors (code, name) SELECT ?,? FROM DUAL WHERE NOT EXISTS  (SELECT code FROM actors WHERE code = ? )");
-            astmt.setInt(1, actors.get(i).index);
-            astmt.setString(2, actors.get(i).name);
-            astmt.setInt(3 , actors.get(i).index);
-            astmt.execute();
-        }
-
-        for(int i=0; i<actors.size(); i++){
-            String  bSql = "INSERT INTO relrationship_actor VALUES (?,?,?)";
+            String  bSql = "INSERT INTO relrationship_actor(movie_index, actors_index, option_index) VALUES (?,?,?)";
             PreparedStatement bstmt = conn.prepareStatement(bSql);
             bstmt.setInt(1,Integer.parseInt(index));
             bstmt.setInt(2, actors.get(i).index);
@@ -115,9 +125,7 @@ public class MySql {
                     break;
             }
             bstmt.execute();
-
         }
-
     }
 
 
