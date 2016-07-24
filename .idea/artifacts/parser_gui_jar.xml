@@ -5,6 +5,7 @@
       <element id="module-output" name="parser_gui" />
       <element id="extracted-dir" path="$PROJECT_DIR$/res/jsoup-1.8.2.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/res/slf4j-api-1.7.17.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/res/mysql-connector-java-5.1.38-bin.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

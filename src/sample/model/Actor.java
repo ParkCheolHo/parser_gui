@@ -2,14 +2,15 @@ package sample.model;
 
 /**
  * Created by WhiteNight on 2016-04-22.
+ * 배우 클래스
  */
-public class Actor {
+class Actor {
     int index;
     String name;
-    String imgsrc = null;
-    public Actor(int index, String name, String info){
+    String img = null;
+    Actor(int index, String name, String info){
         this.index = index;
         this.name = name;
-        this.imgsrc = info;
+        this.img = info;
     }
 }

@@ -1,16 +1,10 @@
 package sample.model;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Task;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
-
-import javafx.concurrent.Worker;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.xml.stream.XMLStreamException;
 
@@ -19,13 +13,11 @@ import javax.xml.stream.XMLStreamException;
  * 모든 쓰레드를 컨트롤 하는 쓰레드
  */
 public class GetPageInfo extends Task {
-    StringBuilder sb = new StringBuilder("http://movie.naver.com/movie/sdb/browsing/bmovie.nhn?open=");
-    String year;
-    String totaled;
-    List<Thread> threadlist;
+    private StringBuilder sb = new StringBuilder("http://movie.naver.com/movie/sdb/browsing/bmovie.nhn?open=");
+    private String year;
     private double max = 0;
     private double count = 0;
-    SystemInfo systeminfo;
+    private SystemInfo systeminfo;
 
 
     public GetPageInfo(String year) {
@@ -35,98 +27,96 @@ public class GetPageInfo extends Task {
     }
 
     @Override
-    protected String call() throws XMLStreamException {;
-        GetPageNum getPageNum = new GetPageNum(year, this);
-        MakeXml makexml = null;
+    protected String call() throws XMLStreamException {
+        //remove
+        systeminfo.removeLog();
+        GetPageNum getPageNum = new GetPageNum(year);
+        WriteFile makefile = null;
         if(!systeminfo.isUseDB())
-            makexml = new MakeXml(systeminfo.getFilePath());
+            makefile = new MakeXml(systeminfo.getFilePath());
 
-        totaled = getPageNum.Calculate();
+        String maxPage = getPageNum.Calculate();
         int result = 0;
         try {
-            result = getPageNum.GetTotalMotiveNumb(Integer.parseInt(totaled));
+            result = getPageNum.GetTotalMovieNumb(Integer.parseInt(maxPage));
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        systeminfo.logger.info(year + "년도 전체 영화 갯수 : " + result); //console용
+        SystemInfo.logger.info(year + "년도 전체 영화 갯수 : " + result); //console용
         systeminfo.addLog(year + "년도 검색된 전체 영화 갯수 : " + result + "개"); //scrollPane용
         if(!systeminfo.isUseDB())
-            makexml.start(); //xml파일 만들기 스타트
-
+            if (makefile != null) {
+                makefile.start(false); //xml파일 만들기 스타트
+            }
         if(systeminfo.isUsePoster()) {
             new File(systeminfo.getPosterfile().getPath() + "/Poster/").mkdirs();
             new File(systeminfo.getPosterfile().getPath() + "/Actors/").mkdirs();
         }
 
-        int[] value = split(totaled, systeminfo.getSpeed());
+        int[] value = split(maxPage, systeminfo.getSpeed());
         for (int i = 0; i < systeminfo.getSpeed(); i++) {
-            Task task = new CalculateModel(year, value[i], value[i + 1], this, makexml);
-            task.stateProperty().addListener(new ChangeListener<State>() {
-                @Override
-                public void changed(ObservableValue<? extends State> observableValue, Worker.State oldState, Worker.State newState) {
-                    if (newState == State.SUCCEEDED)
-                        systeminfo.addLog("자식Task 성공적으로 종료됩니다.");
-                }
+            Task task = new CalculateModel(year, value[i], value[i+1], this, makefile);
+            task.stateProperty().addListener((ov , oldVal, newState) -> {
+                if (newState == State.SUCCEEDED)
+                    systeminfo.addLog("자식Task 성공적으로 종료됩니다.");
             });
-            Thread test1 = new Thread(task);
-            systeminfo.addTheadlist(test1);
+//            task.stateProperty().addListener(new ChangeListener<State>() {
+//                @Override
+//                public void changed(ObservableValue<? extends State> observableValue, Worker.State oldState, Worker.State newState) {
+//                    if (newState == State.SUCCEEDED)
+//                        systeminfo.addLog("자식Task 성공적으로 종료됩니다.");
+//                }
+//            });
+            Thread thread = new Thread(task);
+            systeminfo.addTheadlist(thread);
         }
-        systeminfo.startThreadlist();
-        threadlist = systeminfo.getThreads();
+        systeminfo.startThread();
+        List<Thread> threads = systeminfo.getThreads();
 
-        systeminfo.logger.info("Thread 총 갯수 : " + threadlist.size());
-        systeminfo.addLog("Thread 총 갯수 : " + threadlist.size());
-
-        for (Thread i : threadlist)
+        SystemInfo.logger.info("Thread 총 갯수 : " + threads.size());
+        systeminfo.addLog("Thread 총 갯수 : " + threads.size());
+        //모든 자식 쓰레드가 끝날때까지 기다린다.
+        for (Thread i : threads)
             try {
                 i.join();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         if(!systeminfo.isUseDB())
-            makexml.End();
+            if (makefile != null) {
+                makefile.end();
+            }
         systeminfo.addLog("종료되었습니다.");
-        systeminfo.logger.info(Thread.currentThread().getName() + "is done");
-        threadlist.clear();
+        SystemInfo.logger.info(Thread.currentThread().getName() + "is done");
+        threads.clear();
         return null;
     }
-
-    protected void updateProgress() {
-
-        synchronized (this) {
-            count++;
-            updateProgress(count, max);
-        }
+    // 전체 진행속도 표시
+    synchronized void update() {
+        count++;
+        updateProgress(count, max);
         double s = (count / max) * 100;
         systeminfo.showLabel(s);
-
     }
-
-    protected void setMax(double value) {
+    //전체 영화 갯수 설정
+    void setMax(double value) {
         max += value;
     }
-
-
-    int[] split(String totaled, int multithrednum) {
-        int[] result = new int[multithrednum + 1];
-        int i = Integer.parseInt(totaled);
-        int share = i / multithrednum;
-        int rest = i % multithrednum;
+    // 자식 쓰레드의 갯수에 맞게 파싱할 영화 페이지 갯수를 정하는 메소드
+    private int[] split(String maxPage, int section) {
+        int[] result = new int[section + 1];
+        int i = Integer.parseInt(maxPage);
+        int share = i / section;
+        int rest = i % section;
         result[0] = 0;
-
-
         for (int k = 0; k < rest; k++) {
             result[k + 1]++;
         }
-
-        for (int j = 0; j <= multithrednum - 1; j++) {
-            result[j + 1] += share;
-            if (j + 2 <= multithrednum) {
-                result[j + 2] += result[j + 1];
+        for (int j = 1; j <= section ; j++) {
+            result[j] += share;
+            result[j] += result[j-1];
             }
-        }
         return result;
     }
-
 }

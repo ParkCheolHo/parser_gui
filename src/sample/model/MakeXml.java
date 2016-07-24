@@ -1,13 +1,6 @@
 package sample.model;
 
 
-import com.sun.corba.se.impl.orbutil.concurrent.Sync;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
@@ -20,10 +13,9 @@ import java.util.ArrayList;
  */
 class MakeXml implements WriteFile {
 
-    OutputStream outputStream;
-    XMLStreamWriter out;
-
-    public MakeXml(File filepath) {
+    private OutputStream outputStream;
+    private XMLStreamWriter out;
+    MakeXml(File filepath) {
         try {
             outputStream = new FileOutputStream(filepath);
             out = XMLOutputFactory.newInstance().createXMLStreamWriter(new OutputStreamWriter(outputStream, "UTF-8"));
@@ -32,7 +24,7 @@ class MakeXml implements WriteFile {
         }
     }
     @Override
-    public int start() {
+    public int start(boolean flag) {
         try {
             out.writeStartDocument("UTF-8","1.0");
             out.writeStartElement("Movies");
@@ -42,7 +34,7 @@ class MakeXml implements WriteFile {
         return 0;
     }
     @Override
-    public synchronized void add(String index, String name, String eng_name, int contry_id,
+    public synchronized void add(String index, String name, String eng_name, int country,
                                  String story_name, String story, InformationReader reader, ArrayList<Actor> actors, ArrayList<String> title, int year) {
         try {
             out.writeStartElement("Movie");
@@ -57,7 +49,7 @@ class MakeXml implements WriteFile {
                 out.writeEndElement();
 
                 out.writeStartElement("genres");
-                for(int value : reader.getgreneList()){
+                for(int value : reader.GetGenreList()){
                     out.writeStartElement("genre");
                     out.writeCharacters(String.valueOf(value));
                     out.writeEndElement();
@@ -81,7 +73,7 @@ class MakeXml implements WriteFile {
             e.printStackTrace();
         }
 //        System.out.println("-----------------------------------------------------------------------");
-//        System.out.println(index + "\n" + name + "\n" + engName + "\n" + countrycode + "\n" + h_tx_story + "\n" + con_tx);
+//        System.out.println(index + "\n" + name + "\n" + engName + "\n" + getCountry + "\n" + h_tx_story + "\n" + con_tx);
 //        System.out.println("''''''''''''''''''''''");
 //        for (int i = 0; i < actors.size(); i++) System.out.println(actors.get(i));
 //        for (String value : genre) {
@@ -93,15 +85,13 @@ class MakeXml implements WriteFile {
 //        System.out.println("////////////////////////////////////////////////////////////////////////");
 
     }
-    public void End() {
+    public void end() {
         try {
             out.writeEndElement();
             out.writeEndDocument();
             out.close();
             outputStream.close();
-        } catch (XMLStreamException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (XMLStreamException | IOException e) {
             e.printStackTrace();
         }
     }

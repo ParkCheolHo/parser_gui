@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="102.0" prefWidth="382.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="20.0" layoutY="24.0" prefHeight="15.0" prefWidth="219.0" text="만든이 : 박 철 호" />
+      <TextField editable="false" layoutX="19.0" layoutY="51.0" prefHeight="23.0" prefWidth="345.0" text="github : https://github.com/ParkCheolHo/parser_gui/" />
+   </children>
+</AnchorPane>
