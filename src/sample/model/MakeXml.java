@@ -44,8 +44,16 @@ class MakeXml implements WriteFile {
                     out.writeCharacters(name);
                 out.writeEndElement();
 
+                out.writeStartElement("Year");
+                    out.writeCharacters(String.valueOf(year));
+                out.writeEndElement();
+
                 out.writeStartElement("engName");
                     out.writeCharacters(eng_name);
+                out.writeEndElement();
+
+                out.writeStartElement("countryNum");
+                    out.writeCharacters(String.valueOf(country));
                 out.writeEndElement();
 
                 out.writeStartElement("genres");

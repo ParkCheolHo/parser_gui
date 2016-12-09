@@ -42,12 +42,6 @@ public class SystemInfo {
             this.log = null;
         }
     }
-    public ArrayList<String> getDatabaseList() {
-        return databaseList;
-    }
-    public void setDatabaseList(ArrayList<String> databaseList) {
-        this.databaseList = databaseList;
-    }
     public void addLog(String value) {
         if (this.log == null)
             this.log = value;
