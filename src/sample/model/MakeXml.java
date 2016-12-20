@@ -17,8 +17,8 @@ class MakeXml implements WriteFile {
     private XMLStreamWriter out;
     MakeXml(File filepath) {
         try {
-            outputStream = new FileOutputStream(filepath);
-            out = XMLOutputFactory.newInstance().createXMLStreamWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+//            outputStream = new FileOutputStream(filepath);
+//            out = XMLOutputFactory.newInstance().createXMLStreamWriter(new OutputStreamWriter(outputStream, "UTF-8"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -35,7 +35,7 @@ class MakeXml implements WriteFile {
     }
     @Override
     public synchronized void add(String index, String name, String eng_name, int country,
-                                 String story_name, String story, InformationReader reader, ArrayList<Actor> actors, ArrayList<String> title, int year) {
+                                 String story_name, String story, InformationParser reader, ArrayList<Actor> actors, ArrayList<String> title, int year) {
         try {
             out.writeStartElement("Movie");
                 out.writeAttribute("index", index);

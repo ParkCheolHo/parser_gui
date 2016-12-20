@@ -8,9 +8,11 @@ class Actor {
     int index;
     String name;
     String img = null;
-    Actor(int index, String name, String info){
+    String rule = null;
+    Actor(int index, String name, String info, String rule){
         this.index = index;
         this.name = name;
         this.img = info;
+        this.rule = rule;
     }
 }

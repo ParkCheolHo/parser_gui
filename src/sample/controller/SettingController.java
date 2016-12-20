@@ -6,7 +6,6 @@ import javafx.collections.FXCollections;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 import javafx.stage.DirectoryChooser;
@@ -77,7 +76,7 @@ public class SettingController implements Initializable {
         } else {
             DataBaseEnable.setSelected(false);
             SetDbOptionDisable(true);
-            if (!systeminfo.filpathempty()) {
+            if (!systeminfo.filPathEmpty()) {
                 textField.setText(systeminfo.getFilePath().getPath());
             }
         }
@@ -86,7 +85,7 @@ public class SettingController implements Initializable {
             checkposter.setSelected(true);
             setPosterDisable(false);
             if (!systeminfo.poster_file_path_empty())
-                posterTextField.setText(systeminfo.getPosterfile().getPath());
+                posterTextField.setText(systeminfo.getPosterFile().getPath());
         } else {
             checkposter.setSelected(false);
             setPosterDisable(true);
@@ -174,7 +173,7 @@ public class SettingController implements Initializable {
         File file = chooser.showDialog(rootTabPane.getScene().getWindow());
         if (file != null) {
             posterTextField.setText(file.getPath());
-            systeminfo.setPosterfile(file);
+            systeminfo.setPosterFile(file);
         }
     }
 

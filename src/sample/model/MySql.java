@@ -60,12 +60,12 @@ public class MySql implements WriteFile{
     }
     @Override
     public void add(String index, String name, String engname, int country,
-                                         String storyname, String story, InformationReader reader, ArrayList<Actor> actors, ArrayList<String> title, int year) throws SQLException {
+                    String storyname, String story, InformationParser reader, ArrayList<Actor> actors, ArrayList<String> title, int year) throws SQLException {
         String  sql = "INSERT INTO movies VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         int open_year = Integer.parseInt(reader.getOpen_date().substring(0,4));
         int open_month = Integer.parseInt(reader.getOpen_date().substring(4,6));
         int open_day = Integer.parseInt(reader.getOpen_date().substring(6,8));
-//        System.out.println(reader.getOpen_date() +" : " + open_year +" : " + open_month +" : " + open_day);
+//        System.out.println(read.getOpen_date() +" : " + open_year +" : " + open_month +" : " + open_day);
             Calendar cal = new GregorianCalendar(open_year,open_month,open_day);
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setInt(1, Integer.parseInt(index));
@@ -75,7 +75,7 @@ public class MySql implements WriteFile{
             preparedStatement.setString(5,storyname);
             preparedStatement.setString(6,story);
             preparedStatement.setInt(7,year);
-            preparedStatement.setInt(8,reader.getGrade());
+//            preparedStatement.setInt(8,reader.getGrade());
             preparedStatement.setString(9 ,reader.getRunning_time());
             preparedStatement.setDate(10,new Date(cal.getTimeInMillis()));
             preparedStatement.execute();

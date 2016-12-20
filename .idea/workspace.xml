@@ -7,15 +7,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Test/sample/model/CalculateModelTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sample/model/Movie.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/parser_gui/sample/model/GetPageInfo.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/parser_gui/sample/model/GetPageNum.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/parser_gui/sample/model/InformationReader.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/sample/model/GetPageNum.java" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/sample/model/GetPageInfo.java" afterPath="$PROJECT_DIR$/src/sample/model/RootThread.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/sample/model/InformationReader.java" afterPath="$PROJECT_DIR$/src/sample/model/InformationParser.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/parser_gui_jar/parser_gui.jar" afterPath="$PROJECT_DIR$/out/artifacts/parser_gui_jar/parser_gui.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/parser_gui/sample/model/GetPageInfo.class" afterPath="$PROJECT_DIR$/out/production/parser_gui/sample/model/GetPageInfo.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/parser_gui/sample/controller/Controller.class" afterPath="$PROJECT_DIR$/out/production/parser_gui/sample/controller/Controller.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/parser_gui/sample/controller/SettingController$1.class" afterPath="$PROJECT_DIR$/out/production/parser_gui/sample/controller/SettingController$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/parser_gui/sample/controller/SettingController$2.class" afterPath="$PROJECT_DIR$/out/production/parser_gui/sample/controller/SettingController$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/parser_gui/sample/controller/SettingController.class" afterPath="$PROJECT_DIR$/out/production/parser_gui/sample/controller/SettingController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/parser_gui/sample/model/Actor.class" afterPath="$PROJECT_DIR$/out/production/parser_gui/sample/model/Actor.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/parser_gui/sample/model/CalCulateModel.class" afterPath="$PROJECT_DIR$/out/production/parser_gui/sample/model/CalCulateModel.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/parser_gui/sample/model/MakeXml.class" afterPath="$PROJECT_DIR$/out/production/parser_gui/sample/model/MakeXml.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/parser_gui/sample/model/MySql.class" afterPath="$PROJECT_DIR$/out/production/parser_gui/sample/model/MySql.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/parser_gui/sample/model/SystemInfo$1.class" afterPath="$PROJECT_DIR$/out/production/parser_gui/sample/model/SystemInfo$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/parser_gui/sample/model/SystemInfo$2.class" afterPath="$PROJECT_DIR$/out/production/parser_gui/sample/model/SystemInfo$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/parser_gui/sample/model/SystemInfo.class" afterPath="$PROJECT_DIR$/out/production/parser_gui/sample/model/SystemInfo.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/parser_gui/sample/model/WriteFile.class" afterPath="$PROJECT_DIR$/out/production/parser_gui/sample/model/WriteFile.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parser_gui.iml" afterPath="$PROJECT_DIR$/parser_gui.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/controller/Controller.java" afterPath="$PROJECT_DIR$/src/sample/controller/Controller.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/controller/SettingController.java" afterPath="$PROJECT_DIR$/src/sample/controller/SettingController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/model/Actor.java" afterPath="$PROJECT_DIR$/src/sample/model/Actor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/model/CalculateModel.java" afterPath="$PROJECT_DIR$/src/sample/model/CalculateModel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/model/MakeXml.java" afterPath="$PROJECT_DIR$/src/sample/model/MakeXml.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/model/MySql.java" afterPath="$PROJECT_DIR$/src/sample/model/MySql.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/model/SystemInfo.java" afterPath="$PROJECT_DIR$/src/sample/model/SystemInfo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/model/WriteFile.java" afterPath="$PROJECT_DIR$/src/sample/model/WriteFile.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -74,115 +96,177 @@
     <favorites_list name="JavaFxApplication" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SettingController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/controller/SettingController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5376">
-              <caret line="240" column="26" selection-start-line="240" selection-start-column="26" selection-end-line="240" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/controller/Controller.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2304">
-              <caret line="113" column="0" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WriteFile.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/model/WriteFile.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="11" column="15" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MakeXml.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/sample/model/MakeXml.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="654">
-              <caret line="89" column="38" selection-start-line="89" selection-start-column="38" selection-end-line="89" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MyException.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/model/MyException.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="28" />
-              <folding>
-                <element signature="e#167#168#0" expanded="true" />
-                <element signature="e#204#205#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InformationReader.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/model/InformationReader.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="140" column="34" selection-start-line="140" selection-start-column="34" selection-end-line="140" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MySql.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/model/MySql.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="24">
-              <caret line="71" column="48" selection-start-line="71" selection-start-column="48" selection-end-line="71" selection-end-column="48" />
-              <folding>
-                <element signature="e#5335#5364#0" expanded="false" />
-                <marker date="1481203899000" expanded="true" signature="2190:2246" ph="INSERT INTO movies... " />
-                <marker date="1481203899000" expanded="true" signature="3476:3603" ph="INSERT INTO actors... " />
-                <marker date="1481203899000" expanded="true" signature="3521:3603" ph="SELECT ?,?,?... DUAL" />
-                <marker date="1481203899000" expanded="true" signature="3563:3601" ph="SELECT code actors" />
-                <marker date="1481203899000" expanded="true" signature="4007:4078" ph="INSERT INTO relrationship_genre... " />
-                <marker date="1481203899000" expanded="true" signature="4359:4446" ph="INSERT INTO relrationship_actor... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SystemInfo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/model/SystemInfo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="23" column="37" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GetPageInfo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/model/GetPageInfo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1560">
-              <caret line="71" column="43" selection-start-line="71" selection-start-column="43" selection-end-line="71" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.46458334">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="CalculateModel.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/sample/model/CalculateModel.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="331">
+                  <caret line="181" column="10" selection-start-line="181" selection-start-column="10" selection-end-line="181" selection-end-column="10" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Actor.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/sample/model/Actor.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="240">
+                  <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="RootThread.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/sample/model/RootThread.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="81">
+                  <caret line="89" column="77" selection-start-line="89" selection-start-column="77" selection-end-line="89" selection-end-column="77" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="CalculateModelTest.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Test/sample/model/CalculateModelTest.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="336">
+                  <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="SystemInfo.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/sample/model/SystemInfo.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="561">
+                  <caret line="163" column="10" selection-start-line="163" selection-start-column="10" selection-end-line="163" selection-end-column="10" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#4147#4148#0" expanded="true" />
+                    <element signature="e#4189#4190#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="WriteFile.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/sample/model/WriteFile.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="192">
+                  <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="MakeXml.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/sample/model/MakeXml.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="408">
+                  <caret line="21" column="31" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="FileOutputStream.java" pinned="false" current-in-tab="false">
+            <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/src.zip!/java/io/FileOutputStream.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="3288">
+                  <caret line="161" column="0" selection-start-line="161" selection-start-column="0" selection-end-line="161" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#0#15880#0" expanded="false" />
+                    <element signature="imports" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="MySql.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/sample/model/MySql.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1800">
+                  <caret line="78" column="60" selection-start-line="78" selection-start-column="60" selection-end-line="78" selection-end-column="60" />
+                  <folding>
+                    <element signature="e#5314#5343#0" expanded="false" />
+                    <marker date="1482134733000" expanded="true" signature="2169:2225" ph="INSERT INTO movies... " />
+                    <marker date="1482134733000" expanded="true" signature="3455:3582" ph="INSERT INTO actors... " />
+                    <marker date="1482134733000" expanded="true" signature="3500:3582" ph="SELECT ?,?,?... DUAL" />
+                    <marker date="1482134733000" expanded="true" signature="3542:3580" ph="SELECT code actors" />
+                    <marker date="1482134733000" expanded="true" signature="3986:4057" ph="INSERT INTO relrationship_genre... " />
+                    <marker date="1482134733000" expanded="true" signature="4338:4425" ph="INSERT INTO relrationship_actor... " />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="MyException.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/sample/model/MyException.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="168">
+                  <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="28" />
+                  <folding>
+                    <element signature="e#167#168#0" expanded="true" />
+                    <element signature="e#204#205#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="Movie.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/sample/model/Movie.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-62">
+                  <caret line="79" column="24" selection-start-line="79" selection-start-column="16" selection-end-line="79" selection-end-column="24" />
+                  <folding>
+                    <element signature="e#1152#1153#0" expanded="true" />
+                    <element signature="e#1180#1181#0" expanded="true" />
+                    <element signature="e#1529#1530#0" expanded="true" />
+                    <element signature="e#1566#1567#0" expanded="true" />
+                    <element signature="e#2082#2083#0" expanded="true" />
+                    <element signature="e#2116#2117#0" expanded="true" />
+                    <element signature="e#2170#2171#0" expanded="true" />
+                    <element signature="e#2216#2217#0" expanded="true" />
+                    <element signature="e#2256#2257#0" expanded="true" />
+                    <element signature="e#2294#2295#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="InformationParser.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/sample/model/InformationParser.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="336">
+                  <caret line="18" column="28" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
+                  <folding>
+                    <element signature="e#279#288#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Singleton" />
+        <option value="JUnit3 Test Class" />
         <option value="Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -220,7 +304,7 @@
         <option value="$PROJECT_DIR$/src/sample/model/calCulateModel.java" />
         <option value="$PROJECT_DIR$/../last.xml" />
         <option value="$PROJECT_DIR$/src/sample/view/ㅁ.fxml" />
-        <option value="$USER_HOME$/Desktop/adfa.fxml" />
+        <option value="$PROJECT_DIR$/../adfa.fxml" />
         <option value="$PROJECT_DIR$/src/sample/model/CalCulateModel.java" />
         <option value="$PROJECT_DIR$/src/sample/model/CalculateMoel.java" />
         <option value="$PROJECT_DIR$/src/sample/view/sample.fxml" />
@@ -228,20 +312,30 @@
         <option value="$PROJECT_DIR$/src/sample/view/info.fxml" />
         <option value="$PROJECT_DIR$/src/sample/model/InformationReader.java" />
         <option value="$PROJECT_DIR$/src/sample/model/WriteFile.java" />
-        <option value="$PROJECT_DIR$/src/sample/model/MySql.java" />
         <option value="$PROJECT_DIR$/src/sample/model/MyException.java" />
         <option value="$PROJECT_DIR$/res/jsoup-1.8.2.jar!/org/jsoup/Connection.class" />
-        <option value="$PROJECT_DIR$/src/sample/model/GetPageNum.java" />
         <option value="$PROJECT_DIR$/src/sample/view/setting.fxml" />
         <option value="$PROJECT_DIR$/src/sample/Main.java" />
         <option value="$PROJECT_DIR$/src/sample/controller/SettingController.java" />
-        <option value="$PROJECT_DIR$/src/sample/model/Actor.java" />
-        <option value="$PROJECT_DIR$/src/sample/model/CalculateModel.java" />
-        <option value="$PROJECT_DIR$/src/sample/model/GetPageInfo.java" />
-        <option value="$PROJECT_DIR$/src/sample/model/SystemInfo.java" />
-        <option value="$PROJECT_DIR$/src/sample/controller/Controller.java" />
         <option value="$PROJECT_DIR$/src/sample/model/MakeCsv.java" />
+        <option value="$PROJECT_DIR$/src/sample/model/ㅊrawler.java" />
+        <option value="$PROJECT_DIR$/src/sample/model/GetPageNum.java" />
+        <option value="$PROJECT_DIR$/src/sample/model/GetPageInfoTest.groovy" />
+        <option value="$PROJECT_DIR$/src/sample/controller/Controller.java" />
+        <option value="$PROJECT_DIR$/Test/sample/model/GetPageInfoTest.java" />
+        <option value="$PROJECT_DIR$/src/sample/model/Crawler.java" />
+        <option value="$PROJECT_DIR$/Test/sample/model/CrawlerTest.java" />
+        <option value="$PROJECT_DIR$/src/sample/model/SystemInfo.java" />
+        <option value="$PROJECT_DIR$/src/sample/model/GetPageInfo.java" />
+        <option value="$PROJECT_DIR$/src/sample/model/RootThread.java" />
+        <option value="$PROJECT_DIR$/src/test/sample/model/CalculateModelTest.java" />
+        <option value="$PROJECT_DIR$/Test/sample/model/CalculateModelTest.java" />
+        <option value="$PROJECT_DIR$/src/sample/model/MySql.java" />
         <option value="$PROJECT_DIR$/src/sample/model/MakeXml.java" />
+        <option value="$PROJECT_DIR$/src/sample/model/InformationParser.java" />
+        <option value="$PROJECT_DIR$/src/sample/model/Actor.java" />
+        <option value="$PROJECT_DIR$/src/sample/model/Movie.java" />
+        <option value="$PROJECT_DIR$/src/sample/model/CalculateModel.java" />
       </list>
     </option>
   </component>
@@ -261,8 +355,8 @@
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
-    <option name="width" value="1440" />
-    <option name="height" value="823" />
+    <option name="width" value="1920" />
+    <option name="height" value="991" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -356,126 +450,28 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="parser_gui" />
+              <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt; 1.8 &gt;" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="parser_gui" />
+              <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="parser_gui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="parser_gui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="parser_gui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sample" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="parser_gui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="parser_gui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sample" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="parser_gui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="parser_gui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sample" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="parser_gui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="parser_gui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="parser_gui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="parser_gui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="out" />
+              <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -491,7 +487,7 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.20344828" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -501,13 +497,22 @@
     <property name="GenerateAntBuildDialog.backupFiles" value="true" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="parser_gui" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/src/test" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\ParkCheolHo\Documents\parser_gui\src\sample\controller" />
-      <recent name="C:\Users\ParkCheolHo\Documents\parser_gui\src\sample\view" />
-      <recent name="C:\Users\ParkCheolHo\Documents\parser_gui\src\sample\model" />
-      <recent name="C:\Users\ParkCheolHo\Documents\parser_gui\res" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="sample.model" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="sample.model" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+      <recent name="junit.framework.TestCase" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\WhiteNight\Documents\Projects\parser_gui\src\sample\view" />
@@ -518,11 +523,118 @@
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="sample.model" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="sample.model" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ParkCheolHo\Documents\parser_gui\src\sample\controller" />
+      <recent name="C:\Users\ParkCheolHo\Documents\parser_gui\src\sample\view" />
+      <recent name="C:\Users\ParkCheolHo\Documents\parser_gui\src\sample\model" />
+      <recent name="C:\Users\ParkCheolHo\Documents\parser_gui\res" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.CalculateModelTest">
+    <configuration default="false" name="GetPageInfoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="sample.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="parser_gui" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="sample.model" />
+      <option name="MAIN_CLASS_NAME" value="sample.model.GetPageInfoTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="GetPageInfoTest.call" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="sample.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="parser_gui" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="sample.model" />
+      <option name="MAIN_CLASS_NAME" value="sample.model.GetPageInfoTest" />
+      <option name="METHOD_NAME" value="call" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="CrawlerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="sample.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="parser_gui" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="sample.model" />
+      <option name="MAIN_CLASS_NAME" value="sample.model.CrawlerTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="CalculateModelTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="sample.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="parser_gui" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="sample.model" />
+      <option name="MAIN_CLASS_NAME" value="sample.model.CalculateModelTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
@@ -985,9 +1097,21 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <list size="1">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Application.Main" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.GetPageInfoTest" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.GetPageInfoTest.call" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.CrawlerTest" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.CalculateModelTest" />
     </list>
+    <recent_temporary>
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="JUnit.CalculateModelTest" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.CrawlerTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.GetPageInfoTest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.GetPageInfoTest.call" />
+      </list>
+    </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
       <Port>5050</Port>
@@ -1125,12 +1249,58 @@
       <workItem from="1481203956051" duration="34000" />
       <workItem from="1481204002745" duration="549000" />
       <workItem from="1481204711011" duration="679000" />
-      <workItem from="1481282925127" duration="355000" />
+      <workItem from="1481282925127" duration="924000" />
+      <workItem from="1481524304365" duration="4524000" />
+      <workItem from="1481546233896" duration="11000" />
+      <workItem from="1481546319070" duration="24000" />
+      <workItem from="1481546430647" duration="10000" />
+      <workItem from="1481546445485" duration="1000" />
+      <workItem from="1481547255464" duration="1000" />
+      <workItem from="1481599508377" duration="378000" />
+      <workItem from="1481610847643" duration="1349000" />
+      <workItem from="1481631255233" duration="3431000" />
+      <workItem from="1481685676117" duration="2725000" />
+      <workItem from="1481794196844" duration="4012000" />
+      <workItem from="1481975204477" duration="8928000" />
+      <workItem from="1482155843556" duration="1031000" />
+      <workItem from="1482196742361" duration="1690000" />
     </task>
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="CalculateModelTest - 2016.12.19 at 15h 22m 26s.xml">
+      <configuration name="CalculateModelTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CalculateModelTest - 2016.12.19 at 17h 05m 40s.xml">
+      <configuration name="CalculateModelTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CalculateModelTest - 2016.12.19 at 17h 06m 01s.xml">
+      <configuration name="CalculateModelTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CalculateModelTest - 2016.12.19 at 17h 06m 26s.xml">
+      <configuration name="CalculateModelTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CalculateModelTest - 2016.12.19 at 17h 06m 27s.xml">
+      <configuration name="CalculateModelTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CalculateModelTest - 2016.12.19 at 17h 07m 34s.xml">
+      <configuration name="CalculateModelTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CalculateModelTest - 2016.12.20 at 11h 13m 31s.xml">
+      <configuration name="CalculateModelTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CalculateModelTest - 2016.12.20 at 11h 29m 13s.xml">
+      <configuration name="CalculateModelTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CalculateModelTest - 2016.12.20 at 11h 29m 19s.xml">
+      <configuration name="CalculateModelTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CalculateModelTest - 2016.12.20 at 11h 29m 35s.xml">
+      <configuration name="CalculateModelTest" configurationId="JUnit" />
+    </history-entry>
+  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="665200000" />
+    <option name="totallyTimeSpent" value="693884000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -1142,28 +1312,28 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="823" extended-state="6" />
+    <frame x="0" y="23" width="1920" height="991" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3164557" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31848854" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33719432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.397878" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28199565" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34177214" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26580647" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20277777" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15208334" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39825898" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39811066" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299748" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1177,7 +1347,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29877216" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2968961" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1193,14 +1363,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-field">
-          <url>file://$PROJECT_DIR$/src/sample/model/InformationReader.java</url>
-          <line>11</line>
-          <properties field="genre" class="sample.model.InformationReader" />
-          <option name="timeStamp" value="205" />
-        </line-breakpoint>
-      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
@@ -1213,34 +1375,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_77/javafx-src.zip!/javafx/scene/control/Labeled.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_77/javafx-src.zip!/javafx/scene/control/Button.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_77/javafx-src.zip!/javafx/scene/control/ButtonBase.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_77/javafx-src.zip!/javafx/scene/control/ProgressIndicator.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_77/javafx-src.zip!/javafx/beans/property/ReadOnlyProperty.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_77/javafx-src.zip!/javafx/beans/value/WritableObjectValue.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_77/javafx-src.zip!/javafx/beans/property/Property.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_77/javafx-src.zip!/javafx/beans/property/ReadOnlyObjectProperty.java" />
-    <entry file="uml://JAVA/sample.controller.Controller">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>sample.controller.Controller</OriginalElement>
-          <nodes>
-            <node x="" y="">javafx.fxml.Initializable</node>
-            <node x="" y="">sample.controller.Controller</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="46.0" y="55.0" />
-          <SelectedNodes />
-          <Categories />
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_77/javafx-src.zip!/javafx/beans/property/SimpleObjectProperty.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_77/javafx-src.zip!/javafx/beans/property/ObjectProperty.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_77/javafx-src.zip!/javafx/beans/property/ObjectPropertyBase.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_77/javafx-src.zip!/com/sun/javafx/binding/ExpressionHelper.java" />
@@ -1270,13 +1404,6 @@
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_77/javafx-src.zip!/javafx/application/Platform.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_77/src.zip!/java/lang/System.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_77/javafx-src.zip!/javafx/stage/Window.java" />
-    <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="53" column="22" selection-start-line="53" selection-start-column="22" selection-end-line="53" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_77/javafx-src.zip!/javafx/fxml/Initializable.java" />
     <entry file="file://$PROJECT_DIR$/src/sample/view/main.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
@@ -1289,33 +1416,11 @@
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_77/javafx-src.zip!/javafx/stage/Stage.java" />
-    <entry file="file://$PROJECT_DIR$/src/sample/model/Actor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="4" column="9" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_77/javafx-src.zip!/javafx/concurrent/Worker.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_77/javafx-src.zip!/javafx/concurrent/Task.java" />
     <entry file="file://$PROJECT_DIR$/img/screenshot/1.png">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/model/CalculateModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4128">
-          <caret line="186" column="33" selection-start-line="186" selection-start-column="33" selection-end-line="186" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/model/GetPageNum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="70" selection-start-line="24" selection-start-column="70" selection-end-line="24" selection-end-column="70" />
-        </state>
       </provider>
     </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/src.zip!/java/lang/Thread.java">
@@ -1325,51 +1430,100 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/model/GetPageInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1560">
-          <caret line="71" column="43" selection-start-line="71" selection-start-column="43" selection-end-line="71" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/controller/SettingController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5376">
           <caret line="240" column="26" selection-start-line="240" selection-start-column="26" selection-end-line="240" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/model/MakeCsv.java" />
+    <entry file="file://$PROJECT_DIR$/Actor.uml">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>sample.model.Actor</OriginalElement>
+          <nodes>
+            <node x="0.0" y="368.0">sample.model.MakeXml</node>
+            <node x="709.0" y="322.0">sample.model.MySql</node>
+            <node x="1116.0" y="0.0">sample.model.SystemInfo</node>
+            <node x="212.0" y="403.0">sample.model.Actor</node>
+            <node x="373.33333333333337" y="1459.0">sample.model.GetPageNum</node>
+            <node x="1740.326388888889" y="1252.5">sample.model.MyException</node>
+            <node x="898.25" y="919.0">sample.controller.SettingController</node>
+            <node x="261.2222222222224" y="930.0">sample.model.CalculateModel</node>
+            <node x="417.0" y="334.0">sample.model.InformationReader</node>
+            <node x="1521.3166666666666" y="1402.0">sample.controller.Controller</node>
+            <node x="432.5" y="1206.0">sample.model.GetPageInfo</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="0.48471882640586794" x="211.0" y="596.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Inner Classes</Category>
+            <Category>Constructors</Category>
+            <Category>Methods</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1152">
+          <caret line="53" column="22" selection-start-line="53" selection-start-column="22" selection-end-line="53" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/model/GetPageNum.java" />
+    <entry file="file://$PROJECT_DIR$/Test/GetPageInfoTest.groovy" />
+    <entry file="file://$PROJECT_DIR$/Test/sample/model/CrawlerTest.java" />
+    <entry file="file://$PROJECT_DIR$/Test/sample/model/GetPageInfoTest.java" />
+    <entry file="file://$PROJECT_DIR$/src/sample/model/Crawler.java" />
     <entry file="file://$PROJECT_DIR$/src/sample/controller/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2304">
-          <caret line="113" column="0" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="1560">
+          <caret line="82" column="0" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/model/WriteFile.java">
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/src.zip!/java/lang/String.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="11" column="15" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="15" />
-          <folding />
+        <state relative-caret-position="225">
+          <caret line="110" column="19" selection-start-line="110" selection-start-column="19" selection-end-line="110" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/model/SystemInfo.java">
+    <entry file="file://$PROJECT_DIR$/src/test/sample/model/CalculateModelTest.java" />
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/src.zip!/java/io/FileOutputStream.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="23" column="37" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="37" />
-          <folding />
+        <state relative-caret-position="3288">
+          <caret line="161" column="0" selection-start-line="161" selection-start-column="0" selection-end-line="161" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#15880#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/model/MakeCsv.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/model/MySql.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
-          <folding />
+        <state relative-caret-position="1800">
+          <caret line="78" column="60" selection-start-line="78" selection-start-column="60" selection-end-line="78" selection-end-column="60" />
+          <folding>
+            <element signature="e#5314#5343#0" expanded="false" />
+            <marker date="1482134733000" expanded="true" signature="2169:2225" ph="INSERT INTO movies... " />
+            <marker date="1482134733000" expanded="true" signature="3455:3582" ph="INSERT INTO actors... " />
+            <marker date="1482134733000" expanded="true" signature="3500:3582" ph="SELECT ?,?,?... DUAL" />
+            <marker date="1482134733000" expanded="true" signature="3542:3580" ph="SELECT code actors" />
+            <marker date="1482134733000" expanded="true" signature="3986:4057" ph="INSERT INTO relrationship_genre... " />
+            <marker date="1482134733000" expanded="true" signature="4338:4425" ph="INSERT INTO relrationship_actor... " />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1384,35 +1538,94 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/model/MySql.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/model/MakeXml.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="71" column="48" selection-start-line="71" selection-start-column="48" selection-end-line="71" selection-end-column="48" />
+        <state relative-caret-position="408">
+          <caret line="21" column="31" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/model/WriteFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/model/SystemInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="163" column="10" selection-start-line="163" selection-start-column="10" selection-end-line="163" selection-end-column="10" />
           <folding>
-            <element signature="e#5335#5364#0" expanded="false" />
-            <marker date="1481203899000" expanded="true" signature="2190:2246" ph="INSERT INTO movies... " />
-            <marker date="1481203899000" expanded="true" signature="3476:3603" ph="INSERT INTO actors... " />
-            <marker date="1481203899000" expanded="true" signature="3521:3603" ph="SELECT ?,?,?... DUAL" />
-            <marker date="1481203899000" expanded="true" signature="3563:3601" ph="SELECT code actors" />
-            <marker date="1481203899000" expanded="true" signature="4007:4078" ph="INSERT INTO relrationship_genre... " />
-            <marker date="1481203899000" expanded="true" signature="4359:4446" ph="INSERT INTO relrationship_actor... " />
+            <element signature="imports" expanded="true" />
+            <element signature="e#4147#4148#0" expanded="true" />
+            <element signature="e#4189#4190#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/model/InformationReader.java">
+    <entry file="file://$PROJECT_DIR$/Test/sample/model/CalculateModelTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="140" column="34" selection-start-line="140" selection-start-column="34" selection-end-line="140" selection-end-column="34" />
+        <state relative-caret-position="336">
+          <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/model/MakeXml.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/model/RootThread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="654">
-          <caret line="89" column="38" selection-start-line="89" selection-start-column="38" selection-end-line="89" selection-end-column="38" />
+        <state relative-caret-position="81">
+          <caret line="89" column="77" selection-start-line="89" selection-start-column="77" selection-end-line="89" selection-end-column="77" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/model/Actor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/model/Movie.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-62">
+          <caret line="79" column="24" selection-start-line="79" selection-start-column="16" selection-end-line="79" selection-end-column="24" />
+          <folding>
+            <element signature="e#1152#1153#0" expanded="true" />
+            <element signature="e#1180#1181#0" expanded="true" />
+            <element signature="e#1529#1530#0" expanded="true" />
+            <element signature="e#1566#1567#0" expanded="true" />
+            <element signature="e#2082#2083#0" expanded="true" />
+            <element signature="e#2116#2117#0" expanded="true" />
+            <element signature="e#2170#2171#0" expanded="true" />
+            <element signature="e#2216#2217#0" expanded="true" />
+            <element signature="e#2256#2257#0" expanded="true" />
+            <element signature="e#2294#2295#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/model/InformationParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="18" column="28" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
+          <folding>
+            <element signature="e#279#288#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/model/CalculateModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="181" column="10" selection-start-line="181" selection-start-column="10" selection-end-line="181" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1425,8 +1638,8 @@
             <show-content>
               <type id="artifact" />
               <type id="library" />
-              <type id="javaee-facet-resources" />
               <type id="jpa-descriptors" />
+              <type id="javaee-facet-resources" />
             </show-content>
           </artifact-editor>
           <last-edited>parser_gui:jar</last-edited>

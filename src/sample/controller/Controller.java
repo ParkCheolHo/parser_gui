@@ -62,7 +62,7 @@ public class Controller implements Initializable {
                     throw new MyException();
                 }
             }else{
-                if (systeminfo.filpathempty()) {
+                if (systeminfo.filPathEmpty()) {
                     showAlert("ERROR!", "시스템 에러!", "xml파일 저장 경로를 확인하세요");
                     throw new MyException();
                 }
@@ -75,14 +75,15 @@ public class Controller implements Initializable {
             }
             startbtn.getScene().setCursor(Cursor.WAIT);
             stopbtn.setDisable(false);
-            Task task = new GetPageInfo(systeminfo.getYear());
+            Task task = new RootThread(systeminfo.getYear());
             status.progressProperty().bind(task.progressProperty()); // progressbar 셋업 //자식 task 에서 updateProgress로 업데이트 가능
             startbtn.disableProperty().bind(task.runningProperty());
             systeminfo.addLog(systeminfo.getYear() + "년도 영화 크롤링을 시작합니다.");
             long start = System.currentTimeMillis(); // 시작시간
+
             task.stateProperty().addListener((ov, old_Status, new_State) -> {
                 if (new_State == Worker.State.SUCCEEDED) {
-                    SystemInfo.logger.info("GetPageInfo Task exit");
+                    SystemInfo.logger.info("RootThread Task exit");
                     long end = System.currentTimeMillis();  //종료시간
                     SystemInfo.logger.info((end - start) / 1000 + "초");
                     rootPane.getScene().setCursor(Cursor.DEFAULT);

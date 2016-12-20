@@ -22,8 +22,8 @@ public class SystemInfo {
 
     private String year = null;
     private ArrayList<Thread> threads = new ArrayList<>();
-    private File xmlfile = null;
-    private File posterfile = null;
+    private File xmlFile = null;
+    private File posterFile = null;
     private ScrollPane pane;
     private String log;
     private Label label;
@@ -35,7 +35,6 @@ public class SystemInfo {
     private String host = "jdbc:mysql://localhost/";
     private String db = null;
     private String id = "root";
-    private ArrayList<String> databaseList;
     private String password;
     void removeLog() {
         if(log!=null){
@@ -71,49 +70,40 @@ public class SystemInfo {
     public void setPane(ScrollPane pane) {
         this.pane = pane;
     }
-    public void addTheadlist(Thread value) {
+    void addThreadList(Thread value) {
         this.threads.add(value);
     }
-    public void clearTheadlist(Thread value) {
+    void clearThreadList() {
         this.threads.clear();
     }
     public File getFilePath() {
-        return xmlfile;
+        return xmlFile;
     }
-    public boolean filpathempty() {
-        if (xmlfile == null)
-            return true;
-        else
-            return false;
+    public boolean filPathEmpty() {
+        return xmlFile == null;
     }
     public boolean poster_file_path_empty(){
-        if(posterfile == null)
-            return true;
-        else
-            return false;
+        return posterFile == null;
     }
     public void setFilePath(File filepath) {
-        this.xmlfile = filepath;
+        this.xmlFile = filepath;
     }
     public ArrayList<Thread> getThreads() {
         return threads;
     }
-    public void startThread() {
+    void startThread() {
         threads.forEach(Thread::start);
     }
     public void setYear(String year) {
         this.year = year;
     }
     public boolean yearEmpty() {
-        if (year == null)
-            return true;
-        else
-            return false;
+        return year == null;
     }
     public String getYear() {
         return year;
     }
-    public void showLabel(double value) {
+    void showLabel(double value) {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
@@ -174,10 +164,10 @@ public class SystemInfo {
     public void setUsePoster(boolean usePoster) {
         this.usePoster = usePoster;
     }
-    public File getPosterfile() {
-        return posterfile;
+    public File getPosterFile() {
+        return posterFile;
     }
-    public void setPosterfile(File posterfile) {
-        this.posterfile = posterfile;
+    public void setPosterFile(File posterFile) {
+        this.posterFile = posterFile;
     }
 }

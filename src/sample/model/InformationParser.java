@@ -6,16 +6,15 @@ import java.util.ArrayList;
  * Created by ParkCheolHo on 2015-08-16
  *
  */
-class InformationReader {
+class InformationParser {
     //    private ArrayList<String> genre = new ArrayList<String>();
     private int country = 0;
     private ArrayList<Integer> genre = new ArrayList<Integer>();
     private ArrayList<String> genre_String = new ArrayList<>();
-    private int grade = 0;
     private String open_date = null;
     private String running_time = null;
 
-    void reader(String val) {
+    void read(String val) {
         if (val.length() > 4) {
             open_date = val;
         } else {
@@ -183,55 +182,39 @@ class InformationReader {
     }
     void eraseList() {
         country = 0;
-        grade = 0;
         genre.clear();
         genre_String.clear();
         running_time = null;
         open_date = null;
     }
-    int getGrade() {
-        return grade;
-    }
-    void setGrade(String val) {
+    int getGrade(String val) {
         switch (val) {
             case "":
-                this.grade = 0;
-                break;
+                return 0;
             case "전체 관람가":
-                this.grade = 1;
-                break;
+                return 1;
             case "12세 관람가":
-                this.grade = 2;
-                break;
+                return 2;
             case "15세 관람가":
-                this.grade = 3;
-                break;
+                return 3;
             case "청소년 관람불가":
-                this.grade = 4;
-                break;
+                return 4;
             case "G":
-                this.grade = 5;
-                break;
+                return 5;
             case "PG":
-                this.grade = 6;
-                break;
+                return 6;
             case "PG-13":
-                this.grade = 7;
-                break;
+                return  7;
             case "R":
-                this.grade = 8;
-                break;
+                return 8;
             case "NC-17":
-                this.grade = 9;
-                break;
+                return 9;
             case "X[NC-17]":
-                this.grade = 10;
-                break;
+                return 10;
             case "NR":
-                this.grade = 11;
-                break;
+                return 11;
         }
-
+        return 0;
     }
     String getOpen_date() {
         return open_date;
