@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 /**
  * Created by ParkCheolHo on 2015-08-16
- *
  */
 class InformationParser {
     //    private ArrayList<String> genre = new ArrayList<String>();
@@ -39,7 +38,7 @@ class InformationParser {
                         break;
                     case 5:
                         genre.add(5);
-                        genre_String.add("로맨스");
+                        genre_String.add("멜로/로맨스");
                         break;
                     case 6:
                         genre.add(6);
@@ -168,25 +167,31 @@ class InformationParser {
             }
         }
     }
-    int[] GetGenreList() {
-        int[] result = new int[genre.size()];
-        int count = 0;
-        for (int val : genre) {
-            result[count] = val;
-            count++;
-        }
-        return result;
+
+//    int[] GetGenreList() {
+//        int[] result = new int[genre.size()];
+//        int count = 0;
+//        for (int val : genre) {
+//            result[count] = val;
+//            count++;
+//        }
+//        return result;
+//    }
+    ArrayList<Integer> getGenreList(){
+        return genre;
     }
     int getCountry() {
         return country;
     }
-    void eraseList() {
+
+    void clearAll() {
         country = 0;
         genre.clear();
         genre_String.clear();
         running_time = null;
         open_date = null;
     }
+
     int getGrade(String val) {
         switch (val) {
             case "":
@@ -204,7 +209,7 @@ class InformationParser {
             case "PG":
                 return 6;
             case "PG-13":
-                return  7;
+                return 7;
             case "R":
                 return 8;
             case "NC-17":
@@ -216,12 +221,15 @@ class InformationParser {
         }
         return 0;
     }
+
     String getOpen_date() {
         return open_date;
     }
+
     String getRunning_time() {
         return running_time;
     }
+
     void setRunning_time(String running_time) {
         this.running_time = running_time;
     }

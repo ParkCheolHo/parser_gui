@@ -26,11 +26,11 @@ class CalculateModel extends Task {
     private int start = 0;
     private int end = 0;
     private RootThread getpageinfo;
-    private WriteFile writer;
+    private FileWriter writer;
     private SystemInfo systeminfo;
 
     //생성자
-    CalculateModel(String year, int start, int end, RootThread rootThread, WriteFile writer) {
+    CalculateModel(String year, int start, int end, RootThread rootThread, FileWriter writer) {
         sb.append(year);
         this.start = start;
         this.end = end;
@@ -48,7 +48,7 @@ class CalculateModel extends Task {
 //        InformationParser read = new InformationParser();
 //        ArrayList<Actor> actors = new ArrayList<>();
 //        ArrayList<String> title = new ArrayList<>();
-//        WriteFile mysql = null;
+//        FileWriter mysql = null;
 //        if () {
 //            mysql
 //            mysql.start(
@@ -157,52 +157,43 @@ class CalculateModel extends Task {
 //
 //
 //
-//    private void getImageData(String val, String path, String index) {
-//        try {
-//            URL url = new URL(val);
-//            File file = new File(systeminfo.getPosterFile().getPath() + path + index + ".jpg");
-//            if (!file.exists()) {
-//                InputStream in = url.openStream();
-//                OutputStream out = new BufferedOutputStream(new FileOutputStream(systeminfo.getPosterFile().getPath() + path + index + ".jpg"));
-//                for (int b; (b = in.read()) != -1; ) {
-//                    out.write(b);
-//                }
-//                in.close();
-//                out.close();
-//            }
-//        } catch (IOException e) {
-//            SystemInfo.logger.info("이미지 저장 에러 : " + index);
-//        }
-//    }
+
     void getMovieData(String movieIndex, InformationParser parser) throws InterruptedException {
         Movie movie = new Movie(movieIndex);
         Document doc = null;
+
         try {
             String normal = "http://movie.naver.com/movie/bi/mi/basic.nhn?code=";
             doc = Jsoup.connect(normal + movieIndex).get();
         } catch (IOException e) {
             SystemInfo.logger.info(Thread.currentThread().getName() + " " + e.getMessage() + "/" + movieIndex);
         }
+
         Elements movieInfoElement = doc.select("div.mv_info");
+        Elements genres = movieInfoElement.select("dl.info_spec > dd:nth-child(2) > p > span");
+        Elements peoples = doc.select("div.people > ul > li");
+
         movie.setTitle(movieInfoElement.select("h3 > a:nth-child(1)").text());
         movie.setEngTitle(movieInfoElement.select("strong.h_movie2").text().split(",")[0]);
         movie.setSummary(doc.select("div.story_area > p").text());
-        movie.setGrade(doc.select("#content > div.article > div.mv_info_area > div.mv_info > dl > dd:nth-child(8) > p >  a:nth-child(1)").text());
-        Elements genres = movieInfoElement.select("dl.info_spec > dd:nth-child(2) > p > span");
-        String poster = doc.select("#content > div.article > div.mv_info_area > div.poster > a > img").attr("src");
-        Elements peoples = doc.select("div.people > ul > li");
+        movie.setGrade(parser.getGrade(doc.select("#content > div.article > div.mv_info_area > div.mv_info > dl > dd:nth-child(8) > p >  a:nth-child(1)").text()));
+        movie.setImgAddress(doc.select("#content > div.article > div.mv_info_area > div.poster > a > img").attr("src"));
 
         for (Element i : genres) {
             Elements aTag = i.select("a");
             if (aTag.hasText()) {
                 for (Element t : aTag) {
                     String genre = getIndex(t.attr("href"));
-                    movie.addGenre(genre);
+                    parser.read(genre);
                 }
             } else {
                 movie.setRunningTime(i.text());
             }
+            movie.setGenre(parser.getGenreList());
+            movie.setCountry(parser.getCountry());
+            movie.setOpeningDate(parser.getOpen_date());
         }
+
         for (Element people : peoples) {
             int index = 0;
             try {
@@ -217,7 +208,16 @@ class CalculateModel extends Task {
                 img = null;
             movie.addActor(new Actor(index, actorName, img, people.select("dl.staff > dt").text()));
         }
+
+        if (systeminfo.isUsePoster()) {
+            getImageData(movie.getImgAddress(), "/Poster/", movie.getMovieIndex());
+            for (Actor i : movie.getActors()) {
+                if (i.getImg() != null)
+                    getImageData(i.getImg(), "/Actors/", String.valueOf(i.getIndex()));
+            }
+        }
         movie.PrintAll();
+        System.out.println(checkAdult(movie.getGenre(),movie.getGrade()));
     }
 
     //포스터의 세로 픽셀을 구하는 메소드
@@ -266,6 +266,24 @@ class CalculateModel extends Task {
         return results[1];
     }
 
+    private void getImageData(String imgUrl, String path, String index) {
+        try {
+            URL url = new URL(imgUrl);
+            File file = new File(systeminfo.getPosterFile().getPath() + path + index + ".jpg");
+            if (!file.exists()) {
+                InputStream in = url.openStream();
+                OutputStream out = new BufferedOutputStream(new FileOutputStream(systeminfo.getPosterFile().getPath() + path + index + ".jpg"));
+                for (int b; (b = in.read()) != -1; ) {
+                    out.write(b);
+                }
+                in.close();
+                out.close();
+            }
+        } catch (IOException e) {
+            SystemInfo.logger.info("이미지 저장 에러 : " + index);
+        }
+    }
+
     @Override
     protected Object call() throws Exception {
         ArrayList<String> movies = new ArrayList<>();
@@ -290,6 +308,10 @@ class CalculateModel extends Task {
         }
         SystemInfo.logger.info(Thread.currentThread().getName() + " is done!");
         return null;
+    }
+    // 성인영화인지 판단하는 메소
+    private boolean checkAdult(ArrayList<Integer> genres, int grade){
+        return  ( genres.size() == 0 || ( genres.size() <= 2 && genres.size() >= 1) ) && (genres.get(0) == 5 || genres.get(0) == 1) && grade == 4;
     }
 }
 

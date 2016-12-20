@@ -8,7 +8,7 @@ import java.util.GregorianCalendar;
 /**
  * Created by WhiteNight on 2016-03-28.
  */
-public class MySql implements WriteFile{
+public class MySql implements FileWriter {
 
     private Connection conn = null;
     private ArrayList<String> databaseList;
@@ -82,16 +82,16 @@ public class MySql implements WriteFile{
 
         for(int i=0; i<actors.size(); i++){
             PreparedStatement astmt = conn.prepareStatement("INSERT INTO actors (code, name, has_picture) SELECT ?,?,? FROM DUAL WHERE NOT EXISTS  (SELECT code FROM actors WHERE code = ? )");
-            astmt.setInt(1, actors.get(i).index);
-            astmt.setString(2, actors.get(i).name);
-            if(actors.get(i).img != null)
+            astmt.setInt(1, actors.get(i).getIndex());
+            astmt.setString(2, actors.get(i).getName());
+            if(actors.get(i).getImg() != null)
                 astmt.setInt(3, 1);
             else
                 astmt.setInt(3, 0);
-            astmt.setInt(4, actors.get(i).index);
+            astmt.setInt(4, actors.get(i).getIndex());
             astmt.execute();
         }
-        for(int value : reader.GetGenreList()){
+        for(int value : reader.getGenreList()){
             String  relSql = "INSERT INTO relrationship_genre(movie_index, genre_index) VALUES (?, ?)";
             PreparedStatement serstmt = conn.prepareStatement(relSql);
             serstmt.setInt(1, Integer.parseInt(index));
@@ -102,7 +102,7 @@ public class MySql implements WriteFile{
             String  bSql = "INSERT INTO relrationship_actor(movie_index, actors_index, option_index) VALUES (?,?,?)";
             PreparedStatement bstmt = conn.prepareStatement(bSql);
             bstmt.setInt(1,Integer.parseInt(index));
-            bstmt.setInt(2, actors.get(i).index);
+            bstmt.setInt(2, actors.get(i).getIndex());
             switch(title.get(i)){
                 case "감독" :
                     bstmt.setInt(3, 1);

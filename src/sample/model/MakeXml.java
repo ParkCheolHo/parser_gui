@@ -1,7 +1,6 @@
 package sample.model;
 
 
-import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 import java.io.*;
@@ -11,7 +10,7 @@ import java.util.ArrayList;
  * Created by ParkCheolHo on 2016-02-27.
  * Xml파일 관련 클래스
  */
-class MakeXml implements WriteFile {
+class MakeXml implements FileWriter {
 
     private OutputStream outputStream;
     private XMLStreamWriter out;
@@ -57,7 +56,7 @@ class MakeXml implements WriteFile {
                 out.writeEndElement();
 
                 out.writeStartElement("genres");
-                for(int value : reader.GetGenreList()){
+                for(int value : reader.getGenreList()){
                     out.writeStartElement("genre");
                     out.writeCharacters(String.valueOf(value));
                     out.writeEndElement();
@@ -71,7 +70,7 @@ class MakeXml implements WriteFile {
                 out.writeStartElement("Appear");
                     for(int i =0;i<actors.size();i++){
                         out.writeStartElement(title.get(i));
-                        out.writeCharacters(actors.get(i).name);
+                        out.writeCharacters(actors.get(i).getName());
                         out.writeEndElement();
                     }
                 out.writeEndElement();

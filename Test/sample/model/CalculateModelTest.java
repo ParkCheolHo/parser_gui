@@ -11,7 +11,7 @@ public class CalculateModelTest {
     @Test
     public void GetMovieDataTest () throws InterruptedException {
         CalculateModel cal = new CalculateModel("2015" ,1, 10 , new RootThread("2015"), new MakeXml(null));
-        cal.getMovieData("132933", new InformationParser());
+        cal.getMovieData("125709", new InformationParser());
     }
 
 }

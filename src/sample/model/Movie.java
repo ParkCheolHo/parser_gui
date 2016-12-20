@@ -6,14 +6,17 @@ import java.util.ArrayList;
  * Created by beakya on 2016. 12. 19..
  */
 public class Movie {
+    private int grade;
+    private int country;
+    private String imgAddress;
+    private String openingDate = null;
     private String movieIndex;
     private String title;
     private String engTitle;
     private String summary;
-    private String grade;
     private String runningTime;
     private ArrayList<Actor> actors;
-    private ArrayList<String> genre;
+    private ArrayList<Integer> genre;
     public Movie(String movieIndex){
         actors = new ArrayList<>();
         genre = new ArrayList<>();
@@ -52,11 +55,11 @@ public class Movie {
         this.summary = summary;
     }
 
-    public String getGrade() {
+    public int getGrade() {
         return grade;
     }
 
-    public void setGrade(String grade) {
+    public void setGrade(int grade) {
         this.grade = grade;
     }
 
@@ -68,23 +71,14 @@ public class Movie {
         this.actors = actors;
     }
 
-    public ArrayList<String> getGenre() {
+    public ArrayList<Integer> getGenre() {
         return genre;
     }
-    public void addGenre(String genre){
+    public void addGenre(Integer genre){
         this.genre.add(genre);
     }
-    public void setGenre(ArrayList<String> genre) {
+    public void setGenre(ArrayList<Integer> genre) {
         this.genre = genre;
-    }
-    public void PrintAll(){
-        System.out.println("movieIndex : " + movieIndex);
-        System.out.println("title : " + title);
-        System.out.println("engTitle : " + engTitle);
-        System.out.println("summary : " + summary);
-        System.out.println("grade : " + grade);
-        System.out.println("actors : " + actors);
-        System.out.println("genre : " + genre);
     }
 
     public String getRunningTime() {
@@ -98,4 +92,45 @@ public class Movie {
     public void addActor(Actor actor){
         this.actors.add(actor);
     }
+
+    public int getCountry() {
+        return country;
+    }
+
+    public void setCountry(int country) {
+        this.country = country;
+    }
+
+    public String getOpeningDate() {
+        return openingDate;
+    }
+
+    public void setOpeningDate(String openingDate) {
+        this.openingDate = openingDate;
+    }
+
+    public String getImgAddress() {
+        return imgAddress;
+    }
+
+    public void setImgAddress(String imgAddress) {
+        this.imgAddress = imgAddress;
+    }
+
+    public void PrintAll(){
+        System.out.println("movieIndex : " + movieIndex);
+        System.out.println("moviePosterAddress : " + getImgAddress());
+        System.out.println("title : " + title);
+        System.out.println("engTitle : " + engTitle);
+        System.out.println("summary : " + summary);
+        System.out.println("grade : " + grade);
+        System.out.println("genre : " + genre);
+        System.out.println("country : " + country);
+        System.out.println("running Time : " + runningTime);
+        System.out.println("opening Date = " + openingDate);
+        for(Actor actor : actors){
+            System.out.print( actor.getRule() + "// " + actor.getName() + " : ");
+        }
+    }
+
 }

@@ -34,7 +34,7 @@ public class RootThread extends Task {
     protected String call() throws XMLStreamException {
         //remove
         systeminfo.removeLog();
-        WriteFile makefile = null;
+        FileWriter makefile = null;
         if(!systeminfo.isUseDB()){
             makefile = new MakeXml(systeminfo.getFilePath());
             makefile.start(false);
