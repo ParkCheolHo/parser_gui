@@ -8,25 +8,8 @@
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/parser_gui/sample/model/WriteFile.class" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/sample/model/WriteFile.java" afterPath="$PROJECT_DIR$/src/sample/model/FileWriter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/parser_gui_jar/parser_gui.jar" afterPath="$PROJECT_DIR$/out/artifacts/parser_gui_jar/parser_gui.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/parser_gui/sample/model/Actor.class" afterPath="$PROJECT_DIR$/out/production/parser_gui/sample/model/Actor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/parser_gui/sample/model/CalCulateModel.class" afterPath="$PROJECT_DIR$/out/production/parser_gui/sample/model/CalCulateModel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/parser_gui/sample/model/InformationParser.class" afterPath="$PROJECT_DIR$/out/production/parser_gui/sample/model/InformationParser.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/parser_gui/sample/model/MakeXml.class" afterPath="$PROJECT_DIR$/out/production/parser_gui/sample/model/MakeXml.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/parser_gui/sample/model/Movie.class" afterPath="$PROJECT_DIR$/out/production/parser_gui/sample/model/Movie.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/parser_gui/sample/model/MySql.class" afterPath="$PROJECT_DIR$/out/production/parser_gui/sample/model/MySql.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/parser_gui/sample/model/RootThread.class" afterPath="$PROJECT_DIR$/out/production/parser_gui/sample/model/RootThread.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/test/parser_gui/sample/model/CalculateModelTest.class" afterPath="$PROJECT_DIR$/out/test/parser_gui/sample/model/CalculateModelTest.class" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/sample/model/WriteFile.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test/sample/model/CalculateModelTest.java" afterPath="$PROJECT_DIR$/Test/sample/model/CalculateModelTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/model/Actor.java" afterPath="$PROJECT_DIR$/src/sample/model/Actor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/model/CalculateModel.java" afterPath="$PROJECT_DIR$/src/sample/model/CalculateModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/model/InformationParser.java" afterPath="$PROJECT_DIR$/src/sample/model/InformationParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/model/MakeXml.java" afterPath="$PROJECT_DIR$/src/sample/model/MakeXml.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/model/Movie.java" afterPath="$PROJECT_DIR$/src/sample/model/Movie.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/model/MySql.java" afterPath="$PROJECT_DIR$/src/sample/model/MySql.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/model/RootThread.java" afterPath="$PROJECT_DIR$/src/sample/model/RootThread.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -1325,7 +1308,7 @@
       <workItem from="1481975204477" duration="8928000" />
       <workItem from="1482155843556" duration="1031000" />
       <workItem from="1482196742361" duration="2063000" />
-      <workItem from="1482212515300" duration="8431000" />
+      <workItem from="1482212515300" duration="8624000" />
     </task>
     <servers />
   </component>
@@ -1362,7 +1345,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="702688000" />
+    <option name="totallyTimeSpent" value="702881000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -1375,7 +1358,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="991" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3164557" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1384,7 +1367,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33719432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28199565" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28199565" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34177214" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
