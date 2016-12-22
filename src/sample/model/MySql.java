@@ -11,53 +11,49 @@ import java.util.GregorianCalendar;
 public class MySql implements FileWriter {
 
     private Connection conn = null;
-    private ArrayList<String> databaseList;
     private String hostname;
-    private String name;
+    private String db;
     private String id;
     private String password;
-    public MySql(String hostname, String dbname, String id, String password){
-        databaseList = new ArrayList<String>();
+    public MySql(String hostname, String db, String id, String password){
         this.hostname = hostname;
-        this.name = dbname;
+        this.db = db;
         this.id = id;
         this.password = password;
     }
     @Override
-    public int start(boolean flag){
+    public int start(){
         try {
-            databaseList.clear();
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection(hostname+ name, id, password);
+            conn = DriverManager.getConnection(hostname+ db, id, password);
             System.out.println("연결 성공");
-            if(flag) {
-                Statement st = conn.createStatement();
-                ResultSet rs = st.executeQuery("SHOW DATABASES");
-                while (rs.next()) {
-                    String str = rs.getNString(1);
-                    databaseList.add(str);
-                }
-                return 5;
-            }
             return 5;
         }catch (SQLException e) {
-            //여기에 마우스 돌아가는 모양으로 바꾸기
-            switch(e.getErrorCode()){
-                case  0:
-                    SystemInfo.logger.info("url 이상으로 인한 연결 실패");
-                    return e.getErrorCode();
-                case 1045 :
-                    SystemInfo.logger.info("아이디나 비밀번호 틀림");
-                    return e.getErrorCode();
-                default:
-                    e.printStackTrace();
-                    return e.getErrorCode();
-            }
+            return managementException(e);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         return 0;
     }
+
+    @Override
+    public Object startup() {
+        int result  = start();
+        ArrayList<String> queryResult = new ArrayList<>();
+        Statement st = null;
+        try {
+            st = conn.createStatement();
+            ResultSet rs = st.executeQuery("SHOW DATABASES");
+            while (rs.next()) {
+                String str = rs.getNString(1);
+                queryResult.add(str);
+            }
+            return queryResult;
+        } catch (SQLException e) {
+            return managementException(e);
+        }
+    }
+
     @Override
     public void add(String index, String name, String engname, int country,
                     String storyname, String story, InformationParser reader, ArrayList<Actor> actors, ArrayList<String> title, int year) throws SQLException {
@@ -128,17 +124,18 @@ public class MySql implements FileWriter {
             e.printStackTrace();
         }
     }
-    public ArrayList<String> getDatabaseList() {
-        return databaseList;
+    private int managementException(SQLException e){
+        switch(e.getErrorCode()){
+            case  0:
+                SystemInfo.logger.info("url 이상으로 인한 연결 실패");
+                return e.getErrorCode();
+            case 1045 :
+                SystemInfo.logger.info("아이디나 비밀번호 틀림");
+                return e.getErrorCode();
+            default:
+                e.printStackTrace();
+                return e.getErrorCode();
+        }
     }
-//    public void SetTable(){
-//        String sql ="create table movie";
-//    }
-//    public void setSqlresult(ArrayList<String> sqlresult) {
-//        this.sqlresult = sqlresult;
-//    }
-//
-//    public boolean isTestflag() {
-//        return testflag;
-//    }
+
 }

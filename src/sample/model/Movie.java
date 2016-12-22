@@ -15,35 +15,37 @@ public class Movie {
     private String engTitle;
     private String summary;
     private String runningTime;
+    private Boolean adult;
     private ArrayList<Actor> actors;
     private ArrayList<Integer> genre;
-    public Movie(String movieIndex){
+
+    public Movie(String movieIndex) {
         actors = new ArrayList<>();
         genre = new ArrayList<>();
         this.movieIndex = movieIndex;
     }
 
-    public String getMovieIndex() {
+    String getMovieIndex() {
         return movieIndex;
     }
 
-    public void setMovieIndex(String movieIndex) {
+    void setMovieIndex(String movieIndex) {
         this.movieIndex = movieIndex;
     }
 
-    public String getTitle() {
+    String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
+    void setTitle(String title) {
         this.title = title;
     }
 
-    public String getEngTitle() {
+    String getEngTitle() {
         return engTitle;
     }
 
-    public void setEngTitle(String engTitle) {
+    void setEngTitle(String engTitle) {
         this.engTitle = engTitle;
     }
 
@@ -51,45 +53,47 @@ public class Movie {
         return summary;
     }
 
-    public void setSummary(String summary) {
+    void setSummary(String summary) {
         this.summary = summary;
     }
 
-    public int getGrade() {
+    int getGrade() {
         return grade;
     }
 
-    public void setGrade(int grade) {
+    void setGrade(int grade) {
         this.grade = grade;
     }
 
-    public ArrayList<Actor> getActors() {
+    ArrayList<Actor> getActors() {
         return actors;
     }
 
-    public void setActors(ArrayList<Actor> actors) {
+    void setActors(ArrayList<Actor> actors) {
         this.actors = actors;
     }
 
-    public ArrayList<Integer> getGenre() {
+    ArrayList<Integer> getGenre() {
         return genre;
     }
-    public void addGenre(Integer genre){
+
+    void addGenre(Integer genre) {
         this.genre.add(genre);
     }
-    public void setGenre(ArrayList<Integer> genre) {
+
+    void setGenre(ArrayList<Integer> genre) {
         this.genre = genre;
     }
 
-    public String getRunningTime() {
+    String getRunningTime() {
         return runningTime;
     }
 
-    public void setRunningTime(String runningTime) {
+    void setRunningTime(String runningTime) {
         this.runningTime = runningTime;
     }
 
-    public void addActor(Actor actor){
+    void addActor(Actor actor) {
         this.actors.add(actor);
     }
 
@@ -97,27 +101,35 @@ public class Movie {
         return country;
     }
 
-    public void setCountry(int country) {
+    void setCountry(int country) {
         this.country = country;
     }
 
-    public String getOpeningDate() {
+    String getOpeningDate() {
         return openingDate;
     }
 
-    public void setOpeningDate(String openingDate) {
+    void setOpeningDate(String openingDate) {
         this.openingDate = openingDate;
     }
 
-    public String getImgAddress() {
+    String getImgAddress() {
         return imgAddress;
     }
 
-    public void setImgAddress(String imgAddress) {
+    void setImgAddress(String imgAddress) {
         this.imgAddress = imgAddress;
     }
 
-    public void PrintAll(){
+    Boolean getAdult() {
+        return adult;
+    }
+
+    void setAdult(Boolean adult) {
+        this.adult = adult;
+    }
+
+    void printAll() {
         System.out.println("movieIndex : " + movieIndex);
         System.out.println("moviePosterAddress : " + getImgAddress());
         System.out.println("title : " + title);
@@ -128,9 +140,10 @@ public class Movie {
         System.out.println("country : " + country);
         System.out.println("running Time : " + runningTime);
         System.out.println("opening Date = " + openingDate);
-        for(Actor actor : actors){
-            System.out.print( actor.getRule() + "// " + actor.getName() + " : ");
+        for (Actor actor : actors) {
+            System.out.print(actor.getRule() + "// " + actor.getName() + " : ");
         }
+        System.out.println();
     }
 
 }

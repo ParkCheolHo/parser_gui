@@ -25,7 +25,7 @@ class CalculateModel extends Task {
     private StringBuilder sb = new StringBuilder("http://movie.naver.com/movie/sdb/browsing/bmovie.nhn?open=");
     private int start = 0;
     private int end = 0;
-    private RootThread getpageinfo;
+    private RootThread rootThread;
     private FileWriter writer;
     private SystemInfo systeminfo;
 
@@ -34,14 +34,13 @@ class CalculateModel extends Task {
         sb.append(year);
         this.start = start;
         this.end = end;
-        this.getpageinfo = rootThread;
+        this.rootThread = rootThread;
         this.systeminfo = SystemInfo.getInstance();
         if (systeminfo.isUseDB()) {
             this.writer = new MySql(systeminfo.getHost(), systeminfo.getDb(), systeminfo.getId(), systeminfo.getPassword());
         } else {
             this.writer = writer;
         }
-
     }
 
     //    private void getMovieData(ArrayList<String> movie, ArrayList<String> errors) throws InterruptedException {
@@ -86,7 +85,7 @@ class CalculateModel extends Task {
 //                    read.eraseList();
 //                    actors.clear();
 //                    it.remove();
-//                    getpageinfo.update();
+//                    rootThread.update();
 //                    if (Thread.interrupted()) {
 //                        throw new InterruptedException();
 //                    }
@@ -99,7 +98,7 @@ class CalculateModel extends Task {
 //                        actors.clear();
 //                        read.eraseList();
 //                        title.clear();
-//                        getpageinfo.update();
+//                        rootThread.update();
 //                        if (Thread.interrupted()) {
 //                            throw new InterruptedException();
 //                        }
@@ -145,7 +144,7 @@ class CalculateModel extends Task {
 //                } catch (Exception e) {
 //                    SystemInfo.logger.info(value + " : " + e.getMessage());
 //                }
-//                getpageinfo.update();
+//                rootThread.update();
 //                it.remove();
 //                actors.clear();
 //                read.eraseList();
@@ -158,7 +157,7 @@ class CalculateModel extends Task {
 //
 //
 
-    void getMovieData(String movieIndex, InformationParser parser) throws InterruptedException {
+    Movie getMovieData(String movieIndex, InformationParser parser) throws InterruptedException {
         Movie movie = new Movie(movieIndex);
         Document doc = null;
 
@@ -208,20 +207,12 @@ class CalculateModel extends Task {
                 img = null;
             movie.addActor(new Actor(index, actorName, img, people.select("dl.staff > dt").text()));
         }
-
-        if (systeminfo.isUsePoster()) {
-            getImageData(movie.getImgAddress(), "/Poster/", movie.getMovieIndex());
-            for (Actor i : movie.getActors()) {
-                if (i.getImg() != null)
-                    getImageData(i.getImg(), "/Actors/", String.valueOf(i.getIndex()));
-            }
-        }
-        movie.PrintAll();
-        System.out.println(checkAdult(movie.getGenre(),movie.getGrade()));
+        movie.setAdult(checkAdult(movie.getGenre(),movie.getGrade()));
+        return movie;
     }
 
     //포스터의 세로 픽셀을 구하는 메소드
-    private int getImageHeight(String val) {
+    int getImageHeight(String val) {
         URL url = null;
         Image image = null;
         try {
@@ -266,13 +257,13 @@ class CalculateModel extends Task {
         return results[1];
     }
 
-    private void getImageData(String imgUrl, String path, String index) {
+    private void getImageData(Movie movie, String path) {
         try {
-            URL url = new URL(imgUrl);
-            File file = new File(systeminfo.getPosterFile().getPath() + path + index + ".jpg");
+            URL url = new URL(movie.getImgAddress());
+            File file = new File(systeminfo.getPosterFile().getPath() + path + movie.getMovieIndex() + ".jpg");
             if (!file.exists()) {
                 InputStream in = url.openStream();
-                OutputStream out = new BufferedOutputStream(new FileOutputStream(systeminfo.getPosterFile().getPath() + path + index + ".jpg"));
+                OutputStream out = new BufferedOutputStream(new FileOutputStream(systeminfo.getPosterFile().getPath() + path + movie.getMovieIndex() + ".jpg"));
                 for (int b; (b = in.read()) != -1; ) {
                     out.write(b);
                 }
@@ -280,22 +271,17 @@ class CalculateModel extends Task {
                 out.close();
             }
         } catch (IOException e) {
-            SystemInfo.logger.info("이미지 저장 에러 : " + index);
+            SystemInfo.logger.info("이미지 저장 에러 : " + movie.getMovieIndex());
         }
     }
-
     @Override
     protected Object call() throws Exception {
         ArrayList<String> movies = new ArrayList<>();
-
-        if (writer instanceof MySql) {
-            writer.start(false);
-        }
-
+        writer.start();
         try {
             double result = getMoviesIndex(start, end, movies);
             systeminfo.addLog(Thread.currentThread().getName() + " : 영화별 웹페이지 주소 얻기 완료");
-            getpageinfo.setMax(result);
+            rootThread.setMax(result);
 //            systeminfo.addLog(Thread.currentThread().getName() + " : 웹페이지에서 정보 크롤링 중");
 //            getMovieData(movies, errors, true);
 //            while (!errors.isEmpty()) {

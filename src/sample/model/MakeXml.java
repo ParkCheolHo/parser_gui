@@ -1,6 +1,7 @@
 package sample.model;
 
 
+import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 import java.io.*;
@@ -14,16 +15,12 @@ class MakeXml implements FileWriter {
 
     private OutputStream outputStream;
     private XMLStreamWriter out;
-    MakeXml(File filepath) {
-        try {
-//            outputStream = new FileOutputStream(filepath);
-//            out = XMLOutputFactory.newInstance().createXMLStreamWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    private File file;
+    MakeXml(File file) {
+        this.file = file;
     }
     @Override
-    public int start(boolean flag) {
+    public int start() {
         try {
             out.writeStartDocument("UTF-8","1.0");
             out.writeStartElement("Movies");
@@ -32,6 +29,18 @@ class MakeXml implements FileWriter {
         }
         return 0;
     }
+
+    @Override
+    public Object startup() {
+        try {
+            outputStream = new FileOutputStream(file);
+            out = XMLOutputFactory.newInstance().createXMLStreamWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
     @Override
     public synchronized void add(String index, String name, String eng_name, int country,
                                  String story_name, String story, InformationParser reader, ArrayList<Actor> actors, ArrayList<String> title, int year) {

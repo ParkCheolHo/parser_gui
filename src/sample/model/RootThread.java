@@ -35,9 +35,10 @@ public class RootThread extends Task {
         //remove
         systeminfo.removeLog();
         FileWriter makefile = null;
+        //TODO xml 파일 만드는것 다시 생각해볼것
         if(!systeminfo.isUseDB()){
             makefile = new MakeXml(systeminfo.getFilePath());
-            makefile.start(false);
+            makefile.start();
         }
 
 

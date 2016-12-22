@@ -15,6 +15,7 @@ import sample.model.SystemInfo;
 
 import java.io.File;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 /**
@@ -178,21 +179,24 @@ public class SettingController implements Initializable {
     }
 
     // 설정창에서 mysql 커넥션을 체킹하는 메소드
+
+    //TODO : 에러 고칠것
     @FXML
     public void CheckMysql() {
-        Task task = new Task() {
+        Task task = new Task<Void>() {
             @Override
-            protected Object call() throws Exception {
+            protected Void call() {
                 MySql mysql = new MySql(host.getText(), "", idField.getText(), password.getText());
                 showDatabase.setItems(null);
-                int result = mysql.start(true);
-                showDatabase.setItems(FXCollections.observableList(mysql.getDatabaseList()));
-                return result;
+                ArrayList<String> list = (ArrayList<String>) mysql.startup();
+                showDatabase.setItems(FXCollections.observableList(list));
+                return null;
             }
         };
         task.valueProperty().addListener(new ChangeListener<Integer>() {
             @Override
             public void changed(ObservableValue<? extends Integer> observable, Integer oldValue, Integer newValue) {
+                System.out.println((Integer)newValue);
                 if (newValue != null) {
                     switch (newValue) {
                         case 0:
