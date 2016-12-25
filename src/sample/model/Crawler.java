@@ -309,6 +309,7 @@ class Crawler extends Task {
                         }
                         continue;
                     }
+                    writer.add(movie);
                     rootThread.update();
                     it.remove();
                     if(Thread.interrupted()){
