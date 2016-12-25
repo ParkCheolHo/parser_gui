@@ -10,7 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
-import sample.model.MySql;
+import sample.model.SqlWriter;
 import sample.model.SystemInfo;
 
 import java.io.File;
@@ -186,7 +186,7 @@ public class SettingController implements Initializable {
         Task task = new Task<Void>() {
             @Override
             protected Void call() {
-                MySql mysql = new MySql(host.getText(), "", idField.getText(), password.getText());
+                SqlWriter mysql = new SqlWriter(host.getText(), "", idField.getText(), password.getText());
                 showDatabase.setItems(null);
                 ArrayList<String> list = (ArrayList<String>) mysql.startup();
                 showDatabase.setItems(FXCollections.observableList(list));

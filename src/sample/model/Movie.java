@@ -1,149 +1,174 @@
 package sample.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by beakya on 2016. 12. 19..
  */
 public class Movie {
-    private int grade;
-    private int country;
-    private String imgAddress;
-    private String openingDate = null;
-    private String movieIndex;
-    private String title;
-    private String engTitle;
-    private String summary;
-    private String runningTime;
+
     private Boolean adult;
+    private String imgAddress = "";
+    private String openingDate = null;
+    private String movieIndex = "";
+    private String title = "";
+    private String engTitle = "";
+    private String summary = "";
+    private String runningTime = "";
+    private String summaryTitle = "";
+    private String[] grade;
+    private String[] country;
     private ArrayList<Actor> actors;
-    private ArrayList<Integer> genre;
+    private HashMap<Integer,String> genre;
 
     public Movie(String movieIndex) {
         actors = new ArrayList<>();
-        genre = new ArrayList<>();
+        genre = new HashMap<>();
         this.movieIndex = movieIndex;
     }
 
-    String getMovieIndex() {
+    public String getMovieIndex() {
         return movieIndex;
     }
 
-    void setMovieIndex(String movieIndex) {
+    public void setMovieIndex(String movieIndex) {
         this.movieIndex = movieIndex;
     }
 
-    String getTitle() {
+    public String getTitle() {
         return title;
     }
 
-    void setTitle(String title) {
-        this.title = title;
+    public void setTitle(String title) {
+        this.title = (title == null)? "" : title;
     }
 
-    String getEngTitle() {
+    public String getEngTitle() {
         return engTitle;
     }
 
-    void setEngTitle(String engTitle) {
-        this.engTitle = engTitle;
+    public void setEngTitle(String engTitle) {
+        this.engTitle = (engTitle != null)? engTitle : "";
     }
 
     public String getSummary() {
         return summary;
     }
 
-    void setSummary(String summary) {
-        this.summary = summary;
+    public void setSummary(String summary) {
+        this.summary = (summary != null)? summary : "";
     }
 
-    int getGrade() {
+    public String[] getGrade() {
         return grade;
     }
 
-    void setGrade(int grade) {
+    public void setGrade(String[] grade) {
         this.grade = grade;
     }
 
-    ArrayList<Actor> getActors() {
+    public ArrayList<Actor> getActors() {
         return actors;
     }
 
-    void setActors(ArrayList<Actor> actors) {
+    public void setActors(ArrayList<Actor> actors) {
         this.actors = actors;
     }
 
-    ArrayList<Integer> getGenre() {
+    public HashMap<Integer, String> getGenre() {
         return genre;
     }
 
-    void addGenre(Integer genre) {
-        this.genre.add(genre);
-    }
-
-    void setGenre(ArrayList<Integer> genre) {
+    public void addGenre(HashMap<Integer, String> genre) {
         this.genre = genre;
     }
 
-    String getRunningTime() {
+    public void setGenre(HashMap<Integer, String> genre) {
+        this.genre = genre;
+    }
+
+    public String getRunningTime() {
         return runningTime;
     }
 
-    void setRunningTime(String runningTime) {
-        this.runningTime = runningTime;
+    public void setRunningTime(String runningTime) {
+        this.runningTime = (runningTime != null) ? runningTime: "";
     }
 
-    void addActor(Actor actor) {
+    public void addActor(Actor actor) {
         this.actors.add(actor);
     }
 
-    public int getCountry() {
+    public String[] getCountry() {
         return country;
     }
 
-    void setCountry(int country) {
+    public void setCountry(String[] country) {
         this.country = country;
     }
 
-    String getOpeningDate() {
+    public String getOpeningDate() {
         return openingDate;
     }
 
-    void setOpeningDate(String openingDate) {
-        this.openingDate = openingDate;
+    public void setOpeningDate(String openingDate) {
+        this.openingDate = (openingDate != null) ? openingDate : "";
     }
 
-    String getImgAddress() {
+    public String getImgAddress() {
         return imgAddress;
     }
 
-    void setImgAddress(String imgAddress) {
-        this.imgAddress = imgAddress;
+    public void setImgAddress(String imgAddress) {
+        this.imgAddress = (imgAddress != null)? imgAddress : "";
     }
 
-    Boolean getAdult() {
+    public Boolean getAdult() {
         return adult;
     }
 
-    void setAdult(Boolean adult) {
+    public void setAdult(Boolean adult) {
         this.adult = adult;
     }
 
-    void printAll() {
+    public String getSummaryTitle() {
+        return summaryTitle;
+    }
+
+    public void setSummaryTitle(String summaryTitle) {
+        this.summaryTitle = (summaryTitle != null)? summaryTitle : "";
+    }
+
+
+    public void printAll() {
         System.out.println("movieIndex : " + movieIndex);
         System.out.println("moviePosterAddress : " + getImgAddress());
         System.out.println("title : " + title);
         System.out.println("engTitle : " + engTitle);
         System.out.println("summary : " + summary);
-        System.out.println("grade : " + grade);
-        System.out.println("genre : " + genre);
-        System.out.println("country : " + country);
+        for(String gradeInfo : grade){
+            System.out.print( gradeInfo + ": ");
+        }
+        System.out.println();
+
+        for(String countryInfo : country){
+            System.out.print( countryInfo + ": ");
+        }
+        System.out.println();
+        for( Map.Entry<Integer, String> elem : genre.entrySet() ){
+            System.out.println( String.format("genre : %s, 값 : %s", elem.getKey(), elem.getValue()) );
+        }
+
         System.out.println("running Time : " + runningTime);
         System.out.println("opening Date = " + openingDate);
         for (Actor actor : actors) {
-            System.out.print(actor.getRule() + "// " + actor.getName() + " : ");
+            System.out.print(actor.getRule() + "// " + actor.getName() + " : " + actor.getImg());
+            System.out.println();
         }
         System.out.println();
+        System.out.println("is adult : " + adult);
     }
 
 }

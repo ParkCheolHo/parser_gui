@@ -75,7 +75,7 @@ public class Controller implements Initializable {
             }
             startbtn.getScene().setCursor(Cursor.WAIT);
             stopbtn.setDisable(false);
-            Task task = new RootThread(systeminfo.getYear());
+            Task task = new RootThread(systeminfo.getYear(), this);
             status.progressProperty().bind(task.progressProperty()); // progressbar 셋업 //자식 task 에서 updateProgress로 업데이트 가능
             startbtn.disableProperty().bind(task.runningProperty());
             systeminfo.addLog(systeminfo.getYear() + "년도 영화 크롤링을 시작합니다.");
@@ -147,7 +147,7 @@ public class Controller implements Initializable {
     }
 
     // 경고창을 보여주는 메소드
-    private void showAlert(String title, String HeaderText, String ContentText) {
+    public void showAlert(String title, String HeaderText, String ContentText) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.initOwner(rootPane.getScene().getWindow());
         alert.setTitle(title);

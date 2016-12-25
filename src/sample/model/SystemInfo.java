@@ -9,6 +9,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Objects;
+
 /**
  * Created by ParkCheolHo on 2016-03-05.
  * 프로그램 전체에 사용되는 정보를 저장하는 싱글톤 클래스
@@ -41,12 +43,12 @@ public class SystemInfo {
             this.log = null;
         }
     }
-    public void addLog(String value) {
+    public void addLog(String message) {
         if (this.log == null)
-            this.log = value;
+            this.log = message;
         else {
             this.log += "\n";
-            this.log += value;
+            this.log += message;
         }
         if (pane != null) {
             Platform.runLater(new Runnable() {
@@ -169,5 +171,16 @@ public class SystemInfo {
     }
     public void setPosterFile(File posterFile) {
         this.posterFile = posterFile;
+    }
+    public void killMe(String threadName){
+        Thread th = null;
+        for(Thread thread : threads){
+            if(threadName.equals(thread.getName())){
+                th = thread;
+            }
+        }
+        if (th != null) {
+            th.interrupt();
+        }
     }
 }

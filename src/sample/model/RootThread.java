@@ -5,6 +5,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import sample.controller.Controller;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,40 +23,42 @@ public class RootThread extends Task {
     private double max = 0;
     private double count = 0;
     private SystemInfo systeminfo;
+    private Controller controller;
 
-
-    public RootThread(String year) {
+    public RootThread(String year, Controller controller) {
         this.year = year;
         sb.append(year);
         this.systeminfo = SystemInfo.getInstance();
+        this.controller = controller;
     }
 
     @Override
     protected String call() throws XMLStreamException {
         //remove
         systeminfo.removeLog();
-        FileWriter makefile = null;
+        FileWriter fileWriter = null;
         //TODO xml 파일 만드는것 다시 생각해볼것
-        if(!systeminfo.isUseDB()){
-            makefile = new MakeXml(systeminfo.getFilePath());
-            makefile.start();
+        if (!systeminfo.isUseDB()) {
+            fileWriter = new XmlWriter(systeminfo.getFilePath());
+            fileWriter.start();
         }
-
-
-        String maxPage = Calculate(sb.toString());
         int result = 0;
-        int[] value = split(maxPage, systeminfo.getSpeed());
+        int[] value = new int[4];
         try {
+            String maxPage = getMaxCrawleringPages(sb.toString());
+            value = split(maxPage, systeminfo.getSpeed());
             result = GetTotalMovieNumb(Integer.parseInt(maxPage));
         } catch (IOException e) {
-            e.printStackTrace();
+            SystemInfo.logger.info("크롤링 실패 인터넷을 확인해주세요");
+
+            return null;
         }
 
-        if(systeminfo.isUsePoster()) {
+        if (systeminfo.isUsePoster()) {
             boolean posterDirectoryResult = new File(systeminfo.getPosterFile().getPath() + "/Poster/").mkdirs();
             boolean actorDirectoryResult = new File(systeminfo.getPosterFile().getPath() + "/Actors/").mkdirs();
 
-            if(!(posterDirectoryResult && actorDirectoryResult)){
+            if (!(posterDirectoryResult && actorDirectoryResult)) {
                 //create fail exception
             }
         }
@@ -63,8 +66,8 @@ public class RootThread extends Task {
         systeminfo.addLog(year + "년도 검색된 전체 영화 갯수 : " + result + "개"); //scrollPane용
 
         for (int i = 0; i < systeminfo.getSpeed(); i++) {
-            Task task = new CalculateModel(year, value[i], value[i+1], this, makefile);
-            task.stateProperty().addListener((ov , oldVal, newState) -> {
+            Task task = new Crawler(year, value[i], value[i + 1], this, fileWriter);
+            task.stateProperty().addListener((ov, oldVal, newState) -> {
                 if (newState == State.SUCCEEDED)
                     systeminfo.addLog("자식Task 성공적으로 종료됩니다.");
             });
@@ -83,9 +86,9 @@ public class RootThread extends Task {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        if(!systeminfo.isUseDB())
-            if (makefile != null) {
-                makefile.end();
+        if (!systeminfo.isUseDB())
+            if (fileWriter != null) {
+                fileWriter.end();
             }
         systeminfo.addLog("종료되었습니다.");
         SystemInfo.logger.info(Thread.currentThread().getName() + "is done");
@@ -93,6 +96,7 @@ public class RootThread extends Task {
         threads.clear();
         return null;
     }
+
     // 전체 진행속도 표시
     synchronized void update() {
         count++;
@@ -100,6 +104,7 @@ public class RootThread extends Task {
         double s = (count / max) * 100;
         systeminfo.showLabel(s);
     }
+
     //전체 영화 갯수 설정
     void setMax(double value) {
         max += value;
@@ -116,27 +121,23 @@ public class RootThread extends Task {
         for (int k = 0; k < rest; k++) {
             result[k + 1]++;
         }
-        for (int j = 1; j <= section ; j++) {
+        for (int j = 1; j <= section; j++) {
             result[j] += share;
-            result[j] += result[j-1];
-            }
+            result[j] += result[j - 1];
+        }
         return result;
     }
+
     //해당년도의 영화 페이지 갯수를 구하는 메소드
-    private String Calculate(String st) {
+    private String getMaxCrawleringPages(String st) throws IOException {
         String url = st + "&page=10000";
         String[] text = null;
-        try {
-            Document doc = Jsoup.connect(url).get();
-            Elements newsHeadlines = doc.select("div.pagenavigation");
-            text = newsHeadlines.text().split(" ");
-
-        } catch (IOException e) {
-            SystemInfo.logger.info("error during get total page number");
-            Calculate(st);
-        }
-        return text != null ? text[text.length - 1] : null;
+        Document doc = Jsoup.connect(url).get();
+        Elements newsHeadlines = doc.select("div.pagenavigation");
+        text = newsHeadlines.text().split(" ");
+        return text[text.length - 1];
     }
+
     //해당 년도의 총 영화의 갯수를 구하는 메소드
     private int GetTotalMovieNumb(int page) throws IOException {
         int result = 0;
@@ -145,6 +146,6 @@ public class RootThread extends Task {
         for (Element li : newsHeadlines) {
             result++;
         }
-        return (page-1)*20 + result;
+        return (page - 1) * 20 + result;
     }
 }

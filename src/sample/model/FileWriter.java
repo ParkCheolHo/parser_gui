@@ -8,8 +8,7 @@ import java.util.ArrayList;
 interface FileWriter {
     int start();
     Object startup();
-    void add(String index, String name, String eng_name, int country,
-             String story_name, String story, InformationParser reader, ArrayList<Actor> actors, ArrayList<String> title, int year) throws Exception;
+    void add(Movie movie) throws Exception;
     void end();
     
 }
