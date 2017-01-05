@@ -8,8 +8,8 @@
 ### 개발환경
   * java8
   * mysql 5.7.12
-
-
+### 사용된 라이브러리
+  * jsoup (https://jsoup.org/)
 ### 기능목록 
    * 년도별 영화 데이터 xml/mysql 저장
    * 영화별 포스터 저장
