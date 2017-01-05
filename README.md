@@ -1,8 +1,9 @@
 ﻿# Naver Movie crawler 
 
-목적 
-영화 홈페이지 제작을 위한 네이버영화 홈페이지에서 영화 데이터 파싱하는 프로그램
-영화 홈페이지 개발(https://github.com/ParkCheolHo/movie_information_by_Porster) 에 필요한 데이터를 축척하기 위해 만든 크롤러 입니다.
+### 목적
+ 
+* 영화 홈페이지 제작을 위한 네이버영화 홈페이지에서 영화 데이터 파싱하는 프로그램
+* 영화 홈페이지 개발(https://github.com/ParkCheolHo/movie_information_by_Porster) 에 필요한 데이터를 축척하기 위해 만든 크롤러 입니다.
 
 
 ### 개발환경
